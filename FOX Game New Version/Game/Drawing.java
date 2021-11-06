@@ -9,20 +9,15 @@ public class Drawing {
 	int MushroomOne_X,MushroomOne_Y,MushroomTwo_X,MushroomTwo_Y,MushroomThree_X,MushroomThree_Y,
 		MushroomFour_X,MushroomFour_Y,MushroomFive_X,MushroomFive_Y,MushroomSix_X, MushroomSix_Y;
 	//Chicken
-	int chickenOne_X, chickenOne_Y, chickenTwo_X, chickenTwo_Y, chickenThree_X, chickenThree_Y, chickenFour_X, chickenFour_Y, chickenFive_X, chickenFive_Y;
+	public static int chicken_X, chicken_Y;
 	int TextDown;
 	public static int SizeFox = 4;
 
 	public static boolean eat = true;
-	public static boolean eat1,eat2,eat3,eat4;
+	public static boolean eat1,eat2,eat3,eat4,eat5;
 
 	protected void drawing(Graphics g,int x,int y, int TextMove) {
 
-		chickenOne_X = 650; chickenOne_Y = 400;
-		chickenTwo_X = 120; chickenTwo_Y = 60;
-		chickenThree_X = 60; chickenThree_Y = 280;
-		chickenFour_X = 0; chickenFour_Y = 500;
-		chickenFive_X = 623; chickenFive_Y = 121;
 		TextDown = 580;
 
 		MushroomOne_X = 560; MushroomOne_Y = 120;
@@ -39,6 +34,8 @@ public class Drawing {
 			SizeFox = 1;
 		}
 		g.drawImage(ImageLoader.loadImage("/img/"+ SizeFox +".png"), x,y, null);
+
+		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chicken_X, chicken_Y, null);
 
 		if (!poisoning1) {
 			g.drawImage(ImageLoader.loadImage("/img/X.png"), MushroomOne_X, MushroomOne_Y, null);
@@ -84,54 +81,47 @@ public class Drawing {
 	}
 
 	if (eat) {
-		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chickenOne_X, chickenOne_Y, null);
-		}
-	if (eat1) {
-		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chickenTwo_X, chickenTwo_Y, null);
-		}
-	if (eat2) {
-		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chickenThree_X, chickenThree_Y, null);
-		}
-	if (eat3) {
-		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chickenFour_X, chickenFour_Y, null);
-		}
-	if (eat4) {
-		g.drawImage(ImageLoader.loadImage("/img/chicken.png"), chickenFive_X, chickenFive_Y, null);
-		}
-	if (eat) {
-			if (x< chickenOne_X +10 & x> chickenOne_X -10 & y< chickenOne_Y +10 & y> chickenOne_Y -10) {
+		chicken_X = 650; chicken_Y = 400;
+			if (x< chicken_X +20 & x> chicken_X -10 & y< chicken_Y +20 & y> chicken_Y -10) {
 				eat=false;
 				eat1 = true;
 				SizeFox++;
 			}
 		}
 	if (eat1) {
-			if (x< chickenTwo_X +15 & x> chickenTwo_X -15 & y< chickenTwo_Y +15 & y> chickenTwo_Y -15) {
-				eat=false;
+		chicken_X = 120; chicken_Y = 60;
+			if (x< chicken_X +20 & x> chicken_X -10 & y< chicken_Y +20 & y> chicken_Y -10) {
 				eat1=false;
 				eat2 = true;
 				SizeFox++;
 			}
 		}
 	if (eat2) {
-			if (x< chickenThree_X +20 & x> chickenThree_X -20 & y< chickenThree_Y +20 & y> chickenThree_Y -20) {
-				eat=false;
-				eat1=false;
+		chicken_X = 60; chicken_Y = 280;
+			if (x< chicken_X +20 & x> chicken_X -10 & y< chicken_Y +20 & y> chicken_Y -10) {
 				eat2 = false;
 				eat3 = true;
 				SizeFox++;
 			}
 		}
 	if (eat3) {
-			if (x< chickenFour_X +30 & x> chickenFour_X -30 & y< chickenFour_Y +30 & y> chickenFour_Y -30) {
-				eat = false;
-				eat1 = false;
-				eat2 = false;
+		chicken_X = 0; chicken_Y = 500;
+			if (x< chicken_X +20 & x> chicken_X -10 & y< chicken_Y +20 & y> chicken_Y -10) {
 				eat3 = false;
 				eat4 = true;
 				SizeFox++;
 			}
 		}
-
+		if (eat4) {
+			chicken_X = 623; chicken_Y = 121;
+			if (x< chicken_X +20 & x> chicken_X -10 & y< chicken_Y +20 & y> chicken_Y -10) {
+				eat4 = false;
+				eat5 = true;
+				SizeFox++;
+			}
+		}
+		if (eat5) {
+			chicken_X = 810; chicken_Y = 0;
+		}
 	}
 }

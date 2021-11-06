@@ -74,7 +74,7 @@ public class Fox extends Canvas implements Runnable, KeyListener {
 		//Start drawing/game
 		Drawing drawing = new Drawing();
 		drawing.drawing(g,x,y,TextMove);
-		TextMove--;
+		TextMove = TextMove - 3;
 		if (TextMove<-100) {
 			TextMove = 830;
 		}
