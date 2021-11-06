@@ -122,6 +122,12 @@ public class Drawing {
 		}
 		if (eat5) {
 			chicken_X = 810; chicken_Y = 0;
-		}
+			poisoning1 = true;
+			poisoning2 = true;
+			poisoning3 = true;
+			poisoning4 = true;
+			poisoning5 = true;
+			poisoning6 = true;
+			}
 	}
 }
