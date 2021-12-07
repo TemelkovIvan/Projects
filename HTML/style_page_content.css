@@ -1,0 +1,50 @@
+
+
+body {
+    background-color: grey;
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+nav {
+    background-color: slategray;
+    text-align: center;
+}
+* {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.italic-p {
+    font-style: italic;
+ }
+
+ footer {
+     text-align: center;
+     background-color: darkgray;
+ }
+table,td {
+     border: 1px solid black;
+     width: 400px;
+ }
+ th {
+    text-align: center;
+ }
+
+ .bold {
+     font-weight: bold; 
+     text-align: center;
+ }
+
+ .tfoot {
+text-align: right;
+ }

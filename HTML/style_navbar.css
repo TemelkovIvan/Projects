@@ -1,0 +1,23 @@
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+nav {
+    background-color: slategray;
+    text-align: center;
+}
+* {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+body {
+    background-color: violet;
+}
