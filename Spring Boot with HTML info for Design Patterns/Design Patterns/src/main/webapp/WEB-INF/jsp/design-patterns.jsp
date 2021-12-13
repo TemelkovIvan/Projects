@@ -1,40 +1,146 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
-<html>
 
 <head>
 <meta charset="UTF-8">
-<title>Design Patterns</title>
+<title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
 </head>
 <style type="text/css">
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ------------------- RESET FOR CSS ------------------- */
+
 body {
     background-color: gray;
+
 }
 
+
+nav{
+    position: fixed;
+    margin-top: -70px;
+	background-color: black;
+  width:1905px;
+
+
+	}
+
+#user {
+    color: white;
+    float: right;
+}
+
+    li>a {
+        text-decoration: none;
+	    color: white;
+    }
+	li{
+
+	    text-transform: uppercase;
+	    font-size: 25px;
+	    display: inline-block;
+	    padding: 10px;
+	}
+
+    li:hover {
+        background-color: rgb(46, 46, 46);
+        color: orange;
+    }
+
+	li>a:hover {
+
+        text-decoration: none;
+
+	    color: orange;
+	}
+
 #first {
-    background-color: #90B4D6;
-    width: 300px;
+    background-color: darkgreen;
+    width: 400px;
     color: white;
     text-transform: uppercase;
+    padding: 5px;
 }
 #second {
-    background-color: #90B4D6;
-    width: 1400px;
+    background-color: darkgreen;
+    width: 1050px;
     color: white;
     text-transform: uppercase;
+    padding-left: 300px;
 }
 
 h1 {
-    padding-top: 30px;
+
+    font-family: Gabriola;
+    margin-right: 600px;
+    margin-left: 50px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     padding-left: 500px;
-    text-transform: uppercase
+    text-transform: uppercase;
+
+    background-color:rgb(93, 75, 99);
+    border-radius: 52%;
+    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
 }
 h3 {
+    font-size: 25px;
+    font-family: Gabriola;
+    padding: 10px;
+    font-weight: bold;
     padding-left: 300px;
 }
 
 h4 {
+    font-family: Gabriola;
+    padding: 10px;
+    font-weight: bold;
     color: white;
 padding-left: 50px;
 }
@@ -45,17 +151,12 @@ table {
     margin-left: 50px;
 }
 
-th {
-    padding: 10px;
-     border: violet;
-}
-
 tr:nth-child(even) td {
-    background-color: #84b3ad;
+    background-color: #baca9a;
 }
 
 tr:nth-child(odd) td {
-    background-color: #689ad8;
+    background-color: #a19f86;
 }
 
 p {
@@ -65,10 +166,25 @@ p {
 }
 </style>
 <body>
+    <nav role="navigation">
+        <div>
+            <ul>
+                <li><a href="/learn">Друг потребител</a></li>
+                <li><a href="/list-todos">Обучения на ${name}</a></li>
+
+                <li><a href="http://abv.bg">HTML</a></li>
+                <li><a href="http://abv.bg">CSS</a></li>
+                <li><a href="http://abv.bg">Excel</a></li>
+                <li><a href="http://abv.bg">Друго</a></li>
+                <li><a href="http://abv.bg">Друго</a></li>
+                <li id="user">${name}</li>
+            </ul>
+        </div>
+    </nav>
     <h1>Шаблони за дизайн</h1>
 
     <p>
-        &diams;&emsp;Шаблоните за дизайн (англ: Software design pattern) представляват концепция предназначена за разрешаване на често срещани проблеми в обектно-ориентираното програмиране. Тази концепция предлага стандартни решения за архитектурни и концептуални проблеми в компютърното програмиране.
+        &diams;&emsp;Шаблоните за дизайн (англ: Software Design Pattern) представляват концепция предназначена за разрешаване на често срещани проблеми в обектно-ориентираното програмиране. Тази концепция предлага стандартни решения за архитектурни и концептуални проблеми в компютърното програмиране.
     </p>
 
     <p>
@@ -80,7 +196,7 @@ p {
         <h3>Създаващи шаблони</h3>
         <tr id="first-row">
             <th id="first">Наименование</th>
-            <th id="second">Описание</th>
+            <td id="second">Описание</td>
         </tr>
         <tr class="green-background">
             <td>Абстрактна Фабрика (Abstract Factory)</td>
@@ -115,7 +231,7 @@ p {
         <h3>Структурни шаблони</h3>
         <tr id="first-row">
             <th id="first">Наименование</th>
-            <th id="second">Описание</th>
+            <td id="second">Описание</td>
         </tr>
         <tr class="green-background">
             <td>Адаптер (Adapter)</td>
@@ -152,7 +268,7 @@ p {
         <h3>Поведенчески шаблони</h3>
         <tr id="first-row">
             <th id="first">Наименование</th>
-            <th id="second">Описание</th>
+            <td id="second">Описание</td>
         </tr>
         <tr class="green-background">
             <td>Верига отговорности (Chain of Responsibility)</td>

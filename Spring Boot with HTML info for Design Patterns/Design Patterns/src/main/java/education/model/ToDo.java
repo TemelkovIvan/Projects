@@ -70,6 +70,6 @@ public class ToDo {
 
     @Override
     public String toString() {
-        return String.format("ToDo [ id=%s, user=%s, targetDate=%s, isDone=%s", id, user,desc,targetDate,isDone);
+        return String.format("ToDo [ id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s", id, user,desc,targetDate,isDone);
     }
 }

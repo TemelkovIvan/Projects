@@ -1,21 +1,83 @@
+<%@ page pageEncoding="UTF-8" %>
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Design Patterns</title>
+        <title>Education</title>
         <link href="books.ico" rel="shortcut icon" type="ico">
     </head>
     <style type="text/css">
-        body {
-        background-color: #84b3ad;
-        }
+body {
+    background-color: gray;
+}
+
+ul {
+    padding-top: 180px;
+    color: burlywood;
+    list-style: none;
+}
+
+h1 {
+    margin: 80px;
+    text-align: center;
+    color: white;
+text-transform: uppercase;
+}
+
+h3 {
+    text-align: center;
+    color:orange;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+#commentar {
+    color:green;
+    text-align: center;
+}
+div {
+
+    padding:50px;
+    padding-bottom: 200px;
+    background-color:rgb(93, 75, 99);
+    border-radius: 52%;
+    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+    margin-top: 30px;
+}
     </style>
     <body>
-        <font color="red">${errorMessage}</font>
-        <form method="post">
-            <p>Enter User and Password -------> "test" and "123"</p>
-            Name : <input type="text" name="name"/>
-            Password : <input type="password" name="password"/>
-            <input type="submit"/>
-        </form>
+            <div>
+                <form method="post">
+
+                    <h1>Проект с набор от необходими знания</h1>
+
+                    <h3>
+                        Влезте с Вашият акаунт
+                    </h3>
+                <p>
+                    Име <input type="text" name="name"/>
+                </p>
+                <p>
+                    Парола <input type="password" name="password"/>
+                    <input type="submit"/>
+                    <br>
+                    <font color="red">${errorMessage}</font>
+                </p>
+                <p id = "commentar">
+                    Ако нямате акаунт се свържете с Иван Темелков
+                </p>
+
+                </form>
+            </div>
     </body>
-</html>
+    <footer>
+        <ul>
+            <li>Enter User and Password -------> "IvanT" and "123"</li>
+            <li>Enter User and Password -------> "Georgi" and "1234"</li>
+            <li>Enter User and Password -------> "test3" and "12345"</li>
+        </ul>
+    </footer>
+    </html>
