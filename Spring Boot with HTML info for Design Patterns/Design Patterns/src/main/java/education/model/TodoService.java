@@ -22,8 +22,8 @@ public class TodoService {
         todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(), false));
         todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(), false));
         todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(), false));
-        todos.add(new ToDo(6, "Georgi", "HTML & CSS", new Date(), false));
-        todos.add(new ToDo(7, "Georgi", "Excel", new Date(), false));
+        todos.add(new ToDo(6, "Georgi", "Learn HTML & CSS", new Date(), false));
+        todos.add(new ToDo(7, "Georgi", "Learn Excel", new Date(), false));
 
         try {
             FileWriter pw = new FileWriter("output.txt",true);

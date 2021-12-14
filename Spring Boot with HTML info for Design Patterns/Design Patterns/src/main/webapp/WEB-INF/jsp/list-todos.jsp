@@ -72,34 +72,45 @@
 
     	}
 
-    #user {
-        color: white;
-        float: right;
-    }
+ #user {
+     color: white;
+     float: right;
+ }
 
-        li>a {
-            text-decoration: none;
-    	    color: white;
-        }
-    	li{
+     li>a {
+         text-decoration: none;
+ 	    color: white;
+     }
+ 	li{
+         position: relative;
+ 	    text-transform: uppercase;
+ 	    font-size: 25px;
+ 	    display: inline-block;
+ 	    padding: 10px;
+ 	}
 
-    	    text-transform: uppercase;
-    	    font-size: 25px;
-    	    display: inline-block;
-    	    padding: 10px;
-    	}
+     li:hover {
+         background-color: rgb(46, 46, 46);
+     }
 
-        li:hover {
-            background-color: rgb(46, 46, 46);
-            color: orange;
-        }
+ 	li>a:hover {
+         text-decoration: none;
+ 	    color: orange;
+ 	}
 
-    	li>a:hover {
+     li ul {
+         color: white;
+         top:100%;
+         position: absolute;
+         margin: 0;
+         padding: 0;
+         display: none;
+     }
 
-            text-decoration: none;
-
-    	    color: orange;
-    	}
+     li:hover > ul {
+         display: block;
+         background-color: rgb(46, 46, 46);
+     }
 
     #first {
         background-color: darkgreen;
@@ -178,10 +189,18 @@
 
 <nav role="navigation">
         <div>
-            <ul>
+            <ul class="nav">
                 <li><a href="/learn">Друг потребител</a></li>
-                 <li><a href="/design-patterns">Design Patterns</a></li>
+                <li><a href="/list-todos">Обучения на ${name}</a>
 
+                       <ul>
+                           <c:forEach items="${todos}" var= "todo">
+                           <li>${todo.desc}</li>
+                           </c:forEach>
+                       </ul>
+
+                </li>
+                <li><a href="/design-patterns">Design Patterns</a></li>
                 <li><a href="http://abv.bg">HTML</a></li>
                 <li><a href="http://abv.bg">CSS</a></li>
                 <li><a href="http://abv.bg">Excel</a></li>
@@ -192,8 +211,13 @@
         </div>
     </nav>
 
+
+
+
      <h1>Вашите обучения</h1>
         <div class="container">
+
+
 
         <table class="table">
 

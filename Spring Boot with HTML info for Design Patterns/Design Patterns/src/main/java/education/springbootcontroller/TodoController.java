@@ -77,6 +77,8 @@ public class TodoController {
 
     @RequestMapping(value="/design-patterns",method = RequestMethod.GET)
     public String degingPattern(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",service.retrieveTodos(name));
         return "design-patterns";
     }
 }

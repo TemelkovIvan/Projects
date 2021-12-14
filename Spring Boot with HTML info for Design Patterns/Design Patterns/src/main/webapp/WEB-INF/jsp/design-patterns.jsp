@@ -1,10 +1,13 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
+ <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
 </head>
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
@@ -77,7 +80,7 @@ nav{
 	    color: white;
     }
 	li{
-
+        position: relative;
 	    text-transform: uppercase;
 	    font-size: 25px;
 	    display: inline-block;
@@ -90,11 +93,24 @@ nav{
     }
 
 	li>a:hover {
-
         text-decoration: none;
-
 	    color: orange;
 	}
+
+    li ul {
+        top:100%;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+
+    li:hover > ul {
+        display: block;
+        background-color: rgb(46, 46, 46);
+        color: orange;
+    }
+
 
 #first {
     background-color: darkgreen;
@@ -167,11 +183,15 @@ p {
 </style>
 <body>
     <nav role="navigation">
-        <div>
             <ul>
                 <li><a href="/learn">Друг потребител</a></li>
-                <li><a href="/list-todos">Обучения на ${name}</a></li>
-
+                 <li><a href="/list-todos">Обучения на ${name}</a>
+                     <ul>
+                         <c:forEach items="${todos}" var= "todo">
+                            <li>${todo.desc}</li>
+                         </c:forEach>
+                     </ul>
+                 </li>
                 <li><a href="http://abv.bg">HTML</a></li>
                 <li><a href="http://abv.bg">CSS</a></li>
                 <li><a href="http://abv.bg">Excel</a></li>
@@ -328,5 +348,9 @@ p {
     <h4>Източници</h4>
     <p>https://bg.wikipedia.org<br>
         Шаблони за дизайн, Design Patterns – Ерик Гама, Ричард Хелм, Ралф Джонсън, 2005, издателство СофтПрес. ISBN 954-685-352-6</p>
+
+     <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

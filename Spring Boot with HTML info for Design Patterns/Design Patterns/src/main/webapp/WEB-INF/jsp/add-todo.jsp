@@ -194,7 +194,7 @@
             <hidden path="id"/>
             <fieldset class="form-group">
                 <label path="desc">Description</label>
-                <input name="desc" type="text" class="form-control" required="required" minlength="5" maxlength="10"/>
+                <input name="desc" type="text" class="form-control" required="required" minlength="8" maxlength="15"/>
 
                 <form:errors name="desc" cssClass="text-warning"/>
 
