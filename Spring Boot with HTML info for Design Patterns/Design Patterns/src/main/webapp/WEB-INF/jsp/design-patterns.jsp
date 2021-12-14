@@ -130,15 +130,15 @@ nav{
 h1 {
 
     font-family: Gabriola;
-    margin-right: 600px;
+    text-align: center;
+    margin-right: 50px;
     margin-left: 50px;
     margin-top: 70px;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 50px;
-    padding-top: 10px;
-    padding-bottom: 30px;
-    padding-left: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-transform: uppercase;
 
     background-color:rgb(93, 75, 99);
@@ -188,15 +188,10 @@ p {
                  <li><a href="/list-todos">Обучения на ${name}</a>
                      <ul>
                          <c:forEach items="${todos}" var= "todo">
-                            <li>${todo.desc}</li>
+                            <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                          </c:forEach>
                      </ul>
                  </li>
-                <li><a href="http://abv.bg">HTML</a></li>
-                <li><a href="http://abv.bg">CSS</a></li>
-                <li><a href="http://abv.bg">Excel</a></li>
-                <li><a href="http://abv.bg">Друго</a></li>
-                <li><a href="http://abv.bg">Друго</a></li>
                 <li id="user">${name}</li>
             </ul>
         </div>

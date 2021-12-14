@@ -17,13 +17,13 @@ public class TodoService {
     private static int todoCount = 7;
 
     static {
-        todos.add(new ToDo(1, "IvanT", "Learn Design Pattern", new Date(), false));
-        todos.add(new ToDo(2, "IvanT", "Learn Spring MVC", new Date(), false));
-        todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(), false));
-        todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(), false));
-        todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(), false));
-        todos.add(new ToDo(6, "Georgi", "Learn HTML & CSS", new Date(), false));
-        todos.add(new ToDo(7, "Georgi", "Learn Excel", new Date(), false));
+        todos.add(new ToDo(1, "IvanT", "Learn Design Pattern", new Date(),"design-patterns", false));
+        todos.add(new ToDo(2, "IvanT", "Learn Spring MVC", new Date(),"", false));
+        todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(),"", false));
+        todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(),"", false));
+        todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(),"design-patterns", false));
+        todos.add(new ToDo(6, "Georgi", "Learn HTML", new Date(),"html", false));
+        todos.add(new ToDo(7, "Georgi", "Learn CSS", new Date(),"css", false));
 
         try {
             FileWriter pw = new FileWriter("output.txt",true);
@@ -48,8 +48,8 @@ public class TodoService {
         return filteredTodos;
     }
 
-    public void addTodo(String name, String desc, Date targetDate, boolean isDone) {
-        todos.add(new ToDo(++todoCount, name, desc, targetDate, isDone));
+    public void addTodo(String name, String desc, Date targetDate, String linkEducation, boolean isDone) {
+        todos.add(new ToDo(++todoCount, name, desc, targetDate, linkEducation, isDone));
         try {
             FileWriter pw = new FileWriter("output.txt",true);
                     pw.write(String.valueOf(todos.get(todos.size()-1))+ "\n");

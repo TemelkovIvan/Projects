@@ -36,7 +36,7 @@ public class TodoController {
 
     @RequestMapping(value="/add-todo",method = RequestMethod.GET)
     public String showAddTodoPage(ModelMap model) {
-        model.addAttribute("todo",new ToDo(0,(String) model.get("name"),"Default",new Date(),false));
+        model.addAttribute("todo",new ToDo(0,(String) model.get("name"),"Default",new Date(),"",false));
         return "add-todo";
     }
 
@@ -70,7 +70,7 @@ public class TodoController {
         if(result.hasErrors()){
             return "add-todo";
         }
-        service.addTodo((String) model.get("name"),todo.getDesc(),todo.getTargetDate(),false);
+        service.addTodo((String) model.get("name"),todo.getDesc(),todo.getTargetDate(),"",false);
         return "redirect:/list-todos";
     }
 
@@ -80,5 +80,15 @@ public class TodoController {
         String name = (String) model.get("name");
         model.put("todos",service.retrieveTodos(name));
         return "design-patterns";
+    }
+
+    @RequestMapping(value="/html",method = RequestMethod.GET)
+    public String html(ModelMap model) {
+        return "html";
+    }
+
+    @RequestMapping(value="/css",method = RequestMethod.GET)
+    public String css(ModelMap model) {
+        return "css";
     }
 }

@@ -91,6 +91,7 @@
 
      li:hover {
          background-color: rgb(46, 46, 46);
+         color: orange;
      }
 
  	li>a:hover {
@@ -99,7 +100,6 @@
  	}
 
      li ul {
-         color: white;
          top:100%;
          position: absolute;
          margin: 0;
@@ -110,7 +110,9 @@
      li:hover > ul {
          display: block;
          background-color: rgb(46, 46, 46);
+         color: orange;
      }
+
 
     #first {
         background-color: darkgreen;
@@ -183,29 +185,26 @@
     padding-left: 550px;
     font-size: 30px;
     }
+
+
 </style>
 
 <body>
 
 <nav role="navigation">
         <div>
-            <ul class="nav">
+            <ul>
                 <li><a href="/learn">Друг потребител</a></li>
                 <li><a href="/list-todos">Обучения на ${name}</a>
 
                        <ul>
                            <c:forEach items="${todos}" var= "todo">
-                           <li>${todo.desc}</li>
+                           <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                            </c:forEach>
                        </ul>
 
                 </li>
-                <li><a href="/design-patterns">Design Patterns</a></li>
-                <li><a href="http://abv.bg">HTML</a></li>
-                <li><a href="http://abv.bg">CSS</a></li>
-                <li><a href="http://abv.bg">Excel</a></li>
-                <li><a href="http://abv.bg">Друго</a></li>
-                <li><a href="http://abv.bg">Друго</a></li>
+
                 <li id="user">${name}</li>
             </ul>
         </div>
@@ -216,8 +215,6 @@
 
      <h1>Вашите обучения</h1>
         <div class="container">
-
-
 
         <table class="table">
 

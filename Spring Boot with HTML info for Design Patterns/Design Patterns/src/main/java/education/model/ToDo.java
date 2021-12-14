@@ -8,9 +8,12 @@ public class ToDo {
     private int id;
     private String user;
 
-    @Size(min=5,max=10,message = "Enter atleast 5 Characters...")
+    @Size(min=10,max=15,message = "Enter atleast 5 Characters...")
     private String desc;
 
+
+
+    private String linkEducation;
     private Date targetDate;
     private boolean isDone;
 
@@ -19,12 +22,13 @@ public class ToDo {
         super();
     }
 
-    public ToDo(int id, String user, String desc, Date targetDate, boolean isDone) {
+    public ToDo(int id, String user, String desc, Date targetDate, String linkEducation, boolean isDone) {
         super();
         this.id = id;
         this.user = user;
         this.desc = desc;
         this.targetDate = targetDate;
+        this.linkEducation = linkEducation;
         this.isDone = isDone;
     }
 
@@ -56,6 +60,14 @@ public class ToDo {
         return targetDate;
     }
 
+    public String getLinkEducation() {
+        return linkEducation;
+    }
+
+    public void setLinkEducation(String linkEducation) {
+        this.linkEducation = linkEducation;
+    }
+
     public void setTargetDate(Date targetDate) {
         this.targetDate = targetDate;
     }
@@ -70,6 +82,6 @@ public class ToDo {
 
     @Override
     public String toString() {
-        return String.format("ToDo [ id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s", id, user,desc,targetDate,isDone);
+        return String.format("ToDo [ id=%s, user=%s, desc=%s, targetDate=%s, link=%s, isDone=%s", id, user,desc,targetDate,linkEducation,isDone);
     }
 }
