@@ -34,21 +34,9 @@ p {
     text-align: center;
 }
 
-#add {
-color: white;
-text-transform: uppercase;
-padding-top: 40px;
-padding-left: 45%;
-}
-
-#add:hover {
-color: orange;
-}
-
 #commentar {
     color:green;
     text-align: center;
-
 }
 div {
 
@@ -67,22 +55,19 @@ div {
                     <h1>Проект с набор от необходими знания</h1>
 
                     <h2>
-                        Влезте с Вашият акаунт
+                        Създаване на нов акаунт
                     </h2>
                 <p>
-                    Име <input type="text" name="name"/>
+                    Име <input type="text" name="userId"/>
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
                     <input type="submit"/>
-                    <br>
-                    <font color="red">${errorMessage}</font>
                 </p>
                 <p id = "commentar">
                     При проблем се свържете с Иван Темелков
                 </p>
 
-                <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
 
                 </form>
             </div>

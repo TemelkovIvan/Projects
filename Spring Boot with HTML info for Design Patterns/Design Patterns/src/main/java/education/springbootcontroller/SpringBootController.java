@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class SpringBootController {
 
     LoginService service = new LoginService();
+    NewUser newUser = new NewUser();
 
     @RequestMapping(value="/learn",method = RequestMethod.GET)
     public String showLoginPage(ModelMap model) {
@@ -21,11 +22,24 @@ public class SpringBootController {
         boolean isValidUser = service.validateUser(name,password);
 
         if (!isValidUser) {
-            model.put("errorMessage", "invalid Credentials");
+            model.put("errorMessage", "Грешно Име или Парола!");
             return "login";
         }
 
         model.put("name", name);
+        model.put("password", password);
+        return "welcome";
+    }
+
+    @RequestMapping(value="/new-user",method = RequestMethod.GET)
+    public String newUser(ModelMap model) {
+        return "new-user";
+    }
+
+    @RequestMapping(value="/new-user",method = RequestMethod.POST)
+    public String showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password) {
+        newUser.newUser(userId,password);
+        model.put("name", userId);
         model.put("password", password);
         return "welcome";
     }

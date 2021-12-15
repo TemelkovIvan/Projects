@@ -38,6 +38,5 @@ public class LoginService {
     }
 }
 
-//        return (userid.equalsIgnoreCase("test")
-//                && password.equalsIgnoreCase("123"));
+
 

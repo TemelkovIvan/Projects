@@ -8,28 +8,26 @@ public class ToDo {
     private int id;
     private String user;
 
-    @Size(min=10,max=15,message = "Enter atleast 5 Characters...")
+    @Size(min=10,max=15,message = "Enter atleast 10 Characters...")
     private String desc;
-
-
 
     private String linkEducation;
     private Date targetDate;
-    private boolean isDone;
+
 
 
     public ToDo() {
         super();
     }
 
-    public ToDo(int id, String user, String desc, Date targetDate, String linkEducation, boolean isDone) {
+    public ToDo(int id, String user, String desc, Date targetDate, String linkEducation) {
         super();
         this.id = id;
         this.user = user;
         this.desc = desc;
         this.targetDate = targetDate;
         this.linkEducation = linkEducation;
-        this.isDone = isDone;
+
     }
 
     public int getId() {
@@ -72,16 +70,8 @@ public class ToDo {
         this.targetDate = targetDate;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
-
     @Override
     public String toString() {
-        return String.format("ToDo [ id=%s, user=%s, desc=%s, targetDate=%s, link=%s, isDone=%s", id, user,desc,targetDate,linkEducation,isDone);
+        return String.format("ToDo [ id=%s, user=%s, desc=%s, targetDate=%s, link=%s", id, user,desc,targetDate,linkEducation);
     }
 }

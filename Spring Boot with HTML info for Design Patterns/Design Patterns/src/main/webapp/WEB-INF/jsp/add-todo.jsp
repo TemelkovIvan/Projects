@@ -178,13 +178,6 @@
                 <ul>
                     <li><a href="/learn">Друг потребител</a></li>
                     <li><a href="/list-todos">Обучения на ${name}</a></li>
-                    <li><a href="/design-patterns">Design Patterns</a></li>
-
-                    <li><a href="http://abv.bg">HTML</a></li>
-                    <li><a href="http://abv.bg">CSS</a></li>
-                    <li><a href="http://abv.bg">Excel</a></li>
-                    <li><a href="http://abv.bg">Друго</a></li>
-                    <li><a href="http://abv.bg">Друго</a></li>
                     <li id="user">${name}</li>
                 </ul>
         </nav>

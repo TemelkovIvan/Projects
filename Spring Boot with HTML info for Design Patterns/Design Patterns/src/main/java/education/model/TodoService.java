@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 @Service
 public class TodoService {
@@ -17,13 +16,13 @@ public class TodoService {
     private static int todoCount = 7;
 
     static {
-        todos.add(new ToDo(1, "IvanT", "Learn Design Pattern", new Date(),"design-patterns", false));
-        todos.add(new ToDo(2, "IvanT", "Learn Spring MVC", new Date(),"", false));
-        todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(),"", false));
-        todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(),"", false));
-        todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(),"design-patterns", false));
-        todos.add(new ToDo(6, "Georgi", "Learn HTML", new Date(),"html", false));
-        todos.add(new ToDo(7, "Georgi", "Learn CSS", new Date(),"css", false));
+        todos.add(new ToDo(1, "IvanT", "Learn Design Pattern", new Date(),"design-patterns"));
+        todos.add(new ToDo(2, "IvanT", "Learn Spring MVC", new Date(),""));
+        todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(),""));
+        todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(),""));
+        todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(),"design-patterns"));
+        todos.add(new ToDo(6, "Georgi", "Learn HTML", new Date(),"html"));
+        todos.add(new ToDo(7, "Georgi", "Learn CSS", new Date(),"css"));
 
         try {
             FileWriter pw = new FileWriter("output.txt",true);
@@ -48,23 +47,18 @@ public class TodoService {
         return filteredTodos;
     }
 
-    public void addTodo(String name, String desc, Date targetDate, String linkEducation, boolean isDone) {
-        todos.add(new ToDo(++todoCount, name, desc, targetDate, linkEducation, isDone));
+    public void addTodo(String name, String desc, Date targetDate, String linkEducation) {
+        todos.add(new ToDo(++todoCount, name, desc, targetDate, linkEducation));
         try {
             FileWriter pw = new FileWriter("output.txt",true);
-                    pw.write(String.valueOf(todos.get(todos.size()-1))+ "\n");
-
-//                for(ToDo one : todos) {
-//                    pw.write(String.valueOf(one)+ "\n");
-//            }
-            pw.close();
+                pw.write(String.valueOf(todos.get(todos.size()-1))+ "\n");
+                pw.close();
         } catch (FileNotFoundException ex) {
             System.out.println("The file is not find!");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     public void deleteTodo(int id) {
         Iterator<ToDo> iterator = todos.iterator();
