@@ -62,7 +62,7 @@ div {
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
-                    <input type="submit"/>
+                    <input type="submit" value="Създай"/>
                 </p>
                 <p id = "commentar">
                     При проблем се свържете с Иван Темелков

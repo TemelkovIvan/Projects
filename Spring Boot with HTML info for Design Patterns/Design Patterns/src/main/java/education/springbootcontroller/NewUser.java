@@ -10,8 +10,6 @@ public class NewUser {
 
     public void newUser(String userid, String password) {
 
-        System.out.println(userid);
-        System.out.println(password);
         try {
             FileWriter pw = new FileWriter("src/main/resources/users.txt",true);
             pw.write( "\n" + userid + " " + password);

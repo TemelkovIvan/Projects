@@ -11,17 +11,11 @@ body {
     background-color: gray;
 }
 
-ul {
-    padding-top: 180px;
-    color: burlywood;
-    list-style: none;
-}
-
 h1 {
     margin: 80px;
     text-align: center;
     color: white;
-text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -34,16 +28,7 @@ p {
     text-align: center;
 }
 
-#add {
-color: white;
-text-transform: uppercase;
-padding-top: 40px;
-padding-left: 45%;
-}
 
-#add:hover {
-color: orange;
-}
 
 #commentar {
     color:green;
@@ -59,6 +44,20 @@ div {
     box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     margin-top: 30px;
 }
+
+#add {
+text-align: center;
+text-decoration: none;
+color: #A3A3A3;
+text-transform: uppercase;
+
+margin-left:44%;
+}
+
+#add:hover {
+color: orange;
+}
+
     </style>
     <body>
             <div>
@@ -74,7 +73,7 @@ div {
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
-                    <input type="submit"/>
+                    <input type="submit" value="Вход"/>
                     <br>
                     <font color="red">${errorMessage}</font>
                 </p>
@@ -85,7 +84,9 @@ div {
                 <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
 
                 </form>
+
             </div>
+
     </body>
     <footer>
         <ul>
