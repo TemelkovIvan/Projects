@@ -82,14 +82,14 @@ public class TodoController {
         return "design-patterns";
     }
 
-    @RequestMapping(value="/html",method = RequestMethod.GET)
+    @GetMapping("/html")
     public String html(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.retrieveTodos(name));
         return "html";
     }
 
-    @RequestMapping(value="/css",method = RequestMethod.GET)
+    @GetMapping("/css")
     public String css(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.retrieveTodos(name));

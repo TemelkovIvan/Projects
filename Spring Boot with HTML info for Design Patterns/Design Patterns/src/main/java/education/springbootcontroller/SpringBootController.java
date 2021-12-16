@@ -12,7 +12,7 @@ public class SpringBootController {
     LoginService service = new LoginService();
     NewUser newUser = new NewUser();
 
-    @RequestMapping(value="/learn",method = RequestMethod.GET)
+    @GetMapping("/learn")
     public String showLoginPage(ModelMap model) {
         return "login";
     }
@@ -31,7 +31,7 @@ public class SpringBootController {
         return "welcome";
     }
 
-    @RequestMapping(value="/new-user",method = RequestMethod.GET)
+    @GetMapping("/new-user")
     public String newUser(ModelMap model) {
         return "new-user";
     }
