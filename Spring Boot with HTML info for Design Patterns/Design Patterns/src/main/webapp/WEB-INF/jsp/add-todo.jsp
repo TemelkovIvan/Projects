@@ -186,13 +186,13 @@
         <form:form method="post" commandName="todo">
             <hidden path="id"/>
             <fieldset class="form-group">
-                <label path="desc">Description</label>
-                <input name="desc" type="text" class="form-control" required="required" minlength="8" maxlength="15"/>
+                <label path="desc">Обучение</label>
+                <input name="desc" type="text" class="form-control" required="required" placeholder="Ново обучение" minlength="8" maxlength="15" />
 
                 <form:errors name="desc" cssClass="text-warning"/>
 
-                <label path="targetDate">Target Date</label>
-                <input name="targetDate" type="text" class="form-control" required="required"/>
+                <label path="targetDate">Краен срок</label>
+                <input name="targetDate" type="text" class="form-control" required="required" placeholder="дата"/>
                 <form:errors path="targetDate" cssClass="text-warning"/>
 
             </fieldset>
