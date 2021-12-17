@@ -27,51 +27,51 @@ public class TodoController {
     }
 
 
-    @RequestMapping(value="/list-todos",method = RequestMethod.GET)
+    @RequestMapping(value="/list-educations",method = RequestMethod.GET)
     public String showTodo(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.retrieveTodos(name));
-        return "list-todos";
+        return "list-educations";
     }
 
-    @RequestMapping(value="/add-todo",method = RequestMethod.GET)
+    @RequestMapping(value="/add-education",method = RequestMethod.GET)
     public String showAddTodoPage(ModelMap model) {
         model.addAttribute("todo",new ToDo(0,(String) model.get("name"),"Default",new Date(),""));
-        return "add-todo";
+        return "add-education";
     }
 
-    @RequestMapping(value="/delete-todo",method = RequestMethod.GET)
+    @RequestMapping(value="/delete-education",method = RequestMethod.GET)
     public String deleteTodo(@RequestParam int id) {
         service.deleteTodo(id);
-        return "redirect:/list-todos";
+        return "redirect:/list-educations";
     }
 
-    @RequestMapping(value="/update-todo",method = RequestMethod.GET)
+    @RequestMapping(value="/update-education",method = RequestMethod.GET)
     public String showUpdateTodo(@RequestParam int id,ModelMap model) {
         ToDo todo = service.retrieveTodos(id);
         model.put("todo",todo);
-        return "add-todo";
+        return "add-education";
     }
 
-    @RequestMapping(value="/update-todo",method = RequestMethod.POST)
+    @RequestMapping(value="/update-education",method = RequestMethod.POST)
     public String updateTodo(ModelMap model, @Valid ToDo todo, BindingResult result) {
 
         if(result.hasErrors()){
-            return "add-todo";
+            return "add-education";
         }
         todo.setUser((String) model.get("name"));
         deleteTodo(todo.getId());
         service.updateTodo(todo);
-        return "redirect:/list-todos";
+        return "redirect:/list-educations";
     }
 
-    @RequestMapping(value="/add-todo",method = RequestMethod.POST)
+    @RequestMapping(value="/add-education",method = RequestMethod.POST)
     public String addTodo(ModelMap model, @Valid ToDo todo, BindingResult result) {
         if(result.hasErrors()){
-            return "add-todo";
+            return "add-education";
         }
         service.addTodo((String) model.get("name"),todo.getDesc(),todo.getTargetDate(),"");
-        return "redirect:/list-todos";
+        return "redirect:/list-educations";
     }
 
 
@@ -94,5 +94,13 @@ public class TodoController {
         String name = (String) model.get("name");
         model.put("todos",service.retrieveTodos(name));
         return "css";
+    }
+
+
+    @GetMapping("/user")
+    public String user(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",service.retrieveTodos(name));
+        return "user";
     }
 }

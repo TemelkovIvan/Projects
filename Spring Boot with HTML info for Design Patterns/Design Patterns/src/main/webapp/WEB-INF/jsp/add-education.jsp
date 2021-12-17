@@ -1,8 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Education</title>
@@ -10,7 +9,6 @@
  <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
     rel="stylesheet">
 </head>
-
 <style type="text/css">
 	html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -72,47 +70,36 @@
 
     	}
 
- #user {
-     color: white;
-     float: right;
- }
 
-     li>a {
-         text-decoration: none;
- 	    color: white;
-     }
- 	li{
-         position: relative;
- 	    text-transform: uppercase;
- 	    font-size: 25px;
- 	    display: inline-block;
- 	    padding: 10px;
- 	}
 
-     li:hover {
-         background-color: rgb(46, 46, 46);
-         color: orange;
-     }
+    #user {
+        color: white;
+        float: right;
+    }
 
- 	li>a:hover {
-         text-decoration: none;
- 	    color: orange;
- 	}
+        li>a {
+            text-decoration: none;
+    	    color: white;
+        }
+    	li{
 
-     li ul {
-         top:100%;
-         position: absolute;
-         margin: 0;
-         padding: 0;
-         display: none;
-     }
+    	    text-transform: uppercase;
+    	    font-size: 25px;
+    	    display: inline-block;
+    	    padding: 10px;
+    	}
 
-     li:hover > ul {
-         display: block;
-         background-color: rgb(46, 46, 46);
-         color: orange;
-     }
+        li:hover {
+            background-color: rgb(46, 46, 46);
+            color: orange;
+        }
 
+    	li>a:hover {
+
+            text-decoration: none;
+
+    	    color: orange;
+    	}
 
     #first {
         background-color: darkgreen;
@@ -185,67 +172,43 @@
     padding-left: 550px;
     font-size: 30px;
     }
-
-
 </style>
-
 <body>
+    <nav role="navigation">
+                <ul>
+                    <li><a href="/learn">Друг потребител</a></li>
+                    <li><a href="/list-educations">Обучения на ${name}</a></li>
+                    <li id="user"><a href="/user">${name}</a></li>
+                </ul>
+        </nav>
+             <h1>Добавяне на обучение</h1>
+    <div class="container">
+        <form:form method="post" commandName="todo">
+            <hidden path="id"/>
+            <fieldset class="form-group">
+                <label path="desc">Обучение</label>
+                <input name="desc" type="text" class="form-control" required="required" placeholder="Ново обучение" minlength="8" maxlength="15" />
 
-<nav role="navigation">
-        <div>
-            <ul>
-                <li><a href="/learn">Друг потребител</a></li>
-                <li><a href="/list-todos">Обучения на ${name}</a>
+                <form:errors name="desc" cssClass="text-warning"/>
 
-                       <ul>
-                           <c:forEach items="${todos}" var= "todo">
-                           <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                           </c:forEach>
-                       </ul>
+                <label path="targetDate">Краен срок</label>
+                <input name="targetDate" type="text" class="form-control" required="required" placeholder="дата"/>
+                <form:errors path="targetDate" cssClass="text-warning"/>
 
-                </li>
-
-                <li id="user">${name}</li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-
-     <h1>Вашите обучения</h1>
-        <div class="container">
-
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th>Обучение</th>
-                    <th>Краен срок</th>
-                    <th>Промяна</th>
-                    <th>Изтриване</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${todos}" var= "todo">
-                            <tr>
-                                <td>${todo.desc}</td>
-                                <td><fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/></td>
-                                <td><a type="button" class="btn btn-success" href="/update-todo?id=${todo.id}">Update</a></td>
-                                <td><a type="button" class="btn btn-warning" href="/delete-todo?id=${todo.id}">Delete</a></td>
-                            </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-     <br/>
-
-
-     <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
-     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+            </fieldset>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form:form>
     </div>
-    <a id="add" href="/add-todo">Добавяне на курс</a>
 
-    </body>
-    </html>
+ <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+ <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
+ <script>
+ $('#targetDate').datepicker({
+ format : "dd/mm/yyyy"
+ });
+ </script>
+
+
+</body>
+</html>

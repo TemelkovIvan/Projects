@@ -1,10 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page contentType="text/html"%>
 <html>
 
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
  <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -180,19 +182,29 @@ p {
     padding-left: 100px;
     padding-right: 100px;
 }
+
+#example {
+    color: #336600;
+    padding: 20px;
+    padding-left: 200px;
+}
+
+img {
+    padding-left: 200px;
+}
 </style>
 <body>
     <nav role="navigation">
             <ul>
                 <li><a href="/learn">Друг потребител</a></li>
-                 <li><a href="/list-todos">Обучения на ${name}</a>
+                 <li><a href="/list-educations">Обучения на ${name}</a>
                      <ul>
                          <c:forEach items="${todos}" var= "todo">
                             <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                          </c:forEach>
                      </ul>
                  </li>
-                <li id="user">${name}</li>
+                <li id="user"><a href="/user">${name}</a></li>
             </ul>
         </div>
     </nav>
@@ -208,6 +220,10 @@ p {
 
 <h3>&lt;html&gt; елемент</h3>
 <p>Указва на браузъра, че това е HTML документ. Отбелязва началото и края на документа и съдържа всички други негови елементи (с изключение на <!DOCTYPE> елемента).
+</p>
+
+
+<p id="example">
 <br>&lt;html&gt;<br>
 ...<br>
 &lt;/html&gt;
@@ -215,6 +231,8 @@ p {
 </p>
 <h3>&lt;head&gt; елемент</h3>
 <p>Съдържа заглавието на документа, и може да съдържа стилове, скриптове, енкодинг и т.н.
+</p>
+<p id="example">
 <br>&lt;html&gt
 <br>&lt;head&gt
 <br>&lt;title>Заглавие на документа&lt;/title&gt
@@ -225,6 +243,8 @@ p {
 
 <h3>&lt;body&gt; елемент</h3>
 <p>Съдържа форматиране видимо за потребителя – текст, хиперлинк, картинки, таблици, бутони, параграфи и т.н.
+</p>
+<p id="example">
 <br>&lt;html&gt
 <br>&lt;head&gt
 <br>&lt;title>Заглавие на документа&lt;/title&gt
@@ -237,7 +257,9 @@ p {
 
 <h3>&lt;!DOCTYPE&gt; елемент</h3>
 <p>Декларира се първи, още преди &lt;html&gt; тага. Валидира документа. &lt;!DOCTYPE&gt; не е HTML таг. Той е инструкция за уеб браузъра – указва HTML версията, на която е написана страницата
-<br>&lt;!DOCTYPE html&gt
+</p>
+<p id="example">
+&lt;!DOCTYPE html&gt
 <br>&lt;html&gt;
 <br>...
 <br>&lt;/html&gt;
@@ -252,6 +274,9 @@ p {
 
 <p>&lt;u&gt таг - Подчертава текста.
 </p>
+<p id="example">
+<u>пример</u>
+</p>
 
 <p>&lt;strong&gt таг - Указва важен текст.
 </p>
@@ -264,6 +289,9 @@ p {
 
 <p>&lt;del&gt таг - Указва изтрит текст.
 </p>
+<p id="example">
+<del>пример</del>
+</p>
 
 <p>&lt;br&gt таг - Указва нов ред. Няма таг за край.
 </p>
@@ -272,6 +300,9 @@ p {
 </p>
 
 <p>&lt;mark&gt таг - За отбелязване на текст, като му се променя фона.
+</p>
+<p id="example">
+<mark>пример</mark>
 </p>
 
 <p>&lt;a&gt таг - Указва линк към друга страница. Най-важният атрибут на този таг е href. Той посочва URL адреса, към който сочи линка
@@ -293,19 +324,15 @@ p {
         <p>&diams;&emsp;size – задава дебелина на линията</p>
         <p>&diams;&emsp;align – задава подравняване на линията</p>
         <p>&diams;&emsp;noshade – за изобразяване на линията плътно и без сянка</p>
-
-
-    </dl>
-
     </div>
 
-
-
-
-
-
-
-
+<h3>Цветове</h3>
+<p>
+<img src="basic_colors.jpg" alt="This is an image" />
+<br>
+<br>
+<img src="colors.jpg" alt="This is an image" />
+</p>
 
     <h4>Източници</h4>
     <p>https://bg.wikipedia.org<br>

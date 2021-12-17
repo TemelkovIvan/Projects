@@ -185,14 +185,14 @@ p {
     <nav role="navigation">
             <ul>
                 <li><a href="/learn">Друг потребител</a></li>
-                 <li><a href="/list-todos">Обучения на ${name}</a>
+                 <li><a href="/list-educations">Обучения на ${name}</a>
                      <ul>
                          <c:forEach items="${todos}" var= "todo">
                             <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                          </c:forEach>
                      </ul>
                  </li>
-                <li id="user">${name}</li>
+                <li id="user"><a href="/user">${name}</a></li>
             </ul>
         </div>
     </nav>

@@ -122,17 +122,21 @@
         color:greenyellow;
     }
 
+    a {
+        text-decoration: none;
+        color: white;
+    }
 </style>
 </head>
 
 <body>
     <div>
-    <h1>Здравейте, ${name}!!!</h1>
+    <h1>Здравейте, <a href="/user">${name}</a>!!!</h1>
 
     <h3>Добре дошли!</h3>
 </div>
         <p>
-            <a href="/list-todos">&#62;&#62; Обучения &#60;&#60;</a>
+            <a href="/list-educations">&#62;&#62; Обучения &#60;&#60;</a>
         </p>
         <p>
         "Най-доброто образование в света е да гледаш майстора по време на работа"
