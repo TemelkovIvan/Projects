@@ -47,6 +47,18 @@ div {
     box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     margin-top: 30px;
 }
+
+#add {
+text-align: center;
+text-decoration: none;
+color: #A3A3A3;
+text-transform: uppercase;
+}
+
+#add:hover {
+color: orange;
+}
+
     </style>
     <body>
             <div>
@@ -81,6 +93,9 @@ div {
                     При проблем се свържете с Иван Темелков
                 </p>
 
+                <p>
+                <a id="add" href="/learn">Отказ</a>
+                </p>
 
                 </form>
             </div>
