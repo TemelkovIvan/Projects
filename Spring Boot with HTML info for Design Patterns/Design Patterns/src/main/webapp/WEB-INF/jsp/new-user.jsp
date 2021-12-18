@@ -62,6 +62,19 @@ div {
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
+                </p>
+                <p>
+                    Повторете Парола <input type="password" name="password2"/>
+                    <br>
+                    <font color="red">${errorMessage}</font>
+                </p>
+                <p>
+                    E-mail <input type="text" name="email"/>
+                </p>
+                <p>
+                    Age <input type="text" name="age"/>
+                </p>
+                <p>
                     <input type="submit" value="Създай"/>
                 </p>
                 <p id = "commentar">

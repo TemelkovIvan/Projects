@@ -3,45 +3,54 @@ package education.springbootcontroller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Objects;
 
 
 @Controller
 @SessionAttributes("name")
-public class SpringBootController {
+public class SpringBootController extends BaseController {
 
     LoginService service = new LoginService();
     NewUser newUser = new NewUser();
 
     @GetMapping("/learn")
-    public String showLoginPage(ModelMap model) {
-        return "login";
+    public ModelAndView showLoginPage(ModelMap model) {
+        return this.view("login");
     }
 
     @RequestMapping(value="/learn",method = RequestMethod.POST)
-    public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
+    public ModelAndView showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
         boolean isValidUser = service.validateUser(name,password);
 
         if (!isValidUser) {
             model.put("errorMessage", "Грешно Име или Парола!");
-            return "login";
+            return this.view("login");
         }
 
         model.put("name", name);
         model.put("password", password);
-        return "welcome";
+        return this.view("welcome");
     }
 
     @GetMapping("/new-user")
-    public String newUser(ModelMap model) {
-        return "new-user";
+    public ModelAndView newUser(ModelMap model) {
+        return this.view("new-user");
     }
 
     @RequestMapping(value="/new-user",method = RequestMethod.POST)
-    public String showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password) {
-        newUser.newUser(userId,password);
-        model.put("name", userId);
-        model.put("password", password);
-        return "welcome";
+    public ModelAndView showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password, @RequestParam String password2, @RequestParam String email, @RequestParam int age) {
+        if (Objects.equals(password, password2)) {
+            newUser.newUser(userId, password, email, age);
+            model.put("name", userId);
+            model.put("password", password);
+            model.put("email", email);
+            model.put("age", age);
+            return this.view("welcome");
+        } else {
+            model.put("errorMessage", "Грешно въведени Пароли!");
+            return this.view("new-user");
+        }
     }
-
 }

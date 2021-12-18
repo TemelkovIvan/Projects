@@ -129,8 +129,8 @@ nav{
 
 h1 {
 
-    font-family: Gabriola;
     text-align: center;
+    font-family:sans-serif
     margin-right: 50px;
     margin-left: 50px;
     margin-top: 70px;
@@ -198,20 +198,9 @@ p {
     </nav>
     <h1>"${name}"</h1>
 
+    <h1>${email}</h1>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <h1>${age} <sub>години</sub></h1>
 
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
