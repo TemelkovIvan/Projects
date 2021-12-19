@@ -35,14 +35,14 @@ public class SpringBootController extends BaseController {
     }
 
     @GetMapping("/new-user")
-    public ModelAndView newUser(ModelMap model) {
+    public ModelAndView newUser(ModelAndView model) {
         return this.view("new-user");
     }
 
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
-    public ModelAndView showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password, @RequestParam String password2, @RequestParam String email, @RequestParam int age) {
-        if (userId.indexOf(" ") == -1 && password.indexOf(" ") == -1 && email.indexOf(" ") == -1 && email.contains("@")) {
-            if (Objects.equals(password, password2)) {
+    public ModelAndView showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
+        if (userId.indexOf(" ") == -1 && password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
+            if (Objects.equals(password, confirmPassword)) {
                 newUser.newUser(userId, password, email, age);
                 model.put("name", userId);
                 model.put("password", password);
@@ -51,10 +51,16 @@ public class SpringBootController extends BaseController {
                 return this.view("welcome");
             } else {
                 model.put("errorMessage", "Грешно въведени Пароли!");
+                model.put("userId", userId);
+                model.put("email", email);
+                model.put("age", age);
                 return this.view("new-user");
             }
         } else {
             model.put("errorMessage", "Моля въведете коректни данни и не въвеждайте интервали!");
+            model.put("userId", userId);
+            model.put("email", email);
+            model.put("age", age);
             return this.view("new-user");
         }
     }

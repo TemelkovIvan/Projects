@@ -16,10 +16,10 @@ public class TodoService {
     private static int todoCount = 7;
 
     static {
-        todos.add(new ToDo(1, "IvanT", "Learn Design Pattern", new Date(),"design-patterns"));
-        todos.add(new ToDo(2, "IvanT", "Learn Spring MVC", new Date(),""));
-        todos.add(new ToDo(3, "IvanT", "Learn Struts", new Date(),""));
-        todos.add(new ToDo(4, "IvanT", "Learn Hibernate", new Date(),""));
+        todos.add(new ToDo(2, "IvanT", "Learn HTML", new Date(),"html"));
+        todos.add(new ToDo(1, "IvanT", "Learn CSS", new Date(),"css"));
+        todos.add(new ToDo(3, "IvanT", "Learn Design Pattern", new Date(),"design-patterns"));
+        todos.add(new ToDo(4, "IvanT", "Learn Spring MVC", new Date(),"spring-mvc"));
         todos.add(new ToDo(5, "Georgi", "Learn Design Pattern", new Date(),"design-patterns"));
         todos.add(new ToDo(6, "Georgi", "Learn HTML", new Date(),"html"));
         todos.add(new ToDo(7, "Georgi", "Learn CSS", new Date(),"css"));

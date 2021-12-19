@@ -57,6 +57,7 @@ text-transform: uppercase;
 
 #add:hover {
 color: orange;
+
 }
 
     </style>
@@ -70,21 +71,21 @@ color: orange;
                         Създаване на нов акаунт
                     </h2>
                 <p>
-                    Име <input type="text" name="userId"/>
+                    Име <input type="text" name="userId" value=${userId}>
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
                 </p>
                 <p>
-                    Повторете Парола <input type="password" name="password2"/>
+                    Повторете Парола <input type="password" name="confirmPassword"/>
                     <br>
                     <font color="red">${errorMessage}</font>
                 </p>
                 <p>
-                    E-mail <input type="text" name="email"/>
+                    E-mail <input type="email" name="email" value=${email}>
                 </p>
                 <p>
-                    Age <input type="text" name="age"/>
+                    Age <input type="number" name="age" value=${age}>
                 </p>
                 <p>
                     <input type="submit" value="Създай"/>
@@ -94,17 +95,16 @@ color: orange;
                 </p>
 
                 <p>
+                    <input type="reset" value="Изчисти">
+                </p>
+
+
+                <p>
                 <a id="add" href="/learn">Отказ</a>
                 </p>
 
                 </form>
             </div>
     </body>
-    <footer>
-        <ul>
-            <li>Enter User and Password -------> "IvanT" and "123"</li>
-            <li>Enter User and Password -------> "Georgi" and "1234"</li>
-            <li>Enter User and Password -------> "test3" and "12345"</li>
-        </ul>
-    </footer>
+
     </html>

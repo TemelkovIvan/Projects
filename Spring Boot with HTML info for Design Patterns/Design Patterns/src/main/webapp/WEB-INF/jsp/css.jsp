@@ -209,6 +209,31 @@ p {
     padding-left: 100px;
     padding-right: 100px;
 }
+
+    h5 {
+        text-transform: uppercase;
+        padding:10px;
+        background-color:rgb(93, 75, 99);
+        border-radius: 52%;
+        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+    	font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        text-align: center;
+        text-decoration: none;
+        color: yellow;
+    }
+
+    h5>a {
+        text-decoration: none;
+        color: gray;
+    }
+
+    h5>a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
 </style>
 <body>
     <nav role="navigation">
@@ -461,4 +486,9 @@ p {
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
+    <footer>
+        <h5>
+            <a href="/information">Информация за нас</a>
+        </h5>
+    </footer>
 </html>

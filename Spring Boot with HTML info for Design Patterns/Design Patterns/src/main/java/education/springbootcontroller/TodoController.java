@@ -100,6 +100,24 @@ public class TodoController extends BaseController {
         return this.view("css");
     }
 
+    @GetMapping("/spring-mvc")
+    public ModelAndView springmvc(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",service.retrieveTodos(name));
+        return this.view("spring-mvc");
+    }
+
+    @GetMapping("/info")
+    public ModelAndView info(ModelMap model) {
+        return this.view("info");
+    }
+
+    @GetMapping("/information")
+    public ModelAndView infoCreator(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",service.retrieveTodos(name));
+        return this.view("information");
+    }
 
     @GetMapping("/user")
     public ModelAndView user(ModelMap model) {
@@ -129,7 +147,7 @@ public class TodoController extends BaseController {
         } catch (InputMismatchException ex) {
             System.out.println("What is this?");
         }
-        model.put("email", email);
+        model.put("email",email);
         model.put("age", age);
         return this.view("user");
         }

@@ -111,22 +111,6 @@ nav{
         color: orange;
     }
 
-
-#first {
-    background-color: darkgreen;
-    width: 400px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
-#second {
-    background-color: darkgreen;
-    width: 1050px;
-    color: white;
-    text-transform: uppercase;
-    padding-left: 300px;
-}
-
 h1 {
 
     text-align: center;
@@ -145,64 +129,30 @@ h1 {
     border-radius: 52%;
     box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
 }
+
 h3 {
-    font-size: 25px;
+    font-size: 45px;
     font-family: Gabriola;
-    padding: 10px;
+    padding: 50px;
+    text-align: center;
     font-weight: bold;
-    padding-left: 300px;
 }
 
-h4 {
-    font-family: Gabriola;
-    padding: 10px;
-    font-weight: bold;
-    color: white;
-padding-left: 50px;
-}
+a {
+        text-decoration: none;
+    }
 
-table {
-    color: #333333;
-    border-spacing: 0;
-    margin-left: 50px;
-}
-
-tr:nth-child(even) td {
-    background-color: #baca9a;
-}
-
-tr:nth-child(odd) td {
-    background-color: #a19f86;
-}
+p>a:hover {
+        text-decoration: none;
+	    color: orange;
+	}
 
 p {
     color: white;
-    padding-left: 100px;
-    padding-right: 100px;
+    font-size: 25px;
+    padding-left: 600px;
 }
 
-    h5 {
-        text-transform: uppercase;
-        padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-    	font-size: 25px;
-        margin-top: 300px;
-        text-align: center;
-        text-decoration: none;
-        color: yellow;
-    }
-
-    h5>a {
-        text-decoration: none;
-        color: gray;
-    }
-
-    h5>a:hover {
-        text-decoration: none;
-        color: white;
-    }
 
 </style>
 <body>
@@ -216,23 +166,28 @@ p {
                          </c:forEach>
                      </ul>
                  </li>
-                <li id="user">${name}</li>
+                <li id="user"><a href="/user">${name}</a></li>
             </ul>
         </div>
     </nav>
     <h1>"${name}"</h1>
 
-    <h1>${email}</h1>
+    <h3>Прoектът е изработен от <br> Иван Георгиев Темелков</h3>
 
-    <h1>${age} <sub>години</sub></h1>
+        <p>гр. София, ж.к. Дружба</p>
+        <p>телефон: 0877766276</p>
+        <p>e-mail: ivan_temelkow@abv.bg</p>
+        <p><a href="https://github.com/TemelkovIvan">GitHub</a></p>
+        <p><a href="http://linkedin.com/in/ivan-temelkov-101988110">Linkedin</a></p>
+        <br>
+        <br>
+        <br>
+        <p>Иван изучава светът на JAVA</p>
+        <p>Това е първият му проект със Spring Boot</p>
+        <p>Има огромно желание да работи като Разработчик</p>
 
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
-        <footer>
-            <h5>
-                <a href="/information">Информация за нас</a>
-            </h5>
-        </footer>
 </html>

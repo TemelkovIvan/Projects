@@ -1,0 +1,297 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Education</title>
+<link href="books.ico" rel="shortcut icon" type="ico">
+ <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+</head>
+<style type="text/css">
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	text-align:justify;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ------------------- RESET FOR CSS ------------------- */
+
+body {
+    background-color: gray;
+
+}
+
+
+nav{
+    position: fixed;
+    margin-top: -70px;
+	background-color: black;
+  width:1905px;
+
+
+	}
+
+#user {
+    color: white;
+    float: right;
+}
+
+    li>a {
+        text-decoration: none;
+	    color: white;
+    }
+	li{
+        position: relative;
+	    text-transform: uppercase;
+	    font-size: 25px;
+	    display: inline-block;
+	    padding: 10px;
+	}
+
+    li:hover {
+        background-color: rgb(46, 46, 46);
+        color: orange;
+    }
+
+	li>a:hover {
+        text-decoration: none;
+	    color: orange;
+	}
+
+    li ul {
+        top:100%;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+
+    li:hover > ul {
+        display: block;
+        background-color: rgb(46, 46, 46);
+        color: orange;
+    }
+
+
+#first {
+    text-align:center;
+    background-color: darkgreen;
+    width: 100px;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+}
+#second {
+    text-align:center;
+    background-color: darkgreen;
+    width: 300px;
+    color: white;
+    text-transform: uppercase;
+}
+#third {
+    text-align:center;
+    background-color: darkgreen;
+    width: 950px;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+#third3 {
+    text-align:center;
+    background-color: darkgreen;
+    width: 1100px;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+}
+#fourth {
+    text-align:center;
+    background-color: darkgreen;
+    width: 100px;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+h1 {
+
+    font-family: Gabriola;
+    text-align: center;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+
+    background-color:rgb(93, 75, 99);
+    border-radius: 52%;
+    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+}
+h3 {
+    font-size: 25px;
+    font-family: Gabriola;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h4 {
+    font-family: Gabriola;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+padding-left: 50px;
+}
+
+table {
+    color: #333333;
+    border-spacing: 0;
+    margin-left: 200px;
+}
+
+
+tr:nth-child(even) td {
+    background-color: #baca9a;
+}
+
+tr:nth-child(odd) td {
+    background-color: #a19f86;
+}
+
+p {
+    color: white;
+    text-align: justify;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+    h5 {
+        text-transform: uppercase;
+        padding:10px;
+        background-color:rgb(93, 75, 99);
+        border-radius: 52%;
+        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+    	font-size: 25px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        text-align: center;
+        text-decoration: none;
+        color: yellow;
+    }
+
+    h5>a {
+        text-decoration: none;
+        color: gray;
+    }
+
+    h5>a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+</style>
+<body>
+    <nav role="navigation">
+            <ul>
+                <li><a href="/learn">Друг потребител</a></li>
+                 <li><a href="/list-educations">Обучения на ${name}</a>
+                     <ul>
+                         <c:forEach items="${todos}" var= "todo">
+                            <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                         </c:forEach>
+                     </ul>
+                 </li>
+                <li id="user"><a href="/user">${name}</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Spring MVC</h1>
+
+        <p>
+            &diams;&emsp;Model-View-Controller (MVC) е архитектурен модел за изграждане на потребителски интерфейси. Той разделя дадено софтуерно приложение на три взаимносвързани части, така че да се отделят вътрешни представяния на информация от начините, по които информацията се представя на потребителя/или от страна на потребителя: контролери, изгледи, модели. Както и при други софтуерни модели, MVC изразява „core of the solution“ на проблем, докато позволява да бъде адаптиран за всяка система. Специфични MVC архитектури могат да се различават значително.
+        </p>
+        <p>
+            &diams;&emsp;Елементи: Централният елемент на MVC – The model моделът, улавя поведението на приложението по отношение на своя домейн, независимо от потребителския интерфейс. Моделът директно управлява данните, логиката и правилата на приложението. The view изгледът може да бъде всеки изход за представяне на информация, например чрез графика или диаграма; множество изгледи към една и съща информация са възможни, като стълбчета за управление и табличен изглед за счетоводители.
+        </p>
+        <p>
+            &diams;&emsp;Третата част Controller контролера, приема входа от потребителя и го конвертира в команди за модела или изгледа.
+        </p>
+        <p>
+            &diams;&emsp;Взаимодействия: В допълнение за разделяне на приложението на трите вида елементи, дизайн на model–view–controller определя взаимодействието между тях. The Controller – Контролерът може да изпраща команди към модела за актуализиране състоянието на модела (например, редактирането на документ). Той също може да изпраща команди към свързаната с изгледа част, за да се промени представянето на модела (например, чрез скролиране на документа).
+        </p>
+        <p>
+            &diams;&emsp;The model – Моделът уведомява свързаните части с изгледа и контролера, когато е налице промяна в състоянието му. Това уведомяване позволява на изгледа да изведе на изхода актуалната информация и контролера да променя разположението на наборите от команди.
+        </p>
+        <p>
+            &diams;&emsp;The view – Изгледа изисква информация от модела, който използва, за да се генерира изходната информация за представяне на потребителя.
+        </p>
+        <p>
+            &diams;&emsp;Използване в уеб приложения: Въпреки че първоначално е разработен за настолните компютри Model-View-Controller е широко приет като архитектура за World Wide Web приложения в голяма част от езици за програмиране. Няколко търговски и нетърговски уеб приложения са създадени, които прилагат тази схемата. Тези приложения се различават по своите интерпретации, основно в начина, по който отговорностите им Model-View-Controller са разделени между клиента и сървъра.
+        </p>
+        <p>
+            &diams;&emsp;По рано уеб MVC рамките поведоха с подход, който оставя почти цялата логика модел, изглед и контролер на сървъра. При този подход, клиентът изпраща или хипервръзки искания или форма вход към контролера и след това получава пълна и актуализирана уеб страница (или друг документ) от гледката; The model – модела съществува изцяло на сървъра.
+        </p>
+        <p>
+            &diams;&emsp;Като клиентски технологии са създадени, рамки като AngularJS and Ember.js, JavaScriptMVC and Backbone са създадени за да позволят на елементите на MVC да изпълняват частично на машината на клиента.
+        </p>
+
+    <h4>Източници</h4>
+    <p>https://bg.wikipedia.org<br>
+       </p>
+
+     <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+    <footer>
+        <h5>
+            <a href="/information">Информация за нас</a>
+        </h5>
+    </footer>
+</html>
