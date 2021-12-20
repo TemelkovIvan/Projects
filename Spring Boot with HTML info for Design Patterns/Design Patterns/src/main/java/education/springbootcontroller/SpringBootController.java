@@ -2,6 +2,7 @@ package education.springbootcontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ public class SpringBootController extends BaseController {
 
     LoginService service = new LoginService();
     NewUser newUser = new NewUser();
+    Users newUserDB = new Users();
 
     @GetMapping("/learn")
     public ModelAndView showLoginPage(ModelMap model) {
@@ -43,6 +45,14 @@ public class SpringBootController extends BaseController {
     public ModelAndView showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
         if (userId.indexOf(" ") == -1 && password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
             if (Objects.equals(password, confirmPassword)) {
+
+                newUserDB.setUsername(userId);
+                newUserDB.setPassword(DigestUtils.sha256Hex(password));
+                newUserDB.setEmail(email);
+                newUserDB.setAge(age);
+
+
+
                 newUser.newUser(userId, password, email, age);
                 model.put("name", userId);
                 model.put("password", password);

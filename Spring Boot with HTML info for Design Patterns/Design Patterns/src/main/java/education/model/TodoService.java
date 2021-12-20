@@ -37,6 +37,7 @@ public class TodoService {
         }
     }
 
+
     public List<ToDo> retrieveTodos(String user) {
         List<ToDo> filteredTodos = new ArrayList<ToDo>();
         for (ToDo todo : todos) {
