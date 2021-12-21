@@ -13,32 +13,7 @@ import java.io.FileNotFoundException;
 @Service
 public class TodoService {
     private static List<ToDo> todos = new ArrayList<ToDo>();
-    /*
-    private static int todoCount = 7;
 
-    static {
-        todos.add(new ToDo("IvanT", "Learn HTML", new Date(),"html"));
-        todos.add(new ToDo( "IvanT", "Learn CSS", new Date(),"css"));
-        todos.add(new ToDo( "IvanT", "Learn Design Pattern", new Date(),"design-patterns"));
-        todos.add(new ToDo("IvanT", "Learn Spring MVC", new Date(),"spring-mvc"));
-        todos.add(new ToDo("Georgi", "Learn Design Pattern", new Date(),"design-patterns"));
-        todos.add(new ToDo("Georgi", "Learn HTML", new Date(),"html"));
-        todos.add(new ToDo( "Georgi", "Learn CSS", new Date(),"css"));
-
-        try {
-            FileWriter pw = new FileWriter("output.txt",true);
-                for(ToDo one : todos) {
-                   pw.write(String.valueOf(one)+ "\n");
-                }
-            pw.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("The file is not find!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-*/
     public List<ToDo> retrieveTodos(String user) {
         List<ToDo> filteredTodos = new ArrayList<ToDo>();
         for (ToDo todo : todos) {

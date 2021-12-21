@@ -4,12 +4,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Table(name = "todo")
 public class ToDo {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "id", nullable = false)
     private int id;
 

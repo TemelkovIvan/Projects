@@ -4,19 +4,17 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Table(name = "users")
     public class Users {
-
-
 
     private int id;
     private String username;
     private String password;
     private String email;
     private int age;
-
-
 
     public Users() {
     }
@@ -30,7 +28,7 @@ import javax.persistence.*;
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE)
     public int getId() {
         return id;
     }
@@ -88,4 +86,7 @@ import javax.persistence.*;
     }
 
 
+    public static void newUser(String userid, String password, String email, int age) {
+
+    }
 }
