@@ -65,7 +65,7 @@ nav{
     position: fixed;
     margin-top: -70px;
 	background-color: black;
-  width:1905px;
+  width:1920px;
 
 
 	}
@@ -116,7 +116,6 @@ h1 {
     text-align: center;
     font-family:sans-serif
     margin-right: 50px;
-    margin-left: 50px;
     margin-top: 70px;
     margin-bottom: 10px;
     font-weight: bold;

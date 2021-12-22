@@ -67,9 +67,7 @@ nav{
     position: fixed;
     margin-top: -70px;
 	background-color: black;
-  width:1905px;
-
-
+    width:1920px;
 	}
 
 #user {
