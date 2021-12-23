@@ -86,7 +86,7 @@
  	    text-transform: uppercase;
  	    font-size: 25px;
  	    display: inline-block;
- 	    padding: 10px;
+ 	    padding: 5px;
  	}
 
      li:hover {

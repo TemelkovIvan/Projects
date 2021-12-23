@@ -15,7 +15,6 @@ public class SpringBootController extends BaseController {
     @Autowired
     UsersRepository repository;
 
-    LoginService service = new LoginService();
     Users newUserDB = new Users();
 
     @GetMapping("/learn")

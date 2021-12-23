@@ -187,7 +187,7 @@
             <hidden path="id"/>
             <fieldset class="form-group">
                 <label path="desc">Обучение</label>
-                <input name="desc" type="text" class="form-control" required="required" placeholder="Ново обучение" minlength="10" maxlength="15" />
+                <input name="desc" type="text" class="form-control" required="required" placeholder="Ново обучение" minlength="10" maxlength="20" />
 
                 <form:errors name="desc" cssClass="text-warning"/>
 
