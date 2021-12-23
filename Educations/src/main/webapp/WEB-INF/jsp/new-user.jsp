@@ -71,7 +71,7 @@ color: orange;
                         Създаване на нов акаунт
                     </h2>
                 <p>
-                    Име <input type="text" name="userId" value=${userId}>
+                    Име <input type="text" name="userId"  minlength="4" maxlength="10" value=${userId}>
                 </p>
                 <p>
                     Парола <input type="password" name="password"/>
