@@ -1,7 +1,6 @@
 package education.springbootcontroller;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.SEQUENCE;

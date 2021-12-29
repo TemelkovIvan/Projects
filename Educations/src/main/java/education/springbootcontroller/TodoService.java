@@ -2,13 +2,11 @@ package education.springbootcontroller;
 
 import org.springframework.stereotype.Service;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.io.FileNotFoundException;
+
 
 @Service
 public class TodoService {
@@ -26,15 +24,7 @@ public class TodoService {
 
     public void addTodo(String name, String desc, Date targetDate, String linkEducation) {
         todos.add(new ToDo(name, desc, targetDate, linkEducation));
-        try {
-            FileWriter pw = new FileWriter("output.txt",true);
-                pw.write(String.valueOf(todos.get(todos.size()-1))+ "\n");
-                pw.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("The file is not find!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void deleteTodo(int id) {

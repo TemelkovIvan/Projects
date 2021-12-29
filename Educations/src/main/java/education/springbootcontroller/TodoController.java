@@ -10,18 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 @Controller
 @SessionAttributes("name")
 public class TodoController extends BaseController {
 
     TodoService service = new TodoService();
+
+    @Autowired
+    UsersRepository userRepository;
 
     @Autowired
     TodoRepository repository;
@@ -50,13 +49,11 @@ public class TodoController extends BaseController {
     @RequestMapping(value="/delete-education",method = RequestMethod.GET)
     public ModelAndView deleteTodo(@RequestParam int id) {
         repository.deleteById(id);
-        //service.deleteTodo(id);
         return this.redirect("/list-educations");
     }
 
     @RequestMapping(value="/update-education",method = RequestMethod.GET)
     public ModelAndView showUpdateTodo(@RequestParam int id,ModelMap model) {
-        //ToDo todo = repository.findOne(id);
         ToDo todo = service.retrieveTodos(id);
         model.put("todo",todo);
         return this.view("add-education");
@@ -70,8 +67,6 @@ public class TodoController extends BaseController {
         }
         todo.setUser((String) model.get("name"));
         repository.save(todo);
-        //deleteTodo(todo.getId());
-        //service.updateTodo(todo);
         return this.redirect("/list-educations");
     }
 
@@ -133,31 +128,9 @@ public class TodoController extends BaseController {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
 
-        Scanner infile;
-        String inputUser;
-        String email=null;
-        int age=0;
-        
-        try {
-            infile = new Scanner(new File("src/main/resources/users.txt"));
-            while (infile.hasNext()) {
-                inputUser = infile.next();
-                
-                if(inputUser.equalsIgnoreCase(name)) {
-                  email=infile.next();
-                    email=infile.next();
-                    age= infile.nextInt();
-                }
-            }
-            infile.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Can't find file!");
-            System.out.println(ex.getMessage());
-        } catch (InputMismatchException ex) {
-            System.out.println("What is this?");
-        }
-        model.put("email",email);
-        model.put("age", age);
+        Users user = this.userRepository.findByUsername(name).orElse(null);
+        model.put("email",user.getEmail());
+        model.put("age", user.getAge());
         return this.view("user");
         }
     }
