@@ -1,4 +1,4 @@
-package education.springbootcontroller;
+package education.springboot;
 
 import javax.persistence.*;
 import java.util.Date;
