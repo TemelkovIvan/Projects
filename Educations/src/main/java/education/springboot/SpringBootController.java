@@ -6,7 +6,6 @@ import org.springframework.ui.ModelMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Objects;
 
 @Controller
