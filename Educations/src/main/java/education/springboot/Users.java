@@ -83,9 +83,4 @@ import static javax.persistence.GenerationType.SEQUENCE;
                     ", age=" + age +
                     '}';
         }
-
-
-        public static void newUser(String userid, String password, String email, int age) {
-
-        }
     }

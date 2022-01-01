@@ -157,7 +157,7 @@ p {
 <body>
     <nav role="navigation">
             <ul>
-                <li><a href="/learn">Друг потребител</a></li>
+                 <li><a href="/learn">Друг потребител</a></li>
                  <li><a href="/list-educations">Обучения на ${name}</a>
                      <ul>
                          <c:forEach items="${todos}" var= "todo">
@@ -165,13 +165,15 @@ p {
                          </c:forEach>
                      </ul>
                  </li>
-                <li id="user"><a href="/user">${name}</a></li>
+                 <li id="user"><a href="/user">${name}</a></li>
             </ul>
         </div>
     </nav>
     <h1>"${name}"</h1>
 
     <h3>Прoектът е изработен от <br> Иван Георгиев Темелков</h3>
+
+
 
         <p>гр. София, ж.к. Дружба</p>
         <p>телефон: 0877766276</p>

@@ -25,6 +25,9 @@ public class TodoController extends BaseController {
     @Autowired
     TodoRepository repository;
 
+    @Autowired
+    LogRepository logRepository;
+
     @InitBinder
     public void initBinder(WebDataBinder binder){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -84,7 +87,7 @@ public class TodoController extends BaseController {
 
 
     @RequestMapping(value="/design-patterns",method = RequestMethod.GET)
-    public ModelAndView degingPattern(ModelMap model) {
+    public ModelAndView designPattern(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
         return this.view("design-patterns");
@@ -122,6 +125,16 @@ public class TodoController extends BaseController {
         model.put("todos",repository.findByUser(name));
         return this.view("information");
     }
+
+    @GetMapping("/log")
+    public ModelAndView log(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",repository.findByUser(name));
+        model.put("users",userRepository.findAll());
+        model.put("log",logRepository.findAll());
+        return this.view("log");
+    }
+
 
     @GetMapping("/user")
     public ModelAndView user(ModelMap model) {

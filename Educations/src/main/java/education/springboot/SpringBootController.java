@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.Date;
 import java.util.Objects;
 
 @Controller
@@ -17,17 +21,27 @@ public class SpringBootController extends BaseController {
 
     Users newUserDB = new Users();
 
+    @Autowired
+    LogRepository logRepository;
+
+    Log newlog = new Log();
+
     @GetMapping("/learn")
     public ModelAndView showLoginPage(ModelMap model) {
         return this.view("login");
     }
 
     @RequestMapping(value = "/learn", method = RequestMethod.POST)
-    public ModelAndView showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
+    public ModelAndView showWelcomePage(ModelMap model, @Valid Log newlog,@RequestParam String name, @RequestParam String password) {
 
         Users user = this.repository.findByUsername(name).orElse(null);
 
         if (!(user == null) && user.getPassword().equals(DigestUtils.sha256Hex(password))) {
+
+            newlog.setUsername(name);
+            newlog.setDate(new Date(System.currentTimeMillis()));
+            logRepository.save(newlog);
+
             model.put("name", name);
             model.put("password", password);
             return this.view("welcome");
@@ -43,7 +57,7 @@ public class SpringBootController extends BaseController {
     }
 
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
-    public ModelAndView showLoginPageWithNewUser(ModelMap model, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
+    public ModelAndView showLoginPageWithNewUser(ModelMap model,@Valid Users newUserDB,@RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
 
         Users user = this.repository.findByUsername(userId).orElse(null);
 
