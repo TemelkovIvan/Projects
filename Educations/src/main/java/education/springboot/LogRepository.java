@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface LogRepository extends JpaRepository<Log, Long> {
     List<Log> findAll();
+    List<Log> findByUsername(String username);
+
 }

@@ -132,9 +132,19 @@ public class TodoController extends BaseController {
         model.put("todos",repository.findByUser(name));
         model.put("users",userRepository.findAll());
         model.put("log",logRepository.findAll());
+
         return this.view("log");
     }
 
+
+    @PostMapping("/log")
+    public ModelAndView logSearch(ModelMap model, @RequestParam String userId) {
+        String name = (String) model.get("name");
+        model.put("todos",repository.findByUser(name));
+        model.put("users",userRepository.findAll());
+        model.put("log",logRepository.findByUsername(userId));
+        return this.view("log");
+    }
 
     @GetMapping("/user")
     public ModelAndView user(ModelMap model) {

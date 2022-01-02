@@ -150,7 +150,7 @@
         font-size: 35px;
         font-family: Gabriola;
         padding: 10px;
-        padding-top: 50px;
+        padding-top: 30px;
         font-weight: bold;
     }
 
@@ -230,6 +230,25 @@
         overflow:hidden;
         overflow-y:scroll;}
 
+        .link-button {
+            padding: 5px;
+            margin: 10px;
+             background: rgb(93, 75, 99);
+             border: none;
+             color: white;
+             cursor: pointer;
+        }
+
+        p>a:hover {
+        text-decoration: none;
+        color: white;
+        background: rgb(93, 75, 99);
+        }
+
+        form {
+        text-align: center;
+        }
+
 </style>
 
 <body>
@@ -258,12 +277,22 @@
                 </c:forEach>
             </div>
 
+
             <h3>Log</h3>
+                <form method="post">
+                    <p>
+                        Име <input type="text" name="userId" value=${userId}>
+                    </p>
+                    <p>
+                        <input type="submit" class="link-button" value="Избери"/>
+
+                        <a type="button" class="link-button" href="/log" >Всички</a>
+                    </p>
+                </form>
             <div id="log">
 
                             <c:forEach items="${log}" var= "log">
-                                <p>${log.username}
-                                ${log.date}</p>
+                                <p>${log.username} --- ${log.date}</p>
                             </c:forEach>
 
             </div>
