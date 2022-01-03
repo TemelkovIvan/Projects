@@ -277,7 +277,6 @@
                 </c:forEach>
             </div>
 
-
             <h3>Log</h3>
                 <form method="post">
                     <p>

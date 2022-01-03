@@ -149,14 +149,17 @@
     table {
         color: #333333;
         border-spacing: 0;
-        margin-left: 50px;
+        margin: 5px;
+        margin-left: 18px;
     }
 
     tr:nth-child(even) td {
+        text-align: right;
         background-color: #baca9a;
     }
 
     tr:nth-child(odd) td {
+        text-align: right;
         background-color: #a19f86;
     }
 
@@ -165,13 +168,7 @@
         padding-left: 100px;
         padding-right: 100px;
     }
-    #add {
-    color: orange;
-    font-family: Gabriola;
-    font-weight: bold;
-    padding-left: 550px;
-    font-size: 30px;
-    }
+
 </style>
 <body>
     <nav role="navigation">
@@ -192,7 +189,7 @@
                 <form:errors name="desc" cssClass="text-warning"/>
 
                 <label path="targetDate">Краен срок</label>
-                <input name="targetDate" type="text" class="form-control" required="required" placeholder="дата"/>
+                <input name="targetDate" type="text" id="targetDate" class="form-control" required="required" placeholder="дата"/>
                 <form:errors path="targetDate" cssClass="text-warning"/>
 
             </fieldset>
@@ -202,10 +199,11 @@
 
  <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- <script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
+ <script src="webjars/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
  <script>
  $('#targetDate').datepicker({
- format : "dd/mm/yyyy"
+  format : 'dd/mm/yyyy'
  });
  </script>
 
