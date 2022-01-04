@@ -10,6 +10,7 @@
 <title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
  <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+     rel="stylesheet">
 </head>
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
@@ -57,141 +58,115 @@ table {
 }
 /* ------------------- RESET FOR CSS ------------------- */
 
-body {
-    background-color: gray;
+    body {
+        background-color: gray;
+    }
 
-}
+    nav{
+    	background-color: black;
+    }
 
+ 	div{
+ 	    text-transform: uppercase;
+ 	    font-size: 25px;
+ 	    padding: 2px;
+ 	}
 
-nav{
-    position: fixed;
-    margin-top: -70px;
-	background-color: black;
-  width:1905px;
+     ul {
+         top:100%;
+         position: absolute;
+         font-size: 20px;
+         display: none;
+     }
 
+     div:hover > ul {
+         display: block;
+         background-color: black;
+     }
 
-	}
-
-#user {
-    color: white;
-    float: right;
-}
-
-    li>a {
+    div a {
         text-decoration: none;
-	    color: white;
-    }
-	li{
-        position: relative;
-	    text-transform: uppercase;
-	    font-size: 25px;
-	    display: inline-block;
-	    padding: 10px;
-	}
-
-    li:hover {
-        background-color: rgb(46, 46, 46);
-        color: orange;
+ 	    color: white;
     }
 
-	li>a:hover {
-        text-decoration: none;
-	    color: orange;
-	}
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
 
-    li ul {
-        top:100%;
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        display: none;
+    h1 {
+        font-family: Gabriola;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-size: 50px;
+        padding: 20px;
+        text-transform: uppercase;
+        background-color:rgb(93, 75, 99);
+        border-radius: 52%;
+        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     }
 
-    li:hover > ul {
-        display: block;
-        background-color: rgb(46, 46, 46);
-        color: orange;
+    h3 {
+        font-size: 25px;
+        font-family: Gabriola;
+        padding: 10px;
+        font-weight: bold;
+        padding-left: 300px;
     }
 
+    h4 {
+        font-family: Gabriola;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+    padding-left: 50px;
+    }
 
-#first {
-    background-color: darkgreen;
-    width: 400px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
-#second {
-    background-color: darkgreen;
-    width: 1050px;
-    color: white;
-    text-transform: uppercase;
-    padding-left: 300px;
-}
+    table {
+        color: #333333;
+        border-spacing: 0;
+        margin-left: 50px;
+    }
 
-h1 {
+    tr:nth-child(even) td {
+        background-color: #baca9a;
+    }
 
+    tr:nth-child(odd) td {
+        background-color: #a19f86;
+    }
+
+    p {
+        color: white;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    #add {
+    color: orange;
     font-family: Gabriola;
-    text-align: center;
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-top: 70px;
-    margin-bottom: 10px;
     font-weight: bold;
-    font-size: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-transform: uppercase;
+    padding-left: 550px;
+    font-size: 30px;
+    }
 
-    background-color:rgb(93, 75, 99);
-    border-radius: 52%;
-    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-}
-h3 {
-    font-size: 25px;
-    font-family: Gabriola;
-    padding: 10px;
-    font-weight: bold;
-    padding-left: 300px;
-}
+    p {
+        color: white;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
 
-h4 {
-    font-family: Gabriola;
-    padding: 10px;
-    font-weight: bold;
-    color: white;
-padding-left: 50px;
-}
+    #example {
+        color: #336600;
+        padding: 20px;
+        padding-left: 200px;
+    }
 
-table {
-    color: #333333;
-    border-spacing: 0;
-    margin-left: 50px;
-}
-
-tr:nth-child(even) td {
-    background-color: #baca9a;
-}
-
-tr:nth-child(odd) td {
-    background-color: #a19f86;
-}
-
-p {
-    color: white;
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
-#example {
-    color: #336600;
-    padding: 20px;
-    padding-left: 200px;
-}
-
-img {
-    padding-left: 200px;
-}
+    img {
+        padding-left: 200px;
+    }
 
     h5 {
         text-transform: uppercase;
@@ -201,7 +176,7 @@ img {
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     	font-size: 25px;
         margin-top: 50px;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         text-align: center;
         text-decoration: none;
         color: yellow;
@@ -217,22 +192,30 @@ img {
         color: white;
     }
 
+    #user a {
+        float: right;
+    }
+
 </style>
 <body>
-    <nav role="navigation">
-            <ul>
-                <li><a href="/learn">Друг потребител</a></li>
-                 <li><a href="/list-educations">Обучения на ${name}</a>
-                     <ul>
-                         <c:forEach items="${todos}" var= "todo">
-                            <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                         </c:forEach>
-                     </ul>
-                 </li>
-                <li id="user"><a href="/user">${name}</a></li>
-            </ul>
-        </div>
-    </nav>
+   <nav role="navigation">
+           <div class="container-fluid">
+               <div class="row">
+                       <div class="col-lg-2 col-md-4"><a href="/learn">Друг потребител</a></div>
+                       <div class="col-lg-2 col-md-4"><a href="/list-educations">Обучения на ${name}
+                              <ul>
+                               <c:forEach items="${todos}" var= "todo">
+                                  <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                               </c:forEach>
+                              </ul>
+                       </div>
+                       <div class="col-lg-2 col-md-4"></div>
+                       <div class="col-lg-2 col-md-4"></div>
+                       <div class="col-lg-2 col-md-4"></div>
+                       <div class="col-lg-2 col-md-4" id="user"><a href="/user">${name}</a></div>
+               </ul>
+           </div>
+       </nav>
     <h1>HTML</h1>
 
         <p>

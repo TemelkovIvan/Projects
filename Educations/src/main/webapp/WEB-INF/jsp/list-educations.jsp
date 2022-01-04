@@ -8,7 +8,7 @@
 <title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
  <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-    rel="stylesheet">
+     rel="stylesheet">
 </head>
 
 <style type="text/css">
@@ -68,7 +68,7 @@
  	div{
  	    text-transform: uppercase;
  	    font-size: 25px;
- 	    padding: 5px;
+ 	    padding: 2px;
  	}
 
      ul {
@@ -96,11 +96,11 @@
     h1 {
         font-family: Gabriola;
         text-align: center;
-        margin-top: 80px;
+        margin-top: 50px;
         margin-bottom: 50px;
         font-weight: bold;
         font-size: 50px;
-        padding: 30px;;
+        padding: 30px;
         text-transform: uppercase;
         background-color:rgb(93, 75, 99);
         border-radius: 52%;
@@ -186,18 +186,18 @@
 <nav role="navigation">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-lg-2"><a href="/learn">Друг потребител</a></div>
-                    <div class="col-lg-2"><a href="/list-educations">Обучения на ${name}
+                    <div class="col-lg-2 col-md-4"><a href="/learn">Друг потребител</a></div>
+                    <div class="col-lg-2 col-md-4"><a href="/list-educations">Обучения на ${name}
                            <ul>
                             <c:forEach items="${todos}" var= "todo">
                                <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                             </c:forEach>
                            </ul>
                     </div>
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-2" id="user"><a href="/user">${name}</a></div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4" id="user"><a href="/user">${name}</a></div>
             </ul>
         </div>
     </nav>
