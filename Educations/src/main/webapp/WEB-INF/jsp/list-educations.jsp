@@ -59,75 +59,39 @@
 
     body {
         background-color: gray;
-
     }
 
-
     nav{
-        position: fixed;
-        margin-top: -80px;
     	background-color: black;
-      width:1920px;
+    }
 
-
-    	}
-
- #user {
-     color: white;
-     float: right;
- }
-
-     li>a {
-         text-decoration: none;
- 	    color: white;
-     }
- 	li{
-         position: relative;
+ 	div{
  	    text-transform: uppercase;
  	    font-size: 25px;
- 	    display: inline-block;
  	    padding: 5px;
  	}
 
-     li:hover {
-         background-color: rgb(46, 46, 46);
-         color: orange;
-     }
-
- 	li>a:hover {
-         text-decoration: none;
- 	    color: orange;
- 	}
-
-     li ul {
+     ul {
          top:100%;
          position: absolute;
-         margin: 0;
-         padding: 0;
+         font-size: 20px;
          display: none;
      }
 
-     li:hover > ul {
+     div:hover > ul {
          display: block;
-         background-color: rgb(46, 46, 46);
-         color: orange;
+         background-color: black;
      }
 
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
 
-    #first {
-        background-color: darkgreen;
-        width: 400px;
-        color: white;
-        text-transform: uppercase;
-        padding: 5px;
-    }
-    #second {
-        background-color: darkgreen;
-        width: 1050px;
-        color: white;
-        text-transform: uppercase;
-        padding-left: 300px;
-    }
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
 
     h1 {
         font-family: Gabriola;
@@ -138,11 +102,11 @@
         font-size: 50px;
         padding: 30px;;
         text-transform: uppercase;
-
         background-color:rgb(93, 75, 99);
         border-radius: 52%;
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     }
+
     h3 {
         font-size: 25px;
         font-family: Gabriola;
@@ -178,6 +142,7 @@
         padding-left: 100px;
         padding-right: 100px;
     }
+
     #add {
     color: orange;
     font-family: Gabriola;
@@ -193,7 +158,7 @@
         border-radius: 52%;
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     	font-size: 25px;
-        margin-top: 250px;
+        margin-top: 130px;
         text-align: center;
         text-decoration: none;
         color: yellow;
@@ -209,31 +174,33 @@
         color: white;
     }
 
+    #user a {
+        float: right;
+    }
+
 </style>
 
 <body>
 
+
 <nav role="navigation">
-        <div>
-            <ul>
-                <li><a href="/learn">Друг потребител</a></li>
-                <li><a href="/list-educations">Обучения на ${name}</a>
-
-                       <ul>
-                           <c:forEach items="${todos}" var= "todo">
-                           <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                           </c:forEach>
-                       </ul>
-
-                </li>
-
-                <li id="user"><a href="/user">${name}</a></li>
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-lg-2"><a href="/learn">Друг потребител</a></div>
+                    <div class="col-lg-2"><a href="/list-educations">Обучения на ${name}
+                           <ul>
+                            <c:forEach items="${todos}" var= "todo">
+                               <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                            </c:forEach>
+                           </ul>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2" id="user"><a href="/user">${name}</a></div>
             </ul>
         </div>
     </nav>
-
-
-
 
      <h1>Вашите обучения</h1>
         <div class="container">
