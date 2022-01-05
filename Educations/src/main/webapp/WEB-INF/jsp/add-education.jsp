@@ -169,6 +169,26 @@
         padding-right: 100px;
     }
 
+    #add {
+    text-align: center;
+    text-decoration: none;
+    color: #A3A3A3;
+    text-transform: uppercase;
+    }
+
+    #add:hover {
+    color: orange;
+    }
+
+    .link-button {
+                padding: 5px;
+                margin: 10px;
+                 background: rgb(93, 75, 99);
+                 border: none;
+                 color: white;
+                 cursor: pointer;
+            }
+
 </style>
 <body>
     <nav role="navigation">
@@ -193,7 +213,8 @@
                 <form:errors path="targetDate" cssClass="text-warning"/>
 
             </fieldset>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success">Готово</button>
+            <a type="button" class="btn btn-warning" href="/list-educations" >Отказ</a>
         </form:form>
     </div>
 
