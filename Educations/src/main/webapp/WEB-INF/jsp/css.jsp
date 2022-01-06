@@ -63,6 +63,8 @@ table {
 
     nav{
     	background-color: black;
+    	position: sticky;
+        top: 0;
     }
 
  	div{

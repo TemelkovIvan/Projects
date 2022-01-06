@@ -63,6 +63,8 @@
 
     nav{
     	background-color: black;
+    	position: sticky;
+        top: 0;
     }
 
  	div{
@@ -229,12 +231,13 @@
 
      <br/>
 
-
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     </div>
     <a id="add" href="/add-education">Добавяне на курс</a>
+
+
 
     </body>
         <footer>

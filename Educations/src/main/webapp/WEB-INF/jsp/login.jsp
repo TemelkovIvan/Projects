@@ -65,7 +65,7 @@ h5 {
     border-radius: 52%;
     box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
 	font-size: 25px;
-    margin-top: 120px;
+    margin-top: 170px;
     text-align: center;
     text-decoration: none;
     color: yellow;
@@ -112,11 +112,6 @@ h5 {
 
     </body>
     <footer>
-        <ul>
-            <li>Enter User and Password -------> "IvanT" and "123"</li>
-            <li>Enter User and Password -------> "Georgi" and "1234"</li>
-            <li>Enter User and Password -------> "test3" and "12345"</li>
-        </ul>
         <h5>
             <a href="/info">Информация за нас</a>
         </h5>
