@@ -40,4 +40,5 @@
   
   .waiting {
     height: 50vh;
+    text-transform:none
   }
