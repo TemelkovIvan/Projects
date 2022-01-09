@@ -6,9 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
- <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-     rel="stylesheet">
+ <link href="books.ico" rel="shortcut icon" type="ico">
+ <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <style type="text/css">

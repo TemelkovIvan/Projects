@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Education</title>
 <link href="books.ico" rel="shortcut icon" type="ico">
- <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-    rel="stylesheet">
+ <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <style type="text/css">
 	html, body, div, span, applet, object, iframe,
@@ -213,7 +213,7 @@
                 <form:errors path="targetDate" cssClass="text-warning"/>
 
             </fieldset>
-            <button type="submit" class="btn btn-success">Готово</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i>Готово</button>
             <a type="button" class="btn btn-warning" href="/list-educations" >Отказ</a>
         </form:form>
     </div>

@@ -5,13 +5,13 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
- <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-     rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Education</title>
+    <link href="books.ico" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -218,10 +218,10 @@ table {
                        <div class="col-lg-2 col-md-4"></div>
                        <div class="col-lg-2 col-md-4" id="date">
                                 <div class="container-day">
-                                        <b class="day">Time</b>д :
-                                        <b class="hour">Time</b>ч :
-                                        <b class="minute">Time</b>м :
-                                        <b class="second">Time</b>с
+                                        <b class="day">Т</b> дни
+                                        <b class="hour">Т</b>ч :
+                                        <b class="minute">Т</b>м :
+                                        <b class="second">Т</b>с
                                 </div></div>
                        <div class="col-lg-2 col-md-4" id="date">
                                 <c:forEach items="${todos}" var= "todo">
@@ -235,34 +235,6 @@ table {
        </nav>
 
     <h1>HTML</h1>
-
-        <script>
-            const countdown = () => {
-                // Specify the date and time we are counting down to.
-
-                const countDate = new Date("Feb 28, 2022 00:00:00").getTime();
-                const now = new Date().getTime();
-                const remainingTime = countDate - now;
-
-                const second = 1000;
-                const minute = second * 60;
-                const hour = minute * 60;
-                const day = hour * 24;
-
-                const textDay = Math.floor(remainingTime / day);
-                const textHour = Math.floor((remainingTime % day) / hour);
-                const textMinute = Math.floor((remainingTime % hour) / minute);
-                const textSecond = Math.floor((remainingTime % minute) / second);
-
-                document.querySelector(".day").innerText = textDay > 0 ? textDay : 0;
-                document.querySelector(".hour").innerText = textHour > 0 ? textHour : 0;
-                document.querySelector(".minute").innerText = textMinute > 0 ? textMinute : 0;
-                document.querySelector(".second").innerText = textSecond > 0 ? textSecond : 0;
-              };
-
-              // should use 500 as setInterval won't always run on time.
-              setInterval(countdown, 500);
-        </script>
 
         <p>
             &diams;&emsp;HTML (съкращение от термина на английски: HyperText Markup Language, произнасяно най-често като „ейч-ти-ем-ел“, в превод „език за маркиране на хипертекст“) е основният маркиращ език за описание и дизайн на уеб страници. HTML е стандарт в Интернет, а правилата се определят от международния консорциум W3C. Текущата версия на стандарта е HTML 5.0 (от 28 октомври 2014 г.)
@@ -395,6 +367,34 @@ table {
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+
+        <script>
+            const countdown = () => {
+                // Specify the date and time we are counting down to.
+
+                const countDate = new Date("Feb 28, 2022 00:00:00").getTime();
+                const now = new Date().getTime();
+                const remainingTime = countDate - now;
+
+                const second = 1000;
+                const minute = second * 60;
+                const hour = minute * 60;
+                const day = hour * 24;
+
+                const textDay = Math.floor(remainingTime / day);
+                const textHour = Math.floor((remainingTime % day) / hour);
+                const textMinute = Math.floor((remainingTime % hour) / minute);
+                const textSecond = Math.floor((remainingTime % minute) / second);
+
+                document.querySelector(".day").innerText = textDay > 0 ? textDay : 0;
+                document.querySelector(".hour").innerText = textHour > 0 ? textHour : 0;
+                document.querySelector(".minute").innerText = textMinute > 0 ? textMinute : 0;
+                document.querySelector(".second").innerText = textSecond > 0 ? textSecond : 0;
+              };
+
+              // should use 500 as setInterval won't always run on time.
+              setInterval(countdown, 500);
+        </script>
 
 
 </body>
