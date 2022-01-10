@@ -114,6 +114,13 @@ public class TodoController extends BaseController {
         return this.view("spring-mvc");
     }
 
+    @GetMapping("/jquery")
+    public ModelAndView jquery(ModelMap model) {
+        String name = (String) model.get("name");
+        model.put("todos",repository.findByUser(name));
+        return this.view("jquery");
+    }
+
     @GetMapping("/info")
     public ModelAndView info(ModelMap model) {
         return this.view("info");
