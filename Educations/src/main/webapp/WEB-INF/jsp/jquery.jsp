@@ -58,7 +58,8 @@ table {
 }
 
 /* ------------------- RESET FOR CSS ------------------- */
- body {
+
+    body {
         background-color: grey;
     }
 
@@ -102,7 +103,7 @@ table {
         }
     }
 
-    div:hover {
+    .col-lg-2:hover {
         color: black;
         font-size: 30px;
     }
@@ -129,49 +130,8 @@ table {
 
  	div a:hover {
          text-decoration: none;
- 	     color: orange;
+ 	     color: black;
  	}
-
-#first {
-    text-align:center;
-    background-color: darkgreen;
-    width: 100px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
-#second {
-    text-align:center;
-    background-color: darkgreen;
-    width: 300px;
-    color: white;
-    text-transform: uppercase;
-}
-#third {
-    text-align:center;
-    background-color: darkgreen;
-    width: 950px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
-
-#third3 {
-    text-align:center;
-    background-color: darkgreen;
-    width: 1100px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
-#fourth {
-    text-align:center;
-    background-color: darkgreen;
-    width: 100px;
-    color: white;
-    text-transform: uppercase;
-    padding: 5px;
-}
 
 h1 {
     font-family: Gabriola;
@@ -201,7 +161,7 @@ h4 {
     padding: 10px;
     font-weight: bold;
     color: white;
-padding-left: 50px;
+    padding-left: 50px;
 }
 
 table {
@@ -232,8 +192,8 @@ p {
         border-radius: 52%;
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     	font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin-top: 10px;
+        margin-bottom: 30px;
         text-align: center;
         text-decoration: none;
         color: yellow;
@@ -251,6 +211,21 @@ p {
 
         #user a {
             float: right;
+        }
+
+        #accordion {
+            border: solid 1px black;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+           margin-left: 30%;
+        }
+
+        .draggable {
+            margin-left: 200px;
+            color: yellow;
         }
 
         span {
@@ -271,25 +246,62 @@ p {
                                    </c:forEach>
                                   </ul>
                            </div>
-                           <div class="col-lg-2 col-md-4 bg-warning"></div>
-                           <div class="col-lg-2 col-md-4 bg-light"></div>
-                           <div class="col-lg-2 col-md-4 bg-primary"></div>
+                           <div class="col-lg-2 col-md-4 bg-light"><i id="icons" class="fas fa-frown"></i></div>
+                           <div class="col-lg-2 col-md-4 bg-primary" id="date"><i id="icons" class="fas fa-clock"></i><br>
+                                                           <div class="container-day">
+                                                                   <b class="day">Т</b> дни
+                                                                   <b class="hour">Т</b>ч :
+                                                                   <b class="minute">Т</b>м :
+                                                                   <b class="second">Т</b>с
+                                                           </div></div>
+                           <div class="col-lg-2 col-md-4 bg-warning" id="date"><i id="icons" class="fas fa-calendar"></i><br>
+                                                           <c:forEach items="${todos}" var= "todo">
+                                                               <c:if test = "${todo.desc == 'LEARN HTML'}">
+                                                                   <fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/>
+                                                               </c:if>
+                                                           </c:forEach></div>
                            <div class="col-lg-2 col-md-4 bg-info" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
                    </ul>
                </div>
            </nav>
     <h1 class="hide">JQuery </h1>
 
+            <div id="accordion">
+              <h3>Section 1</h3>
+              <div>
+                <p>TEXT</p>
+              </div>
+              <h3>Section 2</h3>
+              <div>
+                <p>TEXT</p>
+              </div>
+              <h3>Section 3</h3>
+              <div>
+                <p>TEXT</p>
+                <ol>
+                  <li>List item one</li>
+                  <li>List item two</li>
+                  <li>List item three</li>
+                </ol>
+              </div>
+              <h3>Section 4</h3>
+              <div>
+                <p>TEXT</p>
+              </div>
+            </div>
+
+            <div class="buttons">
               <button class="btn btn-success">Test1</button>
               <button class="btn btn-warning">Test2</button>
               <button class="btn btn-danger">Test3 - Always Visible</button>
+            </div>
 
             <p class="hide">Ако ме натиснеш ще изчезна!</p>
             <p class="hide">Натискай далече от мен!</p>
             <p class="hide">Натисни ме за да изчезна и аз ...</p>
 
             <div id="draggable" class="ui-widget-content" >
-              <div class="text-center">Премести ме!</div>
+              <div class="draggable">Премести ме!</div>
             </div>
 
 
@@ -300,6 +312,44 @@ p {
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+             <script>
+                const countdown = () => {
+                // Specify the date and time we are counting down to.
+
+                const countDate = new Date("Feb 28, 2022 00:00:00").getTime();
+                const now = new Date().getTime();
+                const remainingTime = countDate - now;
+
+                const second = 1000;
+                const minute = second * 60;
+                const hour = minute * 60;
+                const day = hour * 24;
+
+                const textDay = Math.floor(remainingTime / day);
+                const textHour = Math.floor((remainingTime % day) / hour);
+                const textMinute = Math.floor((remainingTime % hour) / minute);
+                const textSecond = Math.floor((remainingTime % minute) / second);
+
+                document.querySelector(".day").innerText = textDay > 0 ? textDay : 0;
+                document.querySelector(".hour").innerText = textHour > 0 ? textHour : 0;
+                document.querySelector(".minute").innerText = textMinute > 0 ? textMinute : 0;
+                document.querySelector(".second").innerText = textSecond > 0 ? textSecond : 0;
+                };
+
+                // should use 500 as setInterval won't always run on time.
+                setInterval(countdown, 500);
+             </script>
+
+
+             <script>
+              $( function() {
+                $( "#accordion" ).accordion({
+                  collapsible: true
+                });
+              } );
+              </script>
 
             <script>
                 $(document).ready(function(){
@@ -403,7 +453,7 @@ p {
         </script>
 
             <style>
-                #draggable { width: 150px; height: 150px; padding: 0.5em; }
+                #draggable { width: 150px; height: 100px; padding: 0.5em; }
             </style>
 
             <script>
