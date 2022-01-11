@@ -9,6 +9,7 @@
     <link href="books.ico" rel="shortcut icon" type="ico">
     <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+
 </head>
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
@@ -252,6 +253,11 @@ p {
             float: right;
         }
 
+        span {
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
 </style>
 <body>
     <nav role="navigation">
@@ -274,7 +280,9 @@ p {
            </nav>
     <h1 class="hide">JQuery </h1>
 
-
+              <button class="btn btn-success">Test1</button>
+              <button class="btn btn-warning">Test2</button>
+              <button class="btn btn-danger">Test3 - Always Visible</button>
 
             <p class="hide">Ако ме натиснеш ще изчезна!</p>
             <p class="hide">Натискай далече от мен!</p>
@@ -305,6 +313,94 @@ p {
                     $( "#draggable" ).draggable();
                 } );
             </script>
+
+        <script>
+        $( ".btn-success" ).on( "click", function() {
+          flash( 'test 1' ,{
+          'autohide' : true,
+          'bgColor' : '#5cb85c',
+          'ftColor' : 'white'
+          } ) ;
+        });
+        $( ".btn-warning" ).on( "click", function() {
+          flash( 'test 2',{
+            'autohide' : true,
+            'bgColor' : 'FFC107',
+            'ftColor' : 'black'
+          } ) ;
+        });
+        $( ".btn-danger" ).on( "click", function() {
+          flash( 'test 3',{
+            'autohide' : false,
+            'bgColor' : '#C0392B',
+            'ftColor' : 'white'
+          } ) ;
+        });
+
+        function flash(message, options = null){
+          let type = typeof options;
+          if (options !== null && type === 'object') {
+            $.extend($options, options)
+          }
+
+
+        //Check if message is clickable to enable message click hide action
+          if ($options.clickable) {
+            $message.on('click', function(){
+              $(this).fadeOut($options.fadeOut);
+            });
+          }
+
+        //Check if message is enabled to autohide
+          if ($options.autohide) {
+            setTimeout(function(){
+              $message.fadeOut($options.fadeOut);
+            },$options.duration);
+          }
+
+
+        }
+
+        let $message_container=$("<span></span>");$('body').append($message_container);
+        let $options={
+        'duration':4000,
+        'vPosition':'bottom',
+        'hPosition':'right',
+        'fadeIn':200,
+        'fadeOut':2500,
+        'clickable':!0,};
+
+        function flash(message,options=null){
+            let type=typeof options;
+            if(options!==null&&type==='object'){
+            $.extend($options,options)}
+
+        msg_container_css={"position":"fixed","margin-left":'7px',"z-index":'50',};
+        msg_container_css[$options.vPosition]="3px";
+        msg_container_css[$options.hPosition]="5px";
+        $message_container.css(msg_container_css);
+        let $message=$("<span></span>");
+        msg_css={
+        'text-align':'right',
+        'margin-bottom':'20px',
+        'margin-right':'20px',
+        'padding':'15px',
+        'border':'1px solid #dcdcdc',
+        'border-radius':'20px',
+        'float':'right',
+        'clear':'right',
+        'background-color':$options.bgColor,
+        'color':$options.ftColor,
+        'font-family':"Arial, Helvetica, sans-serif"};
+        $message.css(msg_css);$message.text(message);
+        $message_container
+            .append($message)
+            .children(':last')
+            .hide().fadeIn($options.fadeIn);
+
+            if($options.clickable){$message.on('click',function(){$(this).fadeOut($options.fadeOut)})}
+            if($options.autohide){setTimeout(function(){$message.fadeOut($options.fadeOut)},$options.duration)}}
+        </script>
 
             <style>
                 #draggable { width: 150px; height: 150px; padding: 0.5em; }
