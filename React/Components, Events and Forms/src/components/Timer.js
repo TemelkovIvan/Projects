@@ -5,7 +5,8 @@ class Timer extends Component {
         super(props)
 
         this.state = {
-            date: new Date()
+            date: new Date(),
+            
         }
     }
 
@@ -27,7 +28,7 @@ class Timer extends Component {
     }
 
     render () {
-        return <span>Time is: {this.state.date.toLocaleTimeString()}</span>
+        return <span>Time is: {this.state.date.toLocaleTimeString('it-IT')} </span>
     }
 }
 

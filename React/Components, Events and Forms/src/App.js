@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Welcome from './components/Welcome'
 import Timer from './components/Timer'
+import ButtonWithClick from './components/ButtonWithClick'
 import './App.css'
+import RegisterForm from './components/RegisterForm'
 
 class App extends Component {
   render() {
@@ -15,7 +17,12 @@ class App extends Component {
         <Welcome title='Hello' subtitle='from Ivan' />
         <Welcome title='Hello' specificClass='green'/>
         <Timer />
+        <br />
+        <br />
+        <ButtonWithClick />
+        <RegisterForm />
       </div>
+      
 
     )
 
