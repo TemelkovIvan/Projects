@@ -6,8 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Welcome title='Hello' subtitle='from React' />
+        <Welcome title='Hello' subtitle='from React' specificClass='green' />
         <Welcome title='Hello' subtitle='from Ivan' />
+        <Welcome title='Hello' specificClass='green'/>
       </div>
 
     )
