@@ -4,9 +4,13 @@ import './App.css'
 
 class App extends Component {
   render() {
+    let welcomeProps = {
+      title: 'Hello',
+      subtitle: 'from React'
+    }
     return (
       <div className='App'>
-        <Welcome title='Hello' subtitle='from React' specificClass='green' />
+        <Welcome {...welcomeProps} specificClass='green' />
         <Welcome title='Hello' subtitle='from Ivan' />
         <Welcome title='Hello' specificClass='green'/>
       </div>
