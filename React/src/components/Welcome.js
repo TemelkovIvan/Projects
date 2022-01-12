@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Logo from './Logo'
+import Button from './Button'
 import './Welcome.css'
 
 class Welcome extends Component {
@@ -13,6 +14,9 @@ class Welcome extends Component {
                 <h1>{title}</h1>
                 <h2>{subtitle}</h2>
                 <Logo />
+                <br />
+                <br />
+                <Button text='Some text'/>
             </div>
         )
     }
