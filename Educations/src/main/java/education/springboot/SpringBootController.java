@@ -16,6 +16,9 @@ import java.util.Objects;
 public class SpringBootController extends BaseController {
 
     @Autowired
+    private EmailSenderService service;
+
+    @Autowired
     UsersRepository repository;
 
     Users newUserDB = new Users();
@@ -69,6 +72,14 @@ public class SpringBootController extends BaseController {
                     newUserDB.setPassword(DigestUtils.sha256Hex(password));
                     newUserDB.setEmail(email);
                     newUserDB.setAge(age);
+
+
+                    service.sendSimpleEmail(email,"Успешна регистрация!",
+                            "Здравейте!\n" +
+                            "Успешно се регистрирахте в сайтът за обучение!\n" +
+                            "Вашето потребителско име е: " + userId +
+                            "\n\n\nБлагодарим!");
+
                     repository.save(newUserDB);
 
                     model.put("name", userId);
@@ -127,7 +138,10 @@ public class SpringBootController extends BaseController {
                     model.put("name", name);
                     model.put("email", email);
                     model.put("age", age);
+
                     return this.view("change");
+
+
                 }
             } else {
                 model.put("errorMessage", "Моля въведете коректни данни и не въвеждайте интервали!");
