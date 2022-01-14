@@ -256,7 +256,7 @@ p {
                                                            </div></div>
                            <div class="col-lg-2 col-md-4 bg-warning" id="date"><i id="icons" class="fas fa-calendar"></i><br>
                                                            <c:forEach items="${todos}" var= "todo">
-                                                               <c:if test = "${todo.desc == 'LEARN HTML'}">
+                                                               <c:if test = "${todo.desc == 'Learn JQuery'}">
                                                                    <fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/>
                                                                </c:if>
                                                            </c:forEach></div>
@@ -305,20 +305,17 @@ p {
             </div>
 
 
-    <h4>Източници</h4>
-        <p>https://bg.wikipedia.org<br>
-        </p>
-
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
              <script>
+
                 const countdown = () => {
                 // Specify the date and time we are counting down to.
 
-                const countDate = new Date("Feb 28, 2022 00:00:00").getTime();
+                const countDate = new Date("Mar 31, 2022 00:00:00").getTime();
                 const now = new Date().getTime();
                 const remainingTime = countDate - now;
 

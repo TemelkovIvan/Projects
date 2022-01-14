@@ -137,10 +137,14 @@ public class TodoController extends BaseController {
     public ModelAndView log(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
-        model.put("users",userRepository.findAll());
-        model.put("log",logRepository.findAll());
 
-        return this.view("log");
+        if (name.equals("IvanT")) {
+            model.put("users",userRepository.findAll());
+            model.put("log",logRepository.findAll());
+            return this.view("log");
+        } else {
+            return this.view("list-educations");
+        }
     }
 
 
@@ -163,5 +167,7 @@ public class TodoController extends BaseController {
         model.put("email",user.getEmail());
         model.put("age", user.getAge());
         return this.view("user");
-        }
     }
+
+}
+

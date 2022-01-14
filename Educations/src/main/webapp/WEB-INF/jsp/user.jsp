@@ -192,7 +192,7 @@ table {
                         </div>
                         <div class="col-lg-2 col-md-4"></div>
                         <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4"></div>
+                        <div class="col-lg-2 col-md-4" id="user"><a href="/change">Change Pass</a></div>
                         <div class="col-lg-2 col-md-4" id="user"><a href="/user">${name}</a></div>
                 </ul>
             </div>
