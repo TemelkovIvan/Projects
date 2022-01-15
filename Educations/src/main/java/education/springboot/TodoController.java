@@ -130,7 +130,15 @@ public class TodoController extends BaseController {
     public ModelAndView infoCreator(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
-        return this.view("information");
+
+        if (name == null) {
+
+            return this.redirect("/learn");
+
+        } else {
+
+            return this.view("information");
+        }
     }
 
     @GetMapping("/log")
@@ -138,12 +146,19 @@ public class TodoController extends BaseController {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
 
-        if (name.equals("IvanT")) {
-            model.put("users",userRepository.findAll());
-            model.put("log",logRepository.findAll());
-            return this.view("log");
+        if (name == null) {
+
+            return this.redirect("/learn");
+
         } else {
-            return this.view("list-educations");
+
+            if (name.equals("IvanT")) {
+                model.put("users", userRepository.findAll());
+                model.put("log", logRepository.findAll());
+                return this.view("log");
+            } else {
+                return this.view("list-educations");
+            }
         }
     }
 
@@ -164,9 +179,17 @@ public class TodoController extends BaseController {
         model.put("todos",repository.findByUser(name));
 
         Users user = this.userRepository.findByUsername(name).orElse(null);
+
+        if (user == null) {
+
+            return this.redirect("/learn");
+
+        } else {
+
         model.put("email",user.getEmail());
         model.put("age", user.getAge());
         return this.view("user");
+        }
     }
 
 }

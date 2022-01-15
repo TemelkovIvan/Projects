@@ -8,6 +8,7 @@
 <title>Education</title>
  <link href="books.ico" rel="shortcut icon" type="ico">
  <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <style type="text/css">
@@ -57,7 +58,7 @@
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-        background-color: gray;
+
     }
 
     nav{
@@ -66,9 +67,20 @@
         top: 0;
     }
 
+    nav{
+    	position: sticky;
+        top: 0;
+    }
+
+ 	div .row{
+ 	    color: white;
+ 	    text-transform: uppercase;
+ 	    font-size: 20px;
+ 	}
+
  	div{
  	    text-transform: uppercase;
- 	    font-size: 25px;
+ 	    font-size: 22px;
  	    padding: 2px;
  	}
 
@@ -80,8 +92,10 @@
      }
 
      div:hover > ul {
-         display: block;
-         background-color: black;
+        text-align:left;
+        line-height: 15px;
+        display: block;
+        background-color: black;
      }
 
     div a {
@@ -94,18 +108,44 @@
  	     color: orange;
  	}
 
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 80px;
+            text-align:center;
+            line-height: 10px;
+        }
+
+        #icons {
+            padding: 10px;
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            display: inline-block;
+            color: orange;
+        }
+    }
+
+    .col-lg-2:hover {
+        color: orange;
+    }
+
+
     h1 {
         font-family: Gabriola;
+        color: black;
         text-align: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin-top: 25px;
+        margin-bottom: 25px;
         font-weight: bold;
         font-size: 50px;
         padding: 30px;
         text-transform: uppercase;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     }
 
     h3 {
@@ -121,21 +161,21 @@
         padding: 10px;
         font-weight: bold;
         color: white;
-    padding-left: 50px;
+        padding-left: 50px;
     }
 
     table {
-        color: #333333;
         border-spacing: 0;
-        margin-left: 50px;
+        margin-left: auto;
+        border: 2px solid black;
     }
 
     tr:nth-child(even) td {
-        background-color: #baca9a;
+        background-color: whitesmoke;
     }
 
     tr:nth-child(odd) td {
-        background-color: #a19f86;
+        background-color: gray;
     }
 
     p {
@@ -145,24 +185,27 @@
     }
 
     #add {
-    color: orange;
+    color: gray;
     font-family: Gabriola;
     font-weight: bold;
     padding-left: 550px;
     font-size: 30px;
     }
 
+    #add:hover {
+        color: orange;
+        text-decoration: none;
+    }
+
     h5 {
         text-transform: uppercase;
         padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+        background-color: black;
     	font-size: 25px;
         margin-top: 130px;
         text-align: center;
         text-decoration: none;
-        color: yellow;
+
     }
 
     h5>a {
@@ -172,12 +215,9 @@
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
 
-    #user a {
-        float: right;
-    }
 
 </style>
 
@@ -187,8 +227,8 @@
 <nav role="navigation">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-lg-2 col-md-4"><a href="/learn">Друг потребител</a></div>
-                    <div class="col-lg-2 col-md-4"><a href="/list-educations">Обучения на ${name}
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
                            <ul>
                             <c:forEach items="${todos}" var= "todo">
                                <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
@@ -197,9 +237,9 @@
                     </div>
                     <div class="col-lg-2 col-md-4"></div>
                     <div class="col-lg-2 col-md-4"></div>
-                    <div class="col-lg-2 col-md-4"></div>
-                    <div class="col-lg-2 col-md-4" id="user"><a href="/user">${name}</a></div>
-            </ul>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            </div>
         </div>
     </nav>
 
@@ -221,8 +261,8 @@
                             <tr>
                                 <td>${todo.desc}</td>
                                 <td><fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/></td>
-                                <td><a type="button" class="btn btn-warning" href="/update-education?id=${todo.id}">Update</a></td>
-                                <td><a type="button" class="btn btn-danger" href="/delete-education?id=${todo.id}">Delete</a></td>
+                                <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Update</a></td>
+                                <td><a type="button" class="btn btn-dark" href="/delete-education?id=${todo.id}">Delete</a></td>
                             </tr>
                 </c:forEach>
             </tbody>
@@ -230,13 +270,8 @@
 
      <br/>
 
-     <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
-     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     </div>
     <a id="add" href="/add-education">Добавяне на курс</a>
-
-
 
     </body>
         <footer>

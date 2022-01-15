@@ -68,7 +68,7 @@ table {
         top: 0;
     }
 
- 	div{
+ 	div .row{
  	    color: white;
  	    text-transform: uppercase;
  	    font-size: 25px;
@@ -88,9 +88,9 @@ table {
 
     @media (min-width:1200px){
         .col-lg-2 {
-            height: 120px;
+            height: 100px;
             text-align:center;
-            line-height: 60px;
+            line-height: 40px;
         }
 
         #icons {
@@ -153,7 +153,7 @@ h3 {
     font-family: Gabriola;
     padding: 10px;
     font-weight: bold;
-    padding-left: 300px;
+    padding-left: 10%;
 }
 
 h4 {
@@ -214,9 +214,10 @@ p {
         }
 
         #accordion {
+            width: 80%;
             border: solid 1px black;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin: 20px 0 20px 20px;
+            padding: 0 100px;
         }
 
         .buttons {
@@ -226,6 +227,11 @@ p {
         .draggable {
             margin-left: 200px;
             color: yellow;
+        }
+
+        img {
+            width: 20%;
+            float: right;
         }
 
         span {
@@ -246,20 +252,21 @@ p {
                                    </c:forEach>
                                   </ul>
                            </div>
-                           <div class="col-lg-2 col-md-4 bg-light"><i id="icons" class="fas fa-frown"></i></div>
-                           <div class="col-lg-2 col-md-4 bg-primary" id="date"><i id="icons" class="fas fa-clock"></i><br>
+
+                           <div class="col-lg-2 col-md-4 bg-primary" align="center" id="date"><i id="icons" class="fas fa-clock"></i><br>
                                                            <div class="container-day">
                                                                    <b class="day">Т</b> дни
                                                                    <b class="hour">Т</b>ч :
                                                                    <b class="minute">Т</b>м :
                                                                    <b class="second">Т</b>с
                                                            </div></div>
-                           <div class="col-lg-2 col-md-4 bg-warning" id="date"><i id="icons" class="fas fa-calendar"></i><br>
+                           <div class="col-lg-2 col-md-4 bg-warning" align="center" id="date"><i id="icons" class="fas fa-calendar"></i><br>
                                                            <c:forEach items="${todos}" var= "todo">
                                                                <c:if test = "${todo.desc == 'Learn JQuery'}">
                                                                    <fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/>
                                                                </c:if>
                                                            </c:forEach></div>
+                           <div class="col-lg-2 col-md-4 bg-secondary" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
                            <div class="col-lg-2 col-md-4 bg-info" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
                    </ul>
                </div>
@@ -267,27 +274,44 @@ p {
     <h1 class="hide">JQuery </h1>
 
             <div id="accordion">
-              <h3>Section 1</h3>
+              <h3>jQuery</h3>
               <div>
-                <p>TEXT</p>
-              </div>
-              <h3>Section 2</h3>
-              <div>
-                <p>TEXT</p>
-              </div>
-              <h3>Section 3</h3>
-              <div>
-                <p>TEXT</p>
                 <ol>
-                  <li>List item one</li>
-                  <li>List item two</li>
-                  <li>List item three</li>
+                <li><br>jQuery е разпространена библиотека на JavaScript, публикувана в началото на 2006 от Джон Резиг. В основата си jQuery опростява достъпа до всеки елемент на дадена уеб-страница, като по този начин позволява лесно изграждане на динамична функционалност в страниците.
+                </li>
+                <li><br>jQuery е безплатен и open source софтуер, лицензиран под MIT лиценз. jQuery се използва в 72% от 10000-те най-посещавани сайтове, което я прави най-популярната JavaScript алтернатива днес.</p>
+                </li>
                 </ol>
               </div>
-              <h3>Section 4</h3>
+              <h3>Функционалност</h3>
               <div>
-                <p>TEXT</p>
+                <ol>
+                    <li>DOM селекция, базирана на синтаксиса на CSS селектори + разширена функционалност.</li>
+                    <li>DOM манипулация (с поддръжка за CSS 1 – 3), позволяваща създаване, манипулиране и премахване на елементи от уеб страницата.</li>
+                    <li>Събития (events)</li>
+                    <li>Ефекти и анимация</li>
+                    <li>Ajax</li>
+                    <li>парсване на JSON</li>
+                    <li>Съвместимост с широк набор браузъри, в т.ч. стари версии</li>
+                </ol>
               </div>
+              <h3>jQuery плъгини</h3>
+              <div>
+                <ol>
+                    <li>jQuery архитектурата позволява на разработчиците да създават плъгин кодове, като по този начин разширяват нейната функционалност. Има на разположение в Интернет над 16 хиляди jQuery плъгина, които обхващат широк спектър от функционалности, като помощни приложения тип Ajax, уеб услуги, мрежови масиви от данни, динамични списъци, XML и XSLT инструменти, drag and drop приложения, събития, управление на бисквитки, модални прозорци и дори jQuery базиран Commodore 64 емулатор.</li>
+                    <li>Важен източник на jQuery плъгини е поддомейнът с плъгини, който е разположен на сайта на jQuery. Въпреки това, при опита през декември 2011 година да се разчисти сайта от спама, плъгини в този поддомейн са били случайно изтрити. Новият сайт ще включва GitHub – хранилище-домакин, което ще изисква разработчиците да представят повторно плъгини в съответствие с новите изисквания за представяне. Има алтернативни търсачки за плъгини, като например jquer.in, които използват по-специализирани подходи за търсене, като например по регистрационен код и разглеждат само такива плъгини, които отговарят на определени критерии (например тези, които имат публичен регистрационен код).</li>
+                </ol>
+              </div>
+              <h3>Други проекти на jQuery Foundation</h3>
+              <div>
+                <ol>
+                    <li>jQuery UI – набор от ефекти, приспособления и теми базирани на jQuery JavaScript Library.</li>
+                    <li>jQuery Mobile – универсален, HTML5-базиран потребителски интерфейс за всички популярни мобилни платформи.</li>
+                    <li>QUnit – използва се от jQuery, jQuery UI and jQuery Mobile за тестване на JavaScript код.</li>
+                    <li>Sizzle – JavaScript CSS selector-ен енджин</li>
+                </ol>
+              </div>
+              <img src="jquery.png" alt="This is an image" />
             </div>
 
             <div class="buttons">

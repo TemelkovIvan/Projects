@@ -34,7 +34,7 @@ public class SpringBootController extends BaseController {
     }
 
     @RequestMapping(value = "/learn", method = RequestMethod.POST)
-    public ModelAndView showWelcomePage(ModelMap model, @Valid Log newlog,@RequestParam String name, @RequestParam String password) {
+    public ModelAndView showWelcomePage(ModelMap model, @Valid Log newlog, @RequestParam String name, @RequestParam String password) {
 
         Users user = this.repository.findByUsername(name).orElse(null);
 
@@ -59,7 +59,7 @@ public class SpringBootController extends BaseController {
     }
 
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
-    public ModelAndView showLoginPageWithNewUser(ModelMap model,@Valid Users newUserDB,@RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
+    public ModelAndView showLoginPageWithNewUser(ModelMap model, @Valid Users newUserDB, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
 
         Users user = this.repository.findByUsername(userId).orElse(null);
 
@@ -74,11 +74,11 @@ public class SpringBootController extends BaseController {
                     newUserDB.setAge(age);
 
 
-                    service.sendSimpleEmail(email,"Успешна регистрация!",
-                            "Здравейте!\n" +
-                            "Успешно се регистрирахте в сайтът за обучение!\n" +
-                            "Вашето потребителско име е: " + userId +
-                            "\n\n\nБлагодарим!");
+                    service.sendSimpleEmail(email, "Успешна регистрация!",
+                            "Здравейте!\n\n" +
+                                    "Успешно се регистрирахте в сайтът за обучение!\n" +
+                                    "Вашето потребителско име е: " + userId +
+                                    "\n\n\nБлагодарим!");
 
                     repository.save(newUserDB);
 
@@ -114,43 +114,84 @@ public class SpringBootController extends BaseController {
         String name = (String) model.get("name");
 
         Users user = this.repository.findByUsername(name).orElse(null);
-        model.put("email",user.getEmail());
-        model.put("age", user.getAge());
 
-        return this.view("change");
+        if (user == null) {
+
+            return this.redirect("/learn");
+
+        } else {
+
+            model.put("email", user.getEmail());
+            model.put("age", user.getAge());
+
+            return this.view("change");
+        }
     }
 
     @RequestMapping(value = "/change", method = RequestMethod.POST)
-    public ModelAndView showChange(ModelMap model,@RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
+    public ModelAndView showChange(ModelMap model, @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
         Users user = this.repository.findByUsername(name).orElse(null);
 
-            if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
-                if (Objects.equals(password, confirmPassword)) {
+        if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
+            if (Objects.equals(password, confirmPassword)) {
 
-                    user.setPassword(DigestUtils.sha256Hex(password));
-                    user.setEmail(email);
-                    user.setAge(age);
-                    repository.save(user);
+                user.setPassword(DigestUtils.sha256Hex(password));
+                user.setEmail(email);
+                user.setAge(age);
+                repository.save(user);
 
-                    return this.redirect("/learn");
-                } else {
-                    model.put("errorMessage", "Грешно въведени Пароли!");
-                    model.put("name", name);
-                    model.put("email", email);
-                    model.put("age", age);
-
-                    return this.view("change");
-
-
-                }
+                return this.redirect("/learn");
             } else {
-                model.put("errorMessage", "Моля въведете коректни данни и не въвеждайте интервали!");
+                model.put("errorMessage", "Грешно въведени Пароли!");
                 model.put("name", name);
                 model.put("email", email);
                 model.put("age", age);
+
                 return this.view("change");
+
+
             }
+        } else {
+            model.put("errorMessage", "Моля въведете коректни данни и не въвеждайте интервали!");
+            model.put("name", name);
+            model.put("email", email);
+            model.put("age", age);
+            return this.view("change");
+        }
+    }
+
+    @GetMapping("/mail")
+    public ModelAndView mail(ModelMap model) {
+        String name = (String) model.get("name");
+
+        Users user = this.repository.findByUsername(name).orElse(null);
+
+        if (user == null) {
+
+            return this.redirect("/learn");
+
+        } else {
+
+            model.put("email", user.getEmail());
+
+            return this.view("mail");
+        }
+    }
+
+    @RequestMapping(value = "/mail", method = RequestMethod.POST)
+    public ModelAndView mail(ModelMap model, @RequestParam String email, @RequestParam String textarea) {
+
+        if (!textarea.equals("")) {
+            service.sendSimpleEmail("noreply.sprboot@gmail.com", "Изпратено съобщение от "+ email,
+                    "Съобщението е: "+ textarea + "\nEmail: " + email);
+
+            return this.redirect("/list-educations");
         }
 
+        model.put("email", email);
+        model.put("errorMessage", "Моля въведете текст!");
+
+        return this.view("mail");
     }
+}
 
