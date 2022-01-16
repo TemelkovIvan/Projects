@@ -214,9 +214,8 @@ p {
         }
 
         #accordion {
-            width: 80%;
             border: solid 1px black;
-            margin: 20px 0 20px 20px;
+            margin: 20px;
             padding: 0 100px;
         }
 
@@ -260,12 +259,7 @@ p {
                                                                    <b class="minute">Т</b>м :
                                                                    <b class="second">Т</b>с
                                                            </div></div>
-                           <div class="col-lg-2 col-md-4 bg-warning" align="center" id="date"><i id="icons" class="fas fa-calendar"></i><br>
-                                                           <c:forEach items="${todos}" var= "todo">
-                                                               <c:if test = "${todo.desc == 'Learn JQuery'}">
-                                                                   <fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/>
-                                                               </c:if>
-                                                           </c:forEach></div>
+                           <div class="col-lg-2 col-md-4 bg-warning" align="center" id="date"><i id="icons" class="fas fa-calendar"></i><br><fmt:formatDate value="${targetDate}" pattern="dd/MM/yyyy"/></div>
                            <div class="col-lg-2 col-md-4 bg-secondary" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
                            <div class="col-lg-2 col-md-4 bg-info" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
                    </ul>
@@ -328,7 +322,6 @@ p {
               <div class="draggable">Премести ме!</div>
             </div>
 
-
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -339,7 +332,7 @@ p {
                 const countdown = () => {
                 // Specify the date and time we are counting down to.
 
-                const countDate = new Date("Mar 31, 2022 00:00:00").getTime();
+                const countDate = new Date("${targetDate}").getTime();
                 const now = new Date().getTime();
                 const remainingTime = countDate - now;
 

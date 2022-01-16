@@ -56,148 +56,119 @@
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-        background-color: gray;
-
     }
-
 
     nav{
-        position: fixed;
-        margin-top: -80px;
     	background-color: black;
-      width:1920px;
-
-
-    	}
-
-
-
-    #user {
-        color: white;
-        float: right;
+    	position: sticky;
+        top: 0;
     }
 
-        li>a {
-            text-decoration: none;
-    	    color: white;
+    nav{
+    	position: sticky;
+        top: 0;
+    }
+
+ 	div{
+ 	    text-transform: uppercase;
+ 	    color: white;
+ 	    font-size: 22px;
+ 	    padding: 2px;
+ 	}
+
+     ul {
+         top:100%;
+         position: absolute;
+         font-size: 20px;
+         display: none;
+     }
+
+     div:hover > ul {
+        text-align:left;
+        line-height: 15px;
+        display: block;
+        background-color: black;
+     }
+
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
         }
-    	li{
+    }
 
-    	    text-transform: uppercase;
-    	    font-size: 25px;
-    	    display: inline-block;
-    	    padding: 10px;
-    	}
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 85px;
+            text-align:center;
+            line-height: 20px;
+        }
 
-        li:hover {
-            background-color: rgb(46, 46, 46);
+        #icons {
+            padding: 10px;
+            height: 45px;
+            width: 35px;
+            border-radius: 50%;
+            display: inline-block;
             color: orange;
         }
-
-    	li>a:hover {
-
-            text-decoration: none;
-
-    	    color: orange;
-    	}
-
-    #first {
-        background-color: darkgreen;
-        width: 400px;
-        color: white;
-        text-transform: uppercase;
-        padding: 5px;
     }
-    #second {
-        background-color: darkgreen;
-        width: 1050px;
-        color: white;
-        text-transform: uppercase;
-        padding-left: 300px;
+
+    .col-lg-2:hover {
+        color: orange;
     }
+
+/* ------------------- NAVBAR ------------------- */
 
     h1 {
         font-family: Gabriola;
+        color: black;
         text-align: center;
-        margin-top: 80px;
-        margin-bottom: 50px;
+        margin-top: 25px 0 25px 0;
         font-weight: bold;
         font-size: 50px;
-        padding: 30px;;
+        padding: 60px;
         text-transform: uppercase;
-
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-    }
-    h3 {
-        font-size: 25px;
-        font-family: Gabriola;
-        padding: 10px;
-        font-weight: bold;
-        padding-left: 300px;
-    }
-
-    h4 {
-        font-family: Gabriola;
-        padding: 10px;
-        font-weight: bold;
-        color: white;
-    padding-left: 50px;
     }
 
     table {
-        color: #333333;
         border-spacing: 0;
-        margin: 5px;
-        margin-left: 18px;
+        margin-left: auto;
+        border: 2px solid black;
     }
 
     tr:nth-child(even) td {
-        text-align: right;
-        background-color: #baca9a;
+        background-color: whitesmoke;
     }
 
     tr:nth-child(odd) td {
-        text-align: right;
-        background-color: #a19f86;
+        background-color: gray;
     }
-
-    p {
-        color: white;
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-    #add {
-    text-align: center;
-    text-decoration: none;
-    color: #A3A3A3;
-    text-transform: uppercase;
-    }
-
-    #add:hover {
-    color: orange;
-    }
-
-    .link-button {
-                padding: 5px;
-                margin: 10px;
-                 background: rgb(93, 75, 99);
-                 border: none;
-                 color: white;
-                 cursor: pointer;
-            }
 
 </style>
 <body>
-    <nav role="navigation">
-                <ul>
-                    <li><a href="/learn">Друг потребител</a></li>
-                    <li><a href="/list-educations">Обучения на ${name}</a></li>
-                    <li id="user"><a href="/user">${name}</a></li>
-                </ul>
-        </nav>
+<nav role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                    </div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            </div>
+        </div>
+    </nav>
              <h1>Добавяне на обучение</h1>
     <div class="container">
         <form:form method="post" commandName="todo">
@@ -213,8 +184,10 @@
                 <form:errors path="targetDate" cssClass="text-warning"/>
 
             </fieldset>
-            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i>Готово</button>
-            <a type="button" class="btn btn-warning" href="/list-educations" >Отказ</a>
+
+            <button type="submit" class="btn btn-secondary">Готово</button>
+            <a type="button" class="btn btn-dark" href="/list-educations">Отказ</a>
+
         </form:form>
     </div>
 

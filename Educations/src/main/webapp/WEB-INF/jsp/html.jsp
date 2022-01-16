@@ -10,6 +10,7 @@
     <title>Education</title>
     <link href="books.ico" rel="shortcut icon" type="ico">
     <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <style type="text/css">
@@ -59,7 +60,6 @@ table {
 /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-        background-color: gray;
     }
 
     nav{
@@ -68,9 +68,15 @@ table {
         top: 0;
     }
 
- 	div{
+    nav{
+    	position: sticky;
+        top: 0;
+    }
+
+ 	div .row{
  	    text-transform: uppercase;
- 	    font-size: 25px;
+ 	    color: white;
+ 	    font-size: 22px;
  	    padding: 2px;
  	}
 
@@ -82,8 +88,10 @@ table {
      }
 
      div:hover > ul {
-         display: block;
-         background-color: black;
+        text-align:left;
+        line-height: 15px;
+        display: block;
+        background-color: black;
      }
 
     div a {
@@ -96,48 +104,60 @@ table {
  	     color: orange;
  	}
 
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 85px;
+            text-align:center;
+            line-height: 20px;
+        }
+
+        #icons {
+            padding: 10px;
+            height: 45px;
+            width: 35px;
+            border-radius: 50%;
+            display: inline-block;
+            color: orange;
+        }
+    }
+
+    .col-lg-2:hover {
+        color: orange;
+    }
+
+/* ------------------- END NAVBAR ------------------- */
+
     h1 {
         font-family: Gabriola;
+        color: black;
         text-align: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin-top: 25px;
+        margin-bottom: 25px;
         font-weight: bold;
         font-size: 50px;
-        padding: 20px;
+        padding: 30px;
         text-transform: uppercase;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     }
 
     h3 {
         font-size: 25px;
         font-family: Gabriola;
-        padding: 10px;
+        padding: 20px;
         font-weight: bold;
         padding-left: 300px;
     }
 
     h4 {
         font-family: Gabriola;
-        padding: 10px;
+        padding: 50px 0 0 50px;
         font-weight: bold;
-        color: white;
-    padding-left: 50px;
-    }
-
-    table {
-        color: #333333;
-        border-spacing: 0;
-        margin-left: 50px;
-    }
-
-    tr:nth-child(even) td {
-        background-color: #baca9a;
-    }
-
-    tr:nth-child(odd) td {
-        background-color: #a19f86;
+        color: black;
     }
 
     p {
@@ -155,7 +175,7 @@ table {
     }
 
     p {
-        color: white;
+        color: black;
         padding-left: 100px;
         padding-right: 100px;
     }
@@ -168,20 +188,20 @@ table {
 
     img {
         padding-left: 200px;
+        float: right;
     }
+
+
+/* ------------------- START FOOTER ------------------- */
 
     h5 {
         text-transform: uppercase;
         padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+        background-color: black;
     	font-size: 25px;
-        margin-top: 50px;
-        margin-bottom: 30px;
+        margin-top: 60px;
         text-align: center;
         text-decoration: none;
-        color: yellow;
     }
 
     h5>a {
@@ -191,48 +211,39 @@ table {
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
 
-    #date {
-        color: white;
-    }
-
-    #user a {
-        float: right;
-    }
+/* ------------------- END FOOTER ------------------- */
 
 </style>
 <body>
-   <nav role="navigation">
-           <div class="container-fluid">
-               <div class="row">
-                       <div class="col-lg-2 col-md-4"><a href="/learn">Друг потребител</a></div>
-                       <div class="col-lg-2 col-md-4"><a href="/list-educations">Обучения на ${name}
-                              <ul>
-                               <c:forEach items="${todos}" var= "todo">
-                                  <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                               </c:forEach>
-                              </ul>
-                       </div>
-                       <div class="col-lg-2 col-md-4"></div>
-                       <div class="col-lg-2 col-md-4" id="date">
-                                <div class="container-day">
-                                        <b class="day">Т</b> дни
-                                        <b class="hour">Т</b>ч :
-                                        <b class="minute">Т</b>м :
-                                        <b class="second">Т</b>с
-                                </div></div>
-                       <div class="col-lg-2 col-md-4" id="date">
-                                <c:forEach items="${todos}" var= "todo">
-                                    <c:if test = "${todo.desc == 'LEARN HTML'}">
-                                        <fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/>
-                                    </c:if>
-                                </c:forEach></div>
-                       <div class="col-lg-2 col-md-4" id="user"><a href="/user">${name}</a></div>
-               </ul>
-           </div>
-       </nav>
+
+<nav role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                           <ul>
+                            <c:forEach items="${todos}" var= "todo">
+                               <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                            </c:forEach>
+                           </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4"><i id="icons" class="fas fa-clock"></i><br>
+                        <div class="container-day">
+                            <b class="day">Т</b> дни
+                            <b class="hour">Т</b>ч :
+                            <b class="minute">Т</b>м :
+                            <b class="second">Т</b>с
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4" align="center"><i id="icons" class="fas fa-calendar"></i><br><fmt:formatDate value="${targetDate}" pattern="dd/MM/yyyy"/></div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            </div>
+        </div>
+    </nav>
 
     <h1>HTML</h1>
 
@@ -244,121 +255,97 @@ table {
             &diams;&emsp;Описанието на документа става чрез специални елементи, наречени HTML елементи или маркери, които се състоят от етикети или тагове (HTML tags) и ъглови скоби (като например елемента <html>). HTML елементите са основната градивна единица на уеб страниците. Чрез тях се оформят отделните части от текста на една уеб страница, като заглавия, цитати, раздели, хипертекстови препратки и т.н. Най-често HTML елементите са групирани по двойки &lt;h1&gt; и &lt;/h1&gt;.
         </p>
 
-<h3>&lt;html&gt; елемент</h3>
-<p>Указва на браузъра, че това е HTML документ. Отбелязва началото и края на документа и съдържа всички други негови елементи (с изключение на <!DOCTYPE> елемента).
-</p>
+    <h3>&lt;html&gt; елемент</h3>
+        <p>Указва на браузъра, че това е HTML документ. Отбелязва началото и края на документа и съдържа всички други негови елементи (с изключение на <!DOCTYPE> елемента).
+    </p>
 
 
-<p id="example">
-<br>&lt;html&gt;<br>
-...<br>
-&lt;/html&gt;
+    <p>
+        <img src="basic_colors.jpg" alt="This is an image" />
+        <br>
+    </p>
 
-</p>
-<h3>&lt;head&gt; елемент</h3>
-<p>Съдържа заглавието на документа, и може да съдържа стилове, скриптове, енкодинг и т.н.
-</p>
-<p id="example">
-<br>&lt;html&gt
-<br>&lt;head&gt
-<br>&lt;title>Заглавие на документа&lt;/title&gt
-<br>&lt;/head&gt
-<br>...
-<br>&lt;/html&gt
-</p>
+    <p id="example">
+        <br>&lt;html&gt;<br>
+        ...<br>
+        &lt;/html&gt;
+    </p>
 
-<h3>&lt;body&gt; елемент</h3>
-<p>Съдържа форматиране видимо за потребителя – текст, хиперлинк, картинки, таблици, бутони, параграфи и т.н.
-</p>
-<p id="example">
-<br>&lt;html&gt
-<br>&lt;head&gt
-<br>&lt;title>Заглавие на документа&lt;/title&gt
-<br>&lt;/head&gt
-<br>&lt;body&gt
-<br>Съдържание на документа...
-<br>&lt;/body&gt
-<br>&lt;/html&gt
-</p>
+    <h3>&lt;head&gt; елемент</h3>
+        <p>Съдържа заглавието на документа, и може да съдържа стилове, скриптове, енкодинг и т.н.</p>
+        <p id="example">
+            <br>&lt;html&gt
+            <br>&lt;head&gt
+            <br>&lt;title>Заглавие на документа&lt;/title&gt
+            <br>&lt;/head&gt
+            <br>...
+            <br>&lt;/html&gt
+        </p>
 
-<h3>&lt;!DOCTYPE&gt; елемент</h3>
-<p>Декларира се първи, още преди &lt;html&gt; тага. Валидира документа. &lt;!DOCTYPE&gt; не е HTML таг. Той е инструкция за уеб браузъра – указва HTML версията, на която е написана страницата
-</p>
-<p id="example">
-&lt;!DOCTYPE html&gt
-<br>&lt;html&gt;
-<br>...
-<br>&lt;/html&gt;
-</p>
+    <h3>&lt;body&gt; елемент</h3>
+        <p>Съдържа форматиране видимо за потребителя – текст, хиперлинк, картинки, таблици, бутони, параграфи и т.н.</p>
+        <p id="example">
+            <br>&lt;html&gt
+            <br>&lt;head&gt
+            <br>&lt;title>Заглавие на документа&lt;/title&gt
+            <br>&lt;/head&gt
+            <br>&lt;body&gt
+            <br>Съдържание на документа...
+            <br>&lt;/body&gt
+            <br>&lt;/html&gt
+        </p>
 
-<h3>Основни HTML тагове</h3>
-<p>&lt;b&gt или &lt;strong&gt таг - Удебелява текста.
-</p>
+    <h3>&lt;!DOCTYPE&gt; елемент</h3>
+        <p>Декларира се първи, още преди &lt;html&gt; тага. Валидира документа. &lt;!DOCTYPE&gt; не е HTML таг. Той е инструкция за уеб браузъра – указва HTML версията, на която е написана страницата</p>
+        <p id="example">
+            &lt;!DOCTYPE html&gt
+            <br>&lt;html&gt;
+            <br>...
+            <br>&lt;/html&gt;
+        </p>
 
-<p>&lt;i&gt или &lt;em&gt таг - Задава курсив/наклон на текста.
-</p>
+    <h3>Основни HTML тагове</h3>
+        <p>&lt;b&gt или &lt;strong&gt таг - Удебелява текста.</p>
+        <p>&lt;i&gt или &lt;em&gt таг - Задава курсив/наклон на текста.</p>
+        <p>&lt;u&gt таг - Подчертава текста.</p>
+        <p id="example">
+            <u>пример</u>
+        </p>
 
-<p>&lt;u&gt таг - Подчертава текста.
-</p>
-<p id="example">
-<u>пример</u>
-</p>
+        <p>&lt;strong&gt таг - Указва важен текст.</p>
+        <p>&lt;sub&gt таг - Дефинира текст под черта.</p>
+        <p>&lt;sup&gt таг - Дефинира текст над черта.</p>
+        <p>&lt;del&gt таг - Указва изтрит текст.</p>
+        <p id="example">
+            <del>пример</del>
+        </p>
+        <p>&lt;br&gt таг - Указва нов ред. Няма таг за край.</p>
+        <p>&lt;blockquote&gt таг - Указва част от текста, който е цитат.</p>
 
-<p>&lt;strong&gt таг - Указва важен текст.
-</p>
+        <p>&lt;mark&gt таг - За отбелязване на текст, като му се променя фона.</p>
+        <p id="example">
+            <mark>пример</mark>
+        </p>
 
-<p>&lt;sub&gt таг - Дефинира текст под черта.
-</p>
-
-<p>&lt;sup&gt таг - Дефинира текст над черта.
-</p>
-
-<p>&lt;del&gt таг - Указва изтрит текст.
-</p>
-<p id="example">
-<del>пример</del>
-</p>
-
-<p>&lt;br&gt таг - Указва нов ред. Няма таг за край.
-</p>
-
-<p>&lt;blockquote&gt таг - Указва част от текста, който е цитат.
-</p>
-
-<p>&lt;mark&gt таг - За отбелязване на текст, като му се променя фона.
-</p>
-<p id="example">
-<mark>пример</mark>
-</p>
-
-<p>&lt;a&gt таг - Указва линк към друга страница. Най-важният атрибут на този таг е href. Той посочва URL адреса, към който сочи линка
-</p>
+        <p>&lt;a&gt таг - Указва линк към друга страница. Най-важният атрибут на този таг е href. Той посочва URL адреса, към който сочи линка</p>
 
 
     <div>
-<h3>Атрибути</h3>
-        <p>&diams;&emsp;text - задава цветa на текста в страницата</p>
-        <p>&diams;&emsp;link - задава цветa на връзките, които още не са посетени</p>
-        <p>&diams;&emsp;vlink - задава цветa на връзките, които са били посетени</p>
-        <p>&diams;&emsp;alink - задава цветa на активираните връзки</p>
-        <p>&diams;&emsp;align /center-left-right-justify(for &lt;p&gt;)/</p>
-        <p>&diams;&emsp;clear /left-right-all/</p>
-        <p>&diams;&emsp;face – задава вид на шрифта</p>
-        <p>&diams;&emsp;size – задава размер на шрифта</p>
-        <p>&diams;&emsp;color – задава цвят на шрифта</p>
-        <p>&diams;&emsp;width – задава ширина на линията в % или пиксели</p>
-        <p>&diams;&emsp;size – задава дебелина на линията</p>
-        <p>&diams;&emsp;align – задава подравняване на линията</p>
-        <p>&diams;&emsp;noshade – за изобразяване на линията плътно и без сянка</p>
+        <h3>Атрибути</h3>
+            <p>&diams;&emsp;text - задава цветa на текста в страницата</p>
+            <p>&diams;&emsp;link - задава цветa на връзките, които още не са посетени</p>
+            <p>&diams;&emsp;vlink - задава цветa на връзките, които са били посетени</p>
+            <p>&diams;&emsp;alink - задава цветa на активираните връзки</p>
+            <p>&diams;&emsp;align /center-left-right-justify(for &lt;p&gt;)/</p>
+            <p>&diams;&emsp;clear /left-right-all/</p>
+            <p>&diams;&emsp;face – задава вид на шрифта</p>
+            <p>&diams;&emsp;size – задава размер на шрифта</p>
+            <p>&diams;&emsp;color – задава цвят на шрифта</p>
+            <p>&diams;&emsp;width – задава ширина на линията в % или пиксели</p>
+            <p>&diams;&emsp;size – задава дебелина на линията</p>
+            <p>&diams;&emsp;align – задава подравняване на линията</p>
+            <p>&diams;&emsp;noshade – за изобразяване на линията плътно и без сянка</p>
     </div>
-
-<h3>Цветове</h3>
-<p>
-<img src="basic_colors.jpg" alt="This is an image" />
-<br>
-<br>
-<img src="colors.jpg" alt="This is an image" />
-</p>
 
     <h4>Източници</h4>
     <p>https://bg.wikipedia.org<br>
@@ -372,7 +359,7 @@ table {
             const countdown = () => {
                 // Specify the date and time we are counting down to.
 
-                const countDate = new Date("Feb 28, 2022 00:00:00").getTime();
+                const countDate = new Date("${targetDate}").getTime();
                 const now = new Date().getTime();
                 const remainingTime = countDate - now;
 

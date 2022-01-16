@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 @Controller
 @SessionAttributes("name")
 public class TodoController extends BaseController {
 
+    @Autowired
     TodoService service = new TodoService();
 
     @Autowired
@@ -33,7 +34,6 @@ public class TodoController extends BaseController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
-
 
     @RequestMapping(value="/list-educations",method = RequestMethod.GET)
     public ModelAndView showTodo(ModelMap model) {
@@ -90,6 +90,7 @@ public class TodoController extends BaseController {
     public ModelAndView designPattern(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
+        model.put("targetDate",service.getTargeteDate(name,"LEARN DESIGN PATTERN"));
         return this.view("design-patterns");
     }
 
@@ -97,6 +98,7 @@ public class TodoController extends BaseController {
     public ModelAndView html(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
+        model.put("targetDate",service.getTargeteDate(name,"LEARN HTML"));
         return this.view("html");
     }
 
@@ -104,6 +106,7 @@ public class TodoController extends BaseController {
     public ModelAndView css(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
+        model.put("targetDate",service.getTargeteDate(name,"Learn CSS"));
         return this.view("css");
     }
 
@@ -111,6 +114,7 @@ public class TodoController extends BaseController {
     public ModelAndView springmvc(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
+        model.put("targetDate",service.getTargeteDate(name,"LEARN SPRING MVC"));
         return this.view("spring-mvc");
     }
 
@@ -118,6 +122,8 @@ public class TodoController extends BaseController {
     public ModelAndView jquery(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",repository.findByUser(name));
+        model.put("targetDate",service.getTargeteDate(name,"Learn JQuery"));
+
         return this.view("jquery");
     }
 
@@ -188,6 +194,7 @@ public class TodoController extends BaseController {
 
         model.put("email",user.getEmail());
         model.put("age", user.getAge());
+        model.put("date", user.getDate());
         return this.view("user");
         }
     }

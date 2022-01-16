@@ -28,6 +28,8 @@ public class SpringBootController extends BaseController {
 
     Log newlog = new Log();
 
+    Date date = new Date(System.currentTimeMillis());
+
     @GetMapping("/learn")
     public ModelAndView showLoginPage(ModelMap model) {
         return this.view("login");
@@ -72,7 +74,7 @@ public class SpringBootController extends BaseController {
                     newUserDB.setPassword(DigestUtils.sha256Hex(password));
                     newUserDB.setEmail(email);
                     newUserDB.setAge(age);
-
+                    newUserDB.setDate(date);
 
                     service.sendSimpleEmail(email, "Успешна регистрация!",
                             "Здравейте!\n\n" +

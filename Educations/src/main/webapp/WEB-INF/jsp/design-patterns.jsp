@@ -4,10 +4,11 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
- <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+    <meta charset="UTF-8">
+    <title>Education</title>
+    <link href="books.ico" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
@@ -55,96 +56,107 @@ table {
 }
 /* ------------------- RESET FOR CSS ------------------- */
 
-body {
-    background-color: gray;
-
-}
-
-
-nav{
-    position: fixed;
-    margin-top: -70px;
-	background-color: black;
-  width:1905px;
-
-
-	}
-
-#user {
-    color: white;
-    float: right;
-}
-
-    li>a {
-        text-decoration: none;
-	    color: white;
-    }
-	li{
-        position: relative;
-	    text-transform: uppercase;
-	    font-size: 25px;
-	    display: inline-block;
-	    padding: 10px;
-	}
-
-    li:hover {
-        background-color: rgb(46, 46, 46);
-        color: orange;
+    body {
     }
 
-	li>a:hover {
-        text-decoration: none;
-	    color: orange;
-	}
-
-    li ul {
-        top:100%;
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        display: none;
+    nav{
+    	background-color: black;
+    	position: sticky;
+        top: 0;
     }
 
-    li:hover > ul {
+    nav{
+    	position: sticky;
+        top: 0;
+    }
+
+ 	div .row{
+ 	    text-transform: uppercase;
+ 	    color: white;
+ 	    font-size: 22px;
+ 	    padding: 2px;
+ 	}
+
+     ul {
+         top:100%;
+         position: absolute;
+         font-size: 20px;
+         display: none;
+     }
+
+     div:hover > ul {
+        text-align:left;
+        line-height: 15px;
         display: block;
-        background-color: rgb(46, 46, 46);
+        background-color: black;
+     }
+
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 85px;
+            text-align:center;
+            line-height: 20px;
+        }
+
+        #icons {
+            padding: 10px;
+            height: 45px;
+            width: 35px;
+            border-radius: 50%;
+            display: inline-block;
+            color: orange;
+        }
+    }
+
+    .col-lg-2:hover {
         color: orange;
     }
 
+/* ------------------- END NAVBAR ------------------- */
 
 #first {
-    background-color: darkgreen;
+    background-color: black;
     width: 400px;
     color: white;
     text-transform: uppercase;
     padding: 5px;
 }
 #second {
-    background-color: darkgreen;
-    width: 1050px;
+    background-color: black;
+    width: 1200px;
     color: white;
     text-transform: uppercase;
     padding-left: 300px;
 }
 
-h1 {
+    h1 {
+        font-family: Gabriola;
+        color: black;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 50px;
+        padding: 30px;
+        text-transform: uppercase;
+    }
 
-    font-family: Gabriola;
-    text-align: center;
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-top: 70px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    font-size: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-transform: uppercase;
-
-    background-color:rgb(93, 75, 99);
-    border-radius: 52%;
-    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-}
 h3 {
     font-size: 25px;
     font-family: Gabriola;
@@ -157,42 +169,39 @@ h4 {
     font-family: Gabriola;
     padding: 10px;
     font-weight: bold;
-    color: white;
-padding-left: 50px;
+    padding-left: 50px;
 }
 
 table {
     color: #333333;
     border-spacing: 0;
-    margin-left: 50px;
+    margin-left: 150px;
 }
 
-tr:nth-child(even) td {
-    background-color: #baca9a;
-}
+    tr:nth-child(even) td {
+        background-color: whitesmoke;
+    }
 
-tr:nth-child(odd) td {
-    background-color: #a19f86;
-}
+    tr:nth-child(odd) td {
+        background-color: gray;
+    }
 
 p {
-    color: white;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 150px;
+    padding-right: 150px;
 }
+
+
+/* ------------------- START FOOTER ------------------- */
 
     h5 {
         text-transform: uppercase;
         padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+        background-color: black;
     	font-size: 25px;
         margin-top: 50px;
-        margin-bottom: 50px;
         text-align: center;
         text-decoration: none;
-        color: yellow;
     }
 
     h5>a {
@@ -202,25 +211,40 @@ p {
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
+
+/* ------------------- END FOOTER ------------------- */
 
 </style>
 <body>
-    <nav role="navigation">
-            <ul>
-                <li><a href="/learn">Друг потребител</a></li>
-                 <li><a href="/list-educations">Обучения на ${name}</a>
-                     <ul>
-                         <c:forEach items="${todos}" var= "todo">
-                            <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                         </c:forEach>
-                     </ul>
-                 </li>
-                <li id="user"><a href="/user">${name}</a></li>
-            </ul>
+
+<nav role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                           <ul>
+                            <c:forEach items="${todos}" var= "todo">
+                               <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                            </c:forEach>
+                           </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4"><i id="icons" class="fas fa-clock"></i><br>
+                        <div class="container-day">
+                            <b class="day">Т</b> дни
+                            <b class="hour">Т</b>ч :
+                            <b class="minute">Т</b>м :
+                            <b class="second">Т</b>с
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4" align="center"><i id="icons" class="fas fa-calendar"></i><br><fmt:formatDate value="${targetDate}" pattern="dd/MM/yyyy"/></div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            </div>
         </div>
     </nav>
+
     <h1>Шаблони за дизайн</h1>
 
     <p>
@@ -369,8 +393,38 @@ p {
     <p>https://bg.wikipedia.org<br>
         Шаблони за дизайн, Design Patterns – Ерик Гама, Ричард Хелм, Ралф Джонсън, 2005, издателство СофтПрес. ISBN 954-685-352-6</p>
 
+
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <script>
+            const countdown = () => {
+                // Specify the date and time we are counting down to.
+
+                const countDate = new Date("${targetDate}").getTime();
+                const now = new Date().getTime();
+                const remainingTime = countDate - now;
+
+                const second = 1000;
+                const minute = second * 60;
+                const hour = minute * 60;
+                const day = hour * 24;
+
+                const textDay = Math.floor(remainingTime / day);
+                const textHour = Math.floor((remainingTime % day) / hour);
+                const textMinute = Math.floor((remainingTime % hour) / minute);
+                const textSecond = Math.floor((remainingTime % minute) / second);
+
+                document.querySelector(".day").innerText = textDay > 0 ? textDay : 0;
+                document.querySelector(".hour").innerText = textHour > 0 ? textHour : 0;
+                document.querySelector(".minute").innerText = textMinute > 0 ? textMinute : 0;
+                document.querySelector(".second").innerText = textSecond > 0 ? textSecond : 0;
+              };
+
+              // should use 500 as setInterval won't always run on time.
+              setInterval(countdown, 500);
+        </script>
 
 </body>
 <footer>

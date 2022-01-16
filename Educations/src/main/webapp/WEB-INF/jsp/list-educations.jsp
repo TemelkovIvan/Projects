@@ -58,7 +58,6 @@
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-
     }
 
     nav{
@@ -72,14 +71,9 @@
         top: 0;
     }
 
- 	div .row{
- 	    color: white;
- 	    text-transform: uppercase;
- 	    font-size: 20px;
- 	}
-
  	div{
  	    text-transform: uppercase;
+ 	    color: white;
  	    font-size: 22px;
  	    padding: 2px;
  	}
@@ -116,15 +110,15 @@
 
     @media (min-width:1200px){
         .col-lg-2 {
-            height: 80px;
+            height: 85px;
             text-align:center;
-            line-height: 10px;
+            line-height: 20px;
         }
 
         #icons {
             padding: 10px;
-            height: 55px;
-            width: 55px;
+            height: 45px;
+            width: 35px;
             border-radius: 50%;
             display: inline-block;
             color: orange;
@@ -135,6 +129,7 @@
         color: orange;
     }
 
+/* ------------------- END NAVBAR ------------------- */
 
     h1 {
         font-family: Gabriola;
@@ -146,22 +141,6 @@
         font-size: 50px;
         padding: 30px;
         text-transform: uppercase;
-    }
-
-    h3 {
-        font-size: 25px;
-        font-family: Gabriola;
-        padding: 10px;
-        font-weight: bold;
-        padding-left: 300px;
-    }
-
-    h4 {
-        font-family: Gabriola;
-        padding: 10px;
-        font-weight: bold;
-        color: white;
-        padding-left: 50px;
     }
 
     table {
@@ -178,12 +157,6 @@
         background-color: gray;
     }
 
-    p {
-        color: white;
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
     #add {
     color: gray;
     font-family: Gabriola;
@@ -197,15 +170,16 @@
         text-decoration: none;
     }
 
+/* ------------------- START FOOTER ------------------- */
+
     h5 {
         text-transform: uppercase;
         padding:10px;
         background-color: black;
     	font-size: 25px;
-        margin-top: 130px;
+        margin-top: 125px;
         text-align: center;
         text-decoration: none;
-
     }
 
     h5>a {
@@ -218,6 +192,7 @@
         color: orange;
     }
 
+/* ------------------- END FOOTER ------------------- */
 
 </style>
 
@@ -261,8 +236,8 @@
                             <tr>
                                 <td>${todo.desc}</td>
                                 <td><fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/></td>
-                                <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Update</a></td>
-                                <td><a type="button" class="btn btn-dark" href="/delete-education?id=${todo.id}">Delete</a></td>
+                                <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Промени</a></td>
+                                <td><a type="button" class="btn btn-dark" href="/delete-education?id=${todo.id}">Изтрий</a></td>
                             </tr>
                 </c:forEach>
             </tbody>

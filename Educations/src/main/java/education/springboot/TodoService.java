@@ -1,5 +1,6 @@
 package education.springboot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -9,6 +10,9 @@ import java.util.List;
 
 @Service
 public class TodoService {
+
+    @Autowired
+    TodoRepository repository;
 
     private static List<ToDo> todos = new ArrayList<ToDo>();
 
@@ -24,6 +28,18 @@ public class TodoService {
                 return todo;
             }
         }
+        return null;
+    }
+
+    public Date getTargeteDate(String name, String desc) {
+
+        List<ToDo> byUserTodos = repository.findByUser(name);
+        for (ToDo todo : byUserTodos ) {
+            if (todo.getDesc().equals(desc)) {
+                return todo.getTargetDate();
+            }
+        }
+
         return null;
     }
 }

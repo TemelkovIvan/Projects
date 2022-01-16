@@ -2,6 +2,8 @@ package education.springboot;
 
 import javax.persistence.*;
 
+import java.util.Date;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 
@@ -14,15 +16,19 @@ import static javax.persistence.GenerationType.SEQUENCE;
         private String password;
         private String email;
         private int age;
+        private Date date;
+
+
 
         public Users() {
         }
 
-        public Users(String username, String password, String email, int age) {
+        public Users(String username, String password, String email, int age, Date date) {
             this.username = username;
             this.password = password;
             this.email = email;
             this.age = age;
+            this.date = date;
         }
 
 
@@ -73,6 +79,15 @@ import static javax.persistence.GenerationType.SEQUENCE;
             this.age = age;
         }
 
+        @Column(name = "date")
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
         @Override
         public String toString() {
             return "Users{" +
@@ -81,6 +96,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
                     ", password='" + password + '\'' +
                     ", email='" + email + '\'' +
                     ", age=" + age +
+                    ", date=" + date +
                     '}';
         }
     }
