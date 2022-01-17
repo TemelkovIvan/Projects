@@ -70,7 +70,7 @@ table {
         top: 0;
     }
 
- 	div .row{
+ 	div{
  	    text-transform: uppercase;
  	    color: white;
  	    font-size: 22px;

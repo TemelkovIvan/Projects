@@ -52,7 +52,6 @@
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-        background-color: gray;
     }
 
     ul {
@@ -65,18 +64,15 @@
         font-size: 35px;
         margin: 50px;
         text-align: center;
-        color: white;
-    text-transform: uppercase;
+        text-transform: uppercase;
     }
 
     h3 {
         font-size: 30px;
         text-align: center;
-        color:orange;
     }
 
     p {
-        color: white;
         text-align: center;
     }
 
@@ -88,9 +84,6 @@
 
         padding:10px;
         padding-bottom: 50px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 10px 11px 35px -14px rgba(0,0,0,0.76);
         margin: 20px;
         margin-top: 50px;
     }
@@ -98,20 +91,13 @@
     p {
         font-size: 20px;
         padding:80px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 10px 11px 35px -14px rgba(0,0,0,0.76);
         margin: 20px;
         margin-top: 50px;
     }
 
-    p:hover {
-        background-color:rgb(99, 89, 75);
-    }
 
     p>a {
         text-decoration: none;
-        color: white;
         text-transform: uppercase;
         font-size: 40px;
     }
@@ -119,20 +105,18 @@
 
     p>a:hover {
         text-decoration: none;
-        color:greenyellow;
+        color:orange;
     }
 
     a {
         text-decoration: none;
-        color: white;
+        color: blue;
     }
 
     h5 {
         text-transform: uppercase;
         padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+        background-color:black;
     	font-size: 25px;
         margin-top: 120px;
         text-align: center;
@@ -147,7 +131,7 @@
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
 </style>
 </head>

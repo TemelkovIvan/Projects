@@ -54,77 +54,77 @@
         }
         /* ------------------- RESET FOR CSS ------------------- */
 
-        body {
+    body {
+    }
+
+    nav{
+    	background-color: black;
+    	position: sticky;
+        top: 0;
+    }
+
+    nav{
+    	position: sticky;
+        top: 0;
+    }
+
+ 	div{
+ 	    text-transform: uppercase;
+ 	    color: white;
+ 	    font-size: 22px;
+ 	    padding: 2px;
+ 	}
+
+     ul {
+         top:100%;
+         position: absolute;
+         font-size: 20px;
+         display: none;
+     }
+
+     div:hover > ul {
+        text-align:left;
+        line-height: 15px;
+        display: block;
+        background-color: black;
+     }
+
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 85px;
+            text-align:center;
+            line-height: 20px;
         }
 
-        nav{
-        	background-color: black;
-        	position: sticky;
-            top: 0;
-        }
-
-        nav{
-        	position: sticky;
-            top: 0;
-        }
-
-     	div .row{
-     	    text-transform: uppercase;
-     	    color: white;
-     	    font-size: 22px;
-     	    padding: 2px;
-     	}
-
-         ul {
-             top:100%;
-             position: absolute;
-             font-size: 20px;
-             display: none;
-         }
-
-         div:hover > ul {
-            text-align:left;
-            line-height: 15px;
-            display: block;
-            background-color: black;
-         }
-
-        div a {
-            text-decoration: none;
-     	    color: white;
-        }
-
-     	div a:hover {
-             text-decoration: none;
-     	     color: orange;
-     	}
-
-        @media (max-width:800px){
-            #icons {
-                display: none;
-            }
-        }
-
-        @media (min-width:1200px){
-            .col-lg-2 {
-                height: 85px;
-                text-align:center;
-                line-height: 20px;
-            }
-
-            #icons {
-                padding: 10px;
-                height: 45px;
-                width: 35px;
-                border-radius: 50%;
-                display: inline-block;
-                color: orange;
-            }
-        }
-
-        .col-lg-2:hover {
+        #icons {
+            padding: 10px;
+            height: 45px;
+            width: 35px;
+            border-radius: 50%;
+            display: inline-block;
             color: orange;
         }
+    }
+
+    .col-lg-2:hover {
+        color: orange;
+    }
 
     /* ------------------- END NAVBAR ------------------- */
 
@@ -170,7 +170,7 @@ color: orange;
         padding:10px;
         background-color: black;
     	font-size: 25px;
-        margin-top: 95px;
+        margin-top: 45px;
         text-align: center;
         text-decoration: none;
     }

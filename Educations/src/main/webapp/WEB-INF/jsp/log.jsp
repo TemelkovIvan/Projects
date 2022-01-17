@@ -194,31 +194,25 @@
 
 <body>
 
-    <nav role="navigation">
-            <div class="container-fluid">
-                <div class="row">
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
-                               <ul>
-                                <c:forEach items="${todos}" var= "todo">
-                                   <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                                </c:forEach>
-                               </ul>
-                        </div>
-                        <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
-                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
-                </div>
+<nav role="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                    </div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4"></div>
+                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
             </div>
-        </nav>
+        </div>
+    </nav>
     <div class="row">
         <div class="col-lg-6">
 
                 <h3>Профили</h3>
 
             <div id="users">
-
                 <c:forEach items="${users}" var="user">
                 <p>${user.username}</p>
                 </c:forEach>

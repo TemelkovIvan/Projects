@@ -191,7 +191,7 @@ p {
         border-radius: 52%;
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     	font-size: 25px;
-        margin-top: 110px;
+        margin-top: 90px;
         margin-bottom: 30px;
         text-align: center;
         text-decoration: none;

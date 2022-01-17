@@ -107,7 +107,6 @@
 
             <h3>Прoектът е изработен от <br> Иван Георгиев Темелков</h3>
 
-            <p>гр. София, ж.к. Дружба</p>
             <p>телефон: 0877766276</p>
             <p>e-mail: ivan_temelkow@abv.bg</p>
             <p><a href="https://github.com/TemelkovIvan">GitHub</a></p>
