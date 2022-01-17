@@ -70,7 +70,7 @@
             top: 0;
         }
 
-     	div{
+     	div .row{
      	    text-transform: uppercase;
      	    color: white;
      	    font-size: 22px;
@@ -144,7 +144,7 @@
 
 p {
     padding-left: 30%;
-    color: white;
+    padding-top: 20px;
     text-align: center;
     width: 70%;
 }
@@ -153,9 +153,6 @@ p {
         max-height: 200px;
     }
 
-    span {
-        padding: 20px;
-    }
 /* ------------------- START FOOTER ------------------- */
 
     h5 {
@@ -208,7 +205,6 @@ p {
                 <h1>Пишете ни</h1>
 
                 <form:form method="post">
-                <form method="post">
                     <p>
                       <label>Вашият email адрес</label>
                       <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email} readonly>
@@ -218,16 +214,15 @@ p {
                       <textarea class="form-control" name="textarea" id="exampleFormControlTextarea1" rows="4" minlength="10" maxlength="500"></textarea>
                       <font color="red">${errorMessage}</font>
                     </p>
-                    <span>
+
                     <p>
                         <input type="submit" class="btn btn-secondary" value="Изпрати"/>
                     </p>
-                    <span>
-                    </span>
+
                     <p>
                         <a type="button" class="btn btn-dark" href="/list-educations" >Отказ</a>
                     </p>
-                    </span>
+
                 </form:form>
             </div>
 

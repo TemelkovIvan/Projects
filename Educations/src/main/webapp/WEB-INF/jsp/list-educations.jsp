@@ -71,7 +71,7 @@
         top: 0;
     }
 
- 	div{
+ 	div .row{
  	    text-transform: uppercase;
  	    color: white;
  	    font-size: 22px;

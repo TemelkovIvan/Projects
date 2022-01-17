@@ -5,86 +5,130 @@
         <meta charset="UTF-8">
         <title>Education</title>
         <link href="books.ico" rel="shortcut icon" type="ico">
+        <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <style type="text/css">
-body {
-    background-color: gray;
-}
+    	html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        	margin: 0;
+        	padding: 0;
+        	border: 0;
+        	font-size: 100%;
+        	font: inherit;
+        	vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+        	display: block;
+        }
+        body {
+        	line-height: 1;
+        }
+        ol, ul {
+        	list-style: none;
+        }
+        blockquote, q {
+        	quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+        	content: '';
+        	content: none;
+        }
+        table {
+        	border-collapse: collapse;
+        	border-spacing: 0;
+        }
+        /* ------------------- RESET FOR CSS ------------------- */
 
-h1 {
-    margin: 80px;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-}
+    body {
 
-h2 {
-    text-align: center;
-    color:orange;
-}
+    }
 
-p {
-    color: white;
-    text-align: center;
-}
+    h1 {
+        font-family: Gabriola;
+        color: black;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 50px;
+        padding: 30px;
+        text-transform: uppercase;
+    }
 
+    h2 {
+        font-family: Gabriola;
+        color: black;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 35px;
+        padding: 30px;
+        text-transform: uppercase;
+    }
 
+    p {
+        padding-left: 30%;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        text-align: center;
+        width: 70%;
+    }
 
-#commentar {
-    color:green;
-    text-align: center;
+    #add {
+        color: gray;
+        font-family: Gabriola;
+        font-weight: bold;
+        font-size: 30px;
+        padding-left: 45%;
+    }
 
-}
-div {
+    #add:hover {
+        color: orange;
+        text-decoration: none;
+    }
 
-    padding:50px;
-    padding-bottom: 200px;
-    background-color:rgb(93, 75, 99);
-    border-radius: 52%;
-    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-    margin-top: 30px;
-}
+/* ------------------- START FOOTER ------------------- */
 
-#add {
-text-align: center;
-text-decoration: none;
-color: #A3A3A3;
-text-transform: uppercase;
+    h5 {
+        text-transform: uppercase;
+        padding:10px;
+        background-color: black;
+    	font-size: 25px;
+        margin-top: 270px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-margin-left:44%;
-}
-
-#add:hover {
-color: orange;
-}
-
-h5 {
-    text-transform: uppercase;
-    padding:10px;
-    background-color:rgb(93, 75, 99);
-    border-radius: 52%;
-    box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-	font-size: 25px;
-    margin-top: 170px;
-    text-align: center;
-    text-decoration: none;
-    color: yellow;
-}
-
-    a {
+    h5>a {
         text-decoration: none;
         color: gray;
     }
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
 
+/* ------------------- END FOOTER ------------------- */
     </style>
     <body>
-            <div>
-                <form method="post">
+        <div>
+            <form method="post">
 
                     <h1>Проект с набор от необходими знания</h1>
 
@@ -92,23 +136,26 @@ h5 {
                         Влезте с Вашият акаунт
                     </h2>
                 <p>
-                    Име <input type="text" name="name"/>
+                    <label>Потребителско име</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
                 </p>
                 <p>
-                    Парола <input type="password" name="password"/>
-                    <input type="submit" value="Вход"/>
+                    <label>Парола</label>
+                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1">
                     <br>
                     <font color="red">${errorMessage}</font>
                 </p>
-                <p id = "commentar">
-                    При проблем се свържете с Иван Темелков
+                <p>
+                <p>
+                    <input type="submit" class="btn btn-secondary" value="Вход"/>
+                </p>
+
                 </p>
 
                 <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
+            </form>
 
-                </form>
-
-            </div>
+        </div>
 
     </body>
     <footer>

@@ -4,11 +4,11 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
- <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Education</title>
+    <link href="books.ico" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <style type="text/css">
@@ -57,149 +57,125 @@
     }
     /* ------------------- RESET FOR CSS ------------------- */
 
-    body {
-    padding-top: 50px;
-        background-color: gray;
+        body {
+        }
 
-    }
+        nav{
+        	background-color: black;
+        	position: sticky;
+            top: 0;
+        }
+
+        nav{
+        	position: sticky;
+            top: 0;
+        }
+
+     	div .row{
+     	    text-transform: uppercase;
+     	    color: white;
+     	    font-size: 22px;
+     	    padding: 2px;
+     	}
+
+         ul {
+             top:100%;
+             position: absolute;
+             font-size: 20px;
+             display: none;
+         }
+
+         div:hover > ul {
+            text-align:left;
+            line-height: 15px;
+            display: block;
+            background-color: black;
+         }
+
+        div a {
+            text-decoration: none;
+     	    color: white;
+        }
+
+     	div a:hover {
+             text-decoration: none;
+     	     color: orange;
+     	}
+
+        @media (max-width:800px){
+            #icons {
+                display: none;
+            }
+        }
+
+        @media (min-width:1200px){
+            .col-lg-2 {
+                height: 85px;
+                text-align:center;
+                line-height: 20px;
+            }
+
+            #icons {
+                padding: 10px;
+                height: 45px;
+                width: 35px;
+                border-radius: 50%;
+                display: inline-block;
+                color: orange;
+            }
+        }
+
+        .col-lg-2:hover {
+            color: orange;
+        }
+
+    /* ------------------- END NAVBAR ------------------- */
 
 
-    nav{
-        position: fixed;
-        margin-top: -50px;
-    	background-color: black;
-      width:1920px;
-
-
-    	}
-
- #user {
-     color: white;
-     float: right;
- }
-
-     li>a {
-         text-decoration: none;
- 	    color: white;
-     }
- 	li{
-         position: relative;
- 	    text-transform: uppercase;
- 	    font-size: 25px;
- 	    display: inline-block;
- 	    padding: 5px;
- 	}
-
-     li:hover {
-         background-color: rgb(46, 46, 46);
-         color: orange;
-     }
-
- 	li>a:hover {
-         text-decoration: none;
- 	    color: orange;
- 	}
-
-     li ul {
-         top:100%;
-         position: absolute;
-         margin: 0;
-         padding: 0;
-         display: none;
-     }
-
-     li:hover > ul {
-         display: block;
-         background-color: rgb(46, 46, 46);
-         color: orange;
-     }
-
-
-    #first {
-        background-color: darkgreen;
-        width: 400px;
-        color: white;
-        text-transform: uppercase;
-        padding: 5px;
-    }
-    #second {
-        background-color: darkgreen;
-        width: 1050px;
-        color: white;
-        text-transform: uppercase;
-        padding-left: 300px;
-    }
-
-    h1 {
-        font-family: Gabriola;
-        text-align: center;
-        margin-top: 80px;
-        margin-bottom: 50px;
-        font-weight: bold;
-        font-size: 50px;
-        padding: 30px;;
-        text-transform: uppercase;
-
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-    }
     h3 {
-
         text-align: center;
         font-size: 35px;
         font-family: Gabriola;
         padding: 10px;
-        padding-top: 30px;
+        padding-top: 80px;
         font-weight: bold;
     }
 
-    h4 {
-        font-family: Gabriola;
+    #users {
+        margin-left: 30%;
+        text-align: center;
+        height:450px;
+        width:50%;
+        overflow:hidden;
+        overflow-y:scroll;}
+
+    #log {
+        margin-left: 20%;
+        text-align: center;
+        height:450px;
+        width:50%;
+        overflow:hidden;
+        overflow-y:scroll;}
+
+    .row {
+        margin: 0px;
+    }
+
+    form {
+        text-align: center;
         padding: 10px;
-        font-weight: bold;
-        color: white;
-    padding-left: 50px;
     }
 
-    table {
-        color: #333333;
-        border-spacing: 0;
-        margin-left: 50px;
-    }
-
-    tr:nth-child(even) td {
-        background-color: #baca9a;
-    }
-
-    tr:nth-child(odd) td {
-        background-color: #a19f86;
-    }
-
-    p {
-        color: white;
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-    #add {
-    color: orange;
-    font-family: Gabriola;
-    font-weight: bold;
-    padding-left: 550px;
-    font-size: 30px;
-    }
+/* ------------------- START FOOTER ------------------- */
 
     h5 {
         text-transform: uppercase;
         padding:10px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
+        background-color: black;
     	font-size: 25px;
-        margin-top: 50px;
+        margin-top: 125px;
         text-align: center;
         text-decoration: none;
-        color: yellow;
     }
 
     h5>a {
@@ -209,92 +185,65 @@
 
     h5>a:hover {
         text-decoration: none;
-        color: white;
+        color: orange;
     }
 
-    #users {
-            margin-left: 30%;
-            padding-left: 100px;
-            text-align: center;
-            height:100px;
-            width:30%;
-            overflow:hidden;
-            overflow-y:scroll;}
-
-    #log {
-        margin-left: 30%;
-        padding-left: 100px;
-        text-align: center;
-        height:450px;
-        width:30%;
-        overflow:hidden;
-        overflow-y:scroll;}
-
-        .link-button {
-            padding: 5px;
-            margin: 10px;
-             background: rgb(93, 75, 99);
-             border: none;
-             color: white;
-             cursor: pointer;
-        }
-
-        p>a:hover {
-        text-decoration: none;
-        color: white;
-        background: rgb(93, 75, 99);
-        }
-
-        form {
-        text-align: center;
-        }
+/* ------------------- END FOOTER ------------------- */
 
 </style>
 
 <body>
 
-<nav role="navigation">
-        <div>
-            <ul>
-                <li><a href="/learn">Друг потребител</a></li>
-                <li><a href="/list-educations">Обучения на ${name}</a>
+    <nav role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                               <ul>
+                                <c:forEach items="${todos}" var= "todo">
+                                   <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
+                                </c:forEach>
+                               </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-4"></div>
+                        <div class="col-lg-2 col-md-4"></div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                </div>
+            </div>
+        </nav>
+    <div class="row">
+        <div class="col-lg-6">
 
-                       <ul>
-                           <c:forEach items="${todos}" var= "todo">
-                           <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                           </c:forEach>
-                       </ul>
+                <h3>Профили</h3>
 
-                </li>
-                <li id="user"><a href="/user">${name}</a></li>
-            </ul>
-        </div>
-    </nav>
-        <h3>Users</h3>
             <div id="users">
+
                 <c:forEach items="${users}" var="user">
                 <p>${user.username}</p>
                 </c:forEach>
             </div>
+        </div>
+        <div class="col-lg-6">
 
-            <h3>Log</h3>
+                <h3>Вписвания</h3>
                 <form method="post">
                     <p>
                         Име <input type="text" name="userId" value=${userId}>
                     </p>
                     <p>
-                        <input type="submit" class="link-button" value="Избери"/>
-
-                        <a type="button" class="link-button" href="/log" >Всички</a>
+                        <input type="submit" class="btn btn-secondary" value="Избери"/>
+                        <a type="button" class="btn btn-dark" href="/log" >Всички</a>
                     </p>
                 </form>
+
             <div id="log">
-
-                            <c:forEach items="${log}" var= "log">
-                                <p>${log.username} --- ${log.date}</p>
-                            </c:forEach>
-
+                <c:forEach items="${log}" var= "log">
+                <p>${log.username} --- ${log.date}</p>
+                </c:forEach>
             </div>
+        </div>
+    </div>
 
     </body>
         <footer>

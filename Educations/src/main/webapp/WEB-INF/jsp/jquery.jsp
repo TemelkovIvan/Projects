@@ -60,7 +60,6 @@ table {
 /* ------------------- RESET FOR CSS ------------------- */
 
     body {
-        background-color: grey;
     }
 
     nav{
@@ -136,8 +135,8 @@ table {
 h1 {
     font-family: Gabriola;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     font-weight: bold;
     font-size: 50px;
     padding-top: 20px;
@@ -180,7 +179,7 @@ tr:nth-child(odd) td {
 }
 
 p {
-    color: white;
+    color: blue;
     padding-left: 100px;
     padding-right: 100px;
 }
@@ -192,7 +191,7 @@ p {
         border-radius: 52%;
         box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
     	font-size: 25px;
-        margin-top: 10px;
+        margin-top: 110px;
         margin-bottom: 30px;
         text-align: center;
         text-decoration: none;
@@ -225,7 +224,7 @@ p {
 
         .draggable {
             margin-left: 200px;
-            color: yellow;
+            color: black;
         }
 
         img {

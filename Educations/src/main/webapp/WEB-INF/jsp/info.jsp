@@ -6,8 +6,8 @@
         <title>Education</title>
         <link href="books.ico" rel="shortcut icon" type="ico">
     </head>
-    <style type="text/css">
-    html, body, div, span, applet, object, iframe,
+<style type="text/css">
+	html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
@@ -27,11 +27,52 @@
     	font: inherit;
     	vertical-align: baseline;
     }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+    	display: block;
+    }
     body {
-        background-color: gray;
+    	line-height: 1;
+    }
+    ol, ul {
+    	list-style: none;
+    }
+    blockquote, q {
+    	quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+    	content: '';
+    	content: none;
+    }
+    table {
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    }
+    /* ------------------- RESET FOR CSS ------------------- */
+
+    body {
+    }
+
+    div {
+        padding: 50px;
+    }
+
+    #add {
+        color: blue;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-left:44%;
+    }
+
+    #add:hover {
+        color: orange;
     }
 
     h3 {
+        padding-top: 50px;
         font-size: 45px;
         font-family: Gabriola;
         font-weight: bold;
@@ -51,29 +92,12 @@
 	}
 
     p {
-        color: white;
         font-size: 25px;
-        padding-left: 600px;
+        padding-left: 30%;
     }
 
-    div {
-        padding:50px;
-        background-color:rgb(93, 75, 99);
-        border-radius: 52%;
-        box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.76);
-        margin-top: 30px;
-    }
-
-    #add {
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        text-transform: uppercase;
-        margin-left:44%;
-    }
-
-    #add:hover {
-        color: orange;
+    ul {
+        padding-left: 33%;
     }
 
     </style>
@@ -94,6 +118,26 @@
             <p>Иван изучава светът на JAVA</p>
             <p>Това е първият му проект със Spring Boot</p>
             <p>Има огромно желание да работи като Разработчик</p>
+            <br>
+            <p>Проектът има следните функционалности:
+                <ul>
+                    <li>&diams;&emsp;Регистрация на нов потребител, като се изпраща на посочен e-mail поздрав с успешна регистрация</li>
+                    <li>&diams;&emsp;Не е възможно да се направи регистрация без да бъдат въведени потребител, парола, потвърждение на парола, e-mail, години</li>
+                    <li>&diams;&emsp;Не е възможно да се направи регистрация при въведени потребител и парола с празен символ</li>
+                    <li>&diams;&emsp;Паролите са кодирани чрез sha256Hex</li>
+                    <li>&diams;&emsp;За вход се изисква оторизация с Потребителско име и парола, които се проверяват в база данни</li>
+                    <li>&diams;&emsp;Менюто се променя според разделителната способност на екрана на потребителят</li>
+                    <li>&diams;&emsp;Възможност за изпращане на e-mail от регистриран потребител към <a href="/mail">noreply.sprboot@gmail.com</a></li>
+                    <li>&diams;&emsp;Всеки потребител има възможност да промени паролата си, годините си и e-mail</li>
+                    <li>&diams;&emsp;Всеки потребител има уникален списък с обучения</li>
+                    <li>&diams;&emsp;Всеки потребител има възможност да управлява списъкът си с обучения - да добавя, променя или изтрива</li>
+                    <li>&diams;&emsp;За добавяне или промяна на обучение има календар за улеснение избора на дата</li>
+                    <li>&diams;&emsp;Потребител с администраторски права има възможност да вижда списък с всички регистрирани потребители</li>
+                    <li>&diams;&emsp;Потребител с администраторски права има възможност да вижда списък с вписвания на конкретен потребител или всички потребители</li>
+                    <li>&diams;&emsp;За проектите, които има създадени страници - в менюто се визуализира краен срок и оставащо време до този срок</li>
+                    <li>&diams;&emsp;В проект JQuery визията е различна за да се покажат възможности на JQuery</li>
+                </ul>
+            </p>
         </div>
 
     </body>
