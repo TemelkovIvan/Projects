@@ -265,7 +265,6 @@ table {
         <br>
     </p>
 
-
     <p id="example">
         <br>&lt;html&gt;<br>
         ...<br>
