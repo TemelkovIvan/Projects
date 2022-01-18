@@ -64,11 +64,6 @@
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;

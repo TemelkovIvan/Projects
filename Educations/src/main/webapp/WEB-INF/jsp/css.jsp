@@ -67,11 +67,6 @@ table {
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;
@@ -102,6 +97,12 @@ table {
          text-decoration: none;
  	     color: orange;
  	}
+
+    @media (max-width:980px){
+        nav{
+            position: relative;
+        }
+    }
 
     @media (max-width:800px){
         #icons {
@@ -135,7 +136,7 @@ table {
 #first {
     text-align:center;
     background-color: black;
-    width: 100px;
+    width: 5%;
     color: white;
     text-transform: uppercase;
     padding: 5px;
@@ -159,7 +160,7 @@ table {
 #third3 {
     text-align:center;
     background-color: black;
-    width: 1100px;
+    width: 50%;
     color: white;
     text-transform: uppercase;
     padding: 5px;
@@ -167,7 +168,7 @@ table {
 #fourth {
     text-align:center;
     background-color: black;
-    width: 100px;
+    width: auto;
     color: white;
     text-transform: uppercase;
     padding: 5px;
@@ -203,7 +204,7 @@ h4 {
 table {
     color: #333333;
     border-spacing: 0;
-    margin-left: 200px;
+    margin: 30px;
 }
 
 
@@ -258,7 +259,7 @@ p {
                             </c:forEach>
                            </ul>
                     </div>
-                    <div class="col-lg-2 col-md-4"><i id="icons" class="fas fa-clock"></i><br>
+                    <div class="col-lg-2 col-md-4" align="center"><i id="icons" class="fas fa-clock"></i><br>
                         <div class="container-day">
                             <b class="day">Т</b> дни
                             <b class="hour">Т</b>ч :

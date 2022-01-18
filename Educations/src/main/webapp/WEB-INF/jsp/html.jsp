@@ -68,11 +68,6 @@ table {
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;
@@ -103,6 +98,12 @@ table {
          text-decoration: none;
  	     color: orange;
  	}
+
+    @media (max-width:980px){
+        nav{
+            position: relative;
+        }
+    }
 
     @media (max-width:800px){
         #icons {
@@ -230,7 +231,7 @@ table {
                             </c:forEach>
                            </ul>
                     </div>
-                    <div class="col-lg-2 col-md-4"><i id="icons" class="fas fa-clock"></i><br>
+                    <div class="col-lg-2 col-md-4" align="center"><i id="icons" class="fas fa-clock"></i><br>
                         <div class="container-day">
                             <b class="day">Т</b> дни
                             <b class="hour">Т</b>ч :
@@ -259,11 +260,11 @@ table {
         <p>Указва на браузъра, че това е HTML документ. Отбелязва началото и края на документа и съдържа всички други негови елементи (с изключение на <!DOCTYPE> елемента).
     </p>
 
-
     <p>
-        <img src="basic_colors.jpg" alt="This is an image" />
+        <img src="HTML5_logo.png" alt="This is an image" />
         <br>
     </p>
+
 
     <p id="example">
         <br>&lt;html&gt;<br>
@@ -330,7 +331,11 @@ table {
         <p>&lt;a&gt таг - Указва линк към друга страница. Най-важният атрибут на този таг е href. Той посочва URL адреса, към който сочи линка</p>
 
 
-    <div>
+    <p>
+        <img src="basic_colors.jpg" alt="This is an image" />
+        <br>
+    </p>
+
         <h3>Атрибути</h3>
             <p>&diams;&emsp;text - задава цветa на текста в страницата</p>
             <p>&diams;&emsp;link - задава цветa на връзките, които още не са посетени</p>
@@ -345,7 +350,6 @@ table {
             <p>&diams;&emsp;size – задава дебелина на линията</p>
             <p>&diams;&emsp;align – задава подравняване на линията</p>
             <p>&diams;&emsp;noshade – за изобразяване на линията плътно и без сянка</p>
-    </div>
 
     <h4>Източници</h4>
     <p>https://bg.wikipedia.org<br>

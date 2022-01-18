@@ -65,11 +65,6 @@ table {
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;
@@ -230,7 +225,7 @@ p {
                             </c:forEach>
                            </ul>
                     </div>
-                    <div class="col-lg-2 col-md-4"><i id="icons" class="fas fa-clock"></i><br>
+                    <div class="col-lg-2 col-md-4" align="center"><i id="icons" class="fas fa-clock"></i><br>
                         <div class="container-day">
                             <b class="day">Т</b> дни
                             <b class="hour">Т</b>ч :

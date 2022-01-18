@@ -63,11 +63,6 @@
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;
@@ -163,14 +158,23 @@ text-transform: uppercase;
 color: orange;
 
 }
+
+
 /* ------------------- START FOOTER ------------------- */
+
+    footer {
+          position: absolute;
+          bottom: 10px;
+          margin 0;
+          padding: 10px;
+          background-color: #000;
+          width: 100%;
+    }
 
     h5 {
         text-transform: uppercase;
-        padding:10px;
         background-color: black;
     	font-size: 25px;
-        margin-top: 45px;
         text-align: center;
         text-decoration: none;
     }

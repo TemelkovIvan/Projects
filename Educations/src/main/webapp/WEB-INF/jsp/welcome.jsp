@@ -113,15 +113,23 @@
         color: blue;
     }
 
+/* ------------------- START FOOTER ------------------- */
+
+    footer {
+          position: absolute;
+          bottom: 10px;
+          margin 0;
+          padding: 10px 0 10px 0;
+          background-color: #000;
+          width: 100%;
+    }
+
     h5 {
         text-transform: uppercase;
-        padding:10px;
-        background-color:black;
+        background-color: black;
     	font-size: 25px;
-        margin-top: 120px;
         text-align: center;
         text-decoration: none;
-        color: yellow;
     }
 
     h5>a {
@@ -133,15 +141,18 @@
         text-decoration: none;
         color: orange;
     }
+
+/* ------------------- END FOOTER ------------------- */
+
 </style>
 </head>
 
 <body>
     <div>
-    <h1>Здравейте, <a href="/user">${name}</a>!!!</h1>
+        <h1>Здравейте, <a href="/user">${name}</a>!!!</h1>
 
-    <h3>Добре дошли!</h3>
-</div>
+        <h3>Добре дошли!</h3>
+    </div>
         <p>
             <a href="/list-educations">&#62;&#62; Обучения &#60;&#60;</a>
         </p>

@@ -66,17 +66,44 @@
         top: 0;
     }
 
-    nav{
-    	position: sticky;
-        top: 0;
-    }
-
  	div{
  	    text-transform: uppercase;
  	    color: white;
  	    font-size: 22px;
  	    padding: 2px;
  	}
+
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:980px){
+        nav{
+            position: relative;
+        }
+
+        div{
+            font-size: 30px;
+        }
+        ul {
+            font-size: 30px;
+            display: block;
+        }
+    }
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:980px){
 
      ul {
          top:100%;
@@ -92,23 +119,6 @@
         background-color: black;
      }
 
-    div a {
-        text-decoration: none;
- 	    color: white;
-    }
-
- 	div a:hover {
-         text-decoration: none;
- 	     color: orange;
- 	}
-
-    @media (max-width:800px){
-        #icons {
-            display: none;
-        }
-    }
-
-    @media (min-width:1200px){
         .col-lg-2 {
             height: 85px;
             text-align:center;
@@ -172,12 +182,19 @@
 
 /* ------------------- START FOOTER ------------------- */
 
+    footer {
+          position: absolute;
+          bottom: 10px;
+          margin 0;
+          padding: 10px;
+          background-color: #000;
+          width: 100%;
+    }
+
     h5 {
         text-transform: uppercase;
-        padding:10px;
         background-color: black;
     	font-size: 25px;
-        margin-top: 125px;
         text-align: center;
         text-decoration: none;
     }
@@ -202,18 +219,18 @@
 <nav role="navigation">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
                            <ul>
                             <c:forEach items="${todos}" var= "todo">
                                <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
                             </c:forEach>
                            </ul>
                     </div>
-                    <div class="col-lg-2 col-md-4"></div>
-                    <div class="col-lg-2 col-md-4"></div>
-                    <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
-                    <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                    <div class="col-lg-2 col-xs-12" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
             </div>
         </div>
     </nav>
