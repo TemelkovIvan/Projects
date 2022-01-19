@@ -143,22 +143,24 @@
         width: 70%;
     }
 
+    label {
+        color: black;
+    }
+
     .form-control {
         max-height: 200px;
     }
 
-#add {
-text-align: center;
-text-decoration: none;
-color: #A3A3A3;
-text-transform: uppercase;
-}
+    #back {
+        text-align: center;
+        text-decoration: none;
+        color: #A3A3A3;
+        text-transform: uppercase;
+    }
 
-#add:hover {
-color: orange;
-
-}
-
+    #back:hover {
+        color: orange;
+    }
 
 /* ------------------- START FOOTER ------------------- */
 
@@ -251,7 +253,7 @@ color: orange;
                 </p>
 
                 <p>
-                <a id="add" href="/user">Отказ</a>
+                <a id="back" href="/user">Отказ</a>
                 </p>
 
                 </form>

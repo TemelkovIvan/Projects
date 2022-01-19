@@ -137,12 +137,16 @@
         text-transform: uppercase;
     }
 
-p {
-    padding-left: 30%;
-    padding-top: 20px;
-    text-align: center;
-    width: 70%;
-}
+    p {
+        padding-left: 30%;
+        padding-top: 20px;
+        text-align: center;
+        width: 70%;
+    }
+
+    label {
+        color: black;
+    }
 
     .form-control {
         max-height: 200px;
