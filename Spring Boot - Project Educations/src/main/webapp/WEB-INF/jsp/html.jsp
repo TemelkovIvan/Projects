@@ -218,7 +218,7 @@ table {
 /* ------------------- END FOOTER ------------------- */
 
 </style>
-<body>
+<body id="page-container">
 
 <nav role="navigation">
         <div class="container-fluid">
@@ -386,11 +386,12 @@ table {
               setInterval(countdown, 500);
         </script>
 
-
-</body>
     <footer>
         <h5>
             <a href="/information">Информация за нас</a>
         </h5>
     </footer>
+
+</body>
+
 </html>

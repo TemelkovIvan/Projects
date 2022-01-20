@@ -88,6 +88,11 @@
             position: relative;
         }
 
+        #page-container {
+            position: relative;
+            min-height: 100vh;
+        }
+
         div{
             font-size: 30px;
         }
@@ -213,8 +218,7 @@
 
 </style>
 
-<body>
-
+<body id="page-container">
 
 <nav role="navigation">
         <div class="container-fluid">
@@ -265,10 +269,11 @@
     </div>
     <a id="add" href="/add-education">Добавяне на курс</a>
 
-    </body>
         <footer>
             <h5>
                 <a href="/information">Информация за нас</a>
             </h5>
         </footer>
+    </body>
+
     </html>
