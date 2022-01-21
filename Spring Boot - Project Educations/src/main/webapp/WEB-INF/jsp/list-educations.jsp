@@ -177,6 +177,7 @@
     font-family: Gabriola;
     font-weight: bold;
     padding-left: 550px;
+    padding-bottom: 50px;
     font-size: 30px;
     }
 
@@ -258,7 +259,7 @@
                                 <td>${todo.desc}</td>
                                 <td><fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/></td>
                                 <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Промени</a></td>
-                                <td><a type="button" class="btn btn-dark" href="/delete-education?id=${todo.id}">Изтрий</a></td>
+                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete-education?id=${todo.id}">Изтрий</a></td>
                             </tr>
                 </c:forEach>
             </tbody>
@@ -268,7 +269,7 @@
 
     </div>
     <a id="add" href="/add-education">Добавяне на курс</a>
-
+    <br><br><br><br><br><br><br>
         <footer>
             <h5>
                 <a href="/information">Информация за нас</a>

@@ -102,6 +102,10 @@ table {
         nav{
             position: relative;
         }
+
+        div:hover > ul {
+            display: none;
+        }
     }
 
     @media (max-width:800px){
