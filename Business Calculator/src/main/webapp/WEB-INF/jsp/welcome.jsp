@@ -83,7 +83,6 @@
     div {
 
         padding:10px;
-        padding-bottom: 50px;
         margin: 20px;
         margin-top: 50px;
     }
@@ -92,7 +91,6 @@
         font-size: 20px;
         padding:80px;
         margin: 20px;
-        margin-top: 50px;
     }
 
 
@@ -156,8 +154,13 @@
         <p>
             <a href="/calculator">&#62;&#62; Нов Калкулатор &#60;&#60;</a>
         </p>
+
         <p>
-            <a href="/search">&#62;&#62; Търсене &#60;&#60;</a>
+            <a href="/calculator_with_existing_case">&#62;&#62; Калкулатор за случай 123 &#60;&#60;</a>
+        </p>
+
+        <p>
+            <a href="/pdf">&#62;&#62; Експорт Потребители в PDF &#60;&#60;</a>
         </p>
         <p>
         "Най-доброто образование в света е да гледаш майстора по време на работа"
@@ -166,7 +169,7 @@
 </body>
     <footer>
         <h5>
-            <a href="/information">Информация за нас</a>
+            <a th:href="/information">Информация за нас</a>
         </h5>
     </footer>
 </html>

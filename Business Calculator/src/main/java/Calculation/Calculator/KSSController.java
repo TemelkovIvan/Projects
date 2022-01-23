@@ -67,17 +67,42 @@ public class KSSController extends BaseController {
     }
 
     @RequestMapping(value="/calculator",method = RequestMethod.POST)
-    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam int contract, @RequestParam int qty_1) {
+    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract, @RequestParam int qty_1, @RequestParam int qty_2) {
 
         ArrayList<Integer> SMR = new ArrayList<>();
 
+        String name = (String) model.get("name");
+
+        newCase.setUserName(name);
         newCase.setNumberOfCase(numberOfCase);
+        newCase.setClient(client);
+        newCase.setAddress(address);
         newCase.setContract(contract);
         SMR.add(0,qty_1);
+        SMR.add(1,qty_2);
         casesRepository.save(newCase);
 
         return this.view("welcome");
     }
 
+    @RequestMapping(value="/calculator_with_existing_case",method = RequestMethod.GET)
+    public ModelAndView showCalculatorWithExictingCase(ModelMap model) {
+        String name = (String) model.get("name");
+
+        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+
+        Cases cases = this.casesRepository.findByNumberOfCase(123).orElse(null);
+
+        if (!(cases == null)) {
+            model.put("client", cases.getClient());
+            model.put("address", cases.getAddress());
+            model.put("numberOfCase", cases.getNumberOfCase());
+            model.put("contract", cases.getContract());
+
+            return this.view("/calculator_with_existing_case");
+        }
+
+        return this.view("welcome");
+    }
 
 }

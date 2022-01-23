@@ -6,6 +6,14 @@ import org.springframework.ui.ModelMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.Date;
+import java.util.List;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletResponse;
+import com.lowagie.text.DocumentException;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -13,6 +21,9 @@ import java.util.Objects;
 @Controller
 @SessionAttributes("name")
 public class UsersController extends BaseController {
+
+    @Autowired
+    private UsersServices service;
 
     @Autowired
     UsersRepository repository;
@@ -130,5 +141,22 @@ public class UsersController extends BaseController {
             model.put("email", email);
             return this.view("change");
         }
+    }
+
+    @GetMapping("/pdf")
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<Users> listUsers = service.listAll();
+
+        UserPDFExporter exporter = new UserPDFExporter(listUsers);
+        exporter.export(response);
+
     }
 }

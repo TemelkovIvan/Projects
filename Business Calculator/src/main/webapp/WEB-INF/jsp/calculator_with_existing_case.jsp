@@ -274,14 +274,16 @@ $(document).ready(function(){
 });
 </script>
 
-<form method="post">
+
 <p>
 
-<input name="client" type="text" placeholder="Клиент">
-<input name="address" type="text" placeholder="Адрес">
-<input name="numberOfCase" type="text" placeholder="№ Случай">
-<input name="contract" id="contract" type="text" placeholder="Договор" readonly>
+    <input name="client" type="text" value=${client} readonly>
+    <input name="address" type="text" value=${address} readonly>
+    <input name="numberOfCase" type="text" value=${numberOfCase} readonly>
+    <input name="contract" id="contract" type="text" value=${contract} readonly>
+
 </p>
+<form method="post">
 <p>
 <input id="myInput" type="text" placeholder="Търсене..">
 </p>
@@ -315,7 +317,7 @@ $(document).ready(function(){
                                 <td>${smr.price_contract_4}</td>
                                 <td>${smr.price_contract_5}</td>
                                 <td>${smr.type}</td>
-                                <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" step="1" min="0" max="100000"><span class="validity"></td>
+                                <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" step="1" min="0" max="100000" ><span class="validity"></td>
                                 <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
 
                             </tr>
@@ -329,14 +331,12 @@ $(document).ready(function(){
 
      <br/>
      <p>
-                         <input type="submit" class="btn btn-secondary" onclick="return confirm('Моля потвърдете');" value="Създай"/>
+                         <input type="submit" class="btn btn-secondary" onclick="return confirm('Моля потвърдете');" value="Промени"/>
                      </p>
 </form>
     </div>
 
-        <p>
-            <a href="/pdf">&#62;&#62; Експорт Потребители в PDF &#60;&#60;</a>
-        </p>
+
 
     </body>
 

@@ -157,8 +157,6 @@
                     <input type="submit" class="btn btn-secondary" value="Вход"/>
                 </p>
 
-                </p>
-
                 <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
             </form>
 

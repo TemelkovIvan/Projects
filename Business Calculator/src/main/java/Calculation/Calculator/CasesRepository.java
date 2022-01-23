@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface CasesRepository extends JpaRepository<Cases, Integer> {
         List<Cases> findAll();
+        Optional<Cases> findByNumberOfCase(Integer numberOfCase);
 }
 
