@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Education</title>
-        <link href="books.ico" rel="shortcut icon" type="ico">
+        <title>Business Calculator</title>
+        <link href="calc.png" rel="shortcut icon" type="ico">
         <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <style type="text/css">
@@ -61,7 +61,7 @@
         font-family: Gabriola;
         color: black;
         text-align: center;
-        margin-top: 25px;
+        margin-top: 75px;
         margin-bottom: 25px;
         font-weight: bold;
         font-size: 50px;
@@ -137,7 +137,7 @@
         <div>
             <form method="post">
 
-                    <h1>Калкулатор</h1>
+                    <h1>Бизнес Калкулатор</h1>
 
                     <h2>
                         Влезте с Вашият акаунт

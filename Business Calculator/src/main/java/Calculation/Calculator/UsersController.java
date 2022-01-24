@@ -143,6 +143,25 @@ public class UsersController extends BaseController {
         }
     }
 
+    @GetMapping("/info")
+    public ModelAndView info(ModelMap model) {
+        return this.view("info");
+    }
+
+    @GetMapping("/information")
+    public ModelAndView infoCreator(ModelMap model) {
+        String name = (String) model.get("name");
+
+        if (name == null) {
+
+            return this.redirect("/");
+
+        } else {
+
+            return this.view("information");
+        }
+    }
+
     @GetMapping("/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");

@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Education</title>
- <link href="books.ico" rel="shortcut icon" type="ico">
- <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+    <title>Business Calculator</title>
+    <link href="calc.png" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <style type="text/css">
@@ -333,10 +333,6 @@ $(document).ready(function(){
                      </p>
 </form>
     </div>
-
-        <p>
-            <a href="/pdf">&#62;&#62; Експорт Потребители в PDF &#60;&#60;</a>
-        </p>
 
     </body>
 

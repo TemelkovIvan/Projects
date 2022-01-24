@@ -2,8 +2,8 @@
 
 <html>
 <head>
-<title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
+    <title>Business Calculator</title>
+    <link href="calc.png" rel="shortcut icon" type="ico">
 </head>
 <style type="text/css">
     html, body, div, span, applet, object, iframe,
@@ -68,6 +68,7 @@
     }
 
     h3 {
+        width: 80&;
         font-size: 30px;
         text-align: center;
     }
@@ -89,7 +90,6 @@
 
     p {
         font-size: 20px;
-        padding:80px;
         margin: 20px;
     }
 
@@ -161,6 +161,11 @@
 
         <p>
             <a href="/pdf">&#62;&#62; Експорт Потребители в PDF &#60;&#60;</a>
+
+            <h3> Всички потребители
+            <a href="/pdf" style="float:right;"><img src="/excel.png" alt="excel" style="width:40px;"></a>
+            <a href="/pdf" style="float:right;"><img src="/pdf.png" alt="pdf" style="width:40px;"></a>
+            </h3>
         </p>
         <p>
         "Най-доброто образование в света е да гледаш майстора по време на работа"
@@ -169,7 +174,7 @@
 </body>
     <footer>
         <h5>
-            <a th:href="/information">Информация за нас</a>
+            <a href="/information">Информация за нас</a>
         </h5>
     </footer>
 </html>

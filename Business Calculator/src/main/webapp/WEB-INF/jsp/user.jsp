@@ -5,10 +5,10 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Education</title>
-<link href="books.ico" rel="shortcut icon" type="ico">
- <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
- <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+    <title>Business Calculator</title>
+    <link href="calc.png" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 <style type="text/css">
 html, body, div, span, applet, object, iframe,
@@ -192,33 +192,22 @@ table {
 
 </style>
 <body>
-            <nav role="navigation">
-                <div class="container-fluid">
-                    <div class="row">
-                            <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/learn';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                            <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
-                                   <ul>
-                                    <c:forEach items="${todos}" var= "todo">
-                                       <li><a href="${todo.linkEducation}">${todo.desc}</a></li>
-                                    </c:forEach>
-                                   </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-4"></div>
-                            <div class="col-lg-2 col-md-4"></div>
-                            <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/change';" style="cursor: pointer"><i id="icons" class="fas fa-key"></i><br>Смяна на парола</div>
-                            <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
-                    </div>
-                </div>
-            </nav>
+    <nav role="navigation">
+            <div class="row">
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12"></div>
+                    <div class="col-lg-2 col-xs-12" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            </div>
+    </nav>
 
     <h1>"${name}"</h1>
 
     <h2>"${email}"</h1>
 
 
-    <h3>"${age}" <sub>години</sub></h1>
-
-        <h3> <sub>Създаден на </sub><fmt:formatDate value="${date}" pattern="dd/MM/yyyy"/></h3>
 
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
