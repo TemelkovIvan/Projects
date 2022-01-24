@@ -67,7 +67,8 @@ public class KSSController extends BaseController {
     }
 
     @RequestMapping(value="/calculator",method = RequestMethod.POST)
-    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract, @RequestParam int qty_1, @RequestParam int qty_2) {
+    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract,
+                                    @RequestParam int qty_1, @RequestParam int qty_2, @RequestParam int qty_3, @RequestParam int qty_4) {
 
         ArrayList<Integer> SMR = new ArrayList<>();
 
@@ -78,8 +79,11 @@ public class KSSController extends BaseController {
         newCase.setClient(client);
         newCase.setAddress(address);
         newCase.setContract(contract);
-        SMR.add(0,qty_1);
-        SMR.add(1,qty_2);
+        SMR.add(qty_1);
+        SMR.add(qty_2);
+        SMR.add(qty_3);
+        SMR.add(qty_4);
+        newCase.setSMR(SMR);
         casesRepository.save(newCase);
 
         return this.view("welcome");
@@ -91,13 +95,18 @@ public class KSSController extends BaseController {
 
         model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
 
-        Cases cases = this.casesRepository.findByNumberOfCase(123).orElse(null);
+        Cases cases = this.casesRepository.findByNumberOfCase(1234).orElse(null);
 
         if (!(cases == null)) {
             model.put("client", cases.getClient());
             model.put("address", cases.getAddress());
             model.put("numberOfCase", cases.getNumberOfCase());
             model.put("contract", cases.getContract());
+
+
+            for (int i = 0; i < cases.getSMR().toArray().length; i++) {
+                model.put("qty_"+(i+1),cases.getSMR().get(i));
+            }
 
             return this.view("/calculator_with_existing_case");
         }

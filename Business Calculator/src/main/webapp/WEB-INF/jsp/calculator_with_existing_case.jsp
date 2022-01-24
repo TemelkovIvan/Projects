@@ -306,7 +306,7 @@ $(document).ready(function(){
             </thead>
             <tbody id="myTable">
 
-                <c:forEach items="${smr}" var= "smr">
+                <c:forEach items="${smr}" var= "smr" begin="0" varStatus="status">
                             <tr>
                                 <td>${smr.position}</td>
                                 <td>${smr.action}</td>
@@ -317,7 +317,7 @@ $(document).ready(function(){
                                 <td>${smr.price_contract_4}</td>
                                 <td>${smr.price_contract_5}</td>
                                 <td>${smr.type}</td>
-                                <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" step="1" min="0" max="100000" ><span class="validity"></td>
+                                <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${qty_1} step="1" min="0" max="100000" ><span class="validity"></td>
                                 <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
 
                             </tr>
