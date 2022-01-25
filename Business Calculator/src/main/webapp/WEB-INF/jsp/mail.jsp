@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
     <head>
@@ -127,7 +129,7 @@
         font-family: Gabriola;
         color: black;
         text-align: center;
-        margin-top: 25px;
+        margin-top: 55px;
         margin-bottom: 25px;
         font-weight: bold;
         font-size: 50px;
@@ -135,10 +137,9 @@
         text-transform: uppercase;
     }
 
-
     p {
         padding-left: 30%;
-        padding-top: 20px;
+        padding-top: 40px;
         text-align: center;
         width: 70%;
     }
@@ -149,17 +150,6 @@
 
     .form-control {
         max-height: 200px;
-    }
-
-    #back {
-        text-align: center;
-        text-decoration: none;
-        color: #A3A3A3;
-        text-transform: uppercase;
-    }
-
-    #back:hover {
-        color: orange;
     }
 
 /* ------------------- START FOOTER ------------------- */
@@ -193,65 +183,52 @@
 
 /* ------------------- END FOOTER ------------------- */
 
-</style>
+    </style>
+
     <body>
 
     <nav role="navigation">
             <div class="container-fluid">
                 <div class="row">
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                        <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4"></div>
-                        <div class="col-lg-2 col-md-4"></div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
                         <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
                 </div>
             </div>
         </nav>
 
-            <div>
-                <form method="post">
+           <div>
+                <h1>Пишете ни</h1>
 
-                    <h1>Промяна на данни за съществуващ акаунт</h1>
+                <form:form method="post">
+                    <p>
+                      <label>Вашият email адрес</label>
+                      <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email} readonly>
+                    </p>
+                    <p>
+                      <label>Съобщение</label>
+                      <textarea class="form-control" name="textarea" id="exampleFormControlTextarea1" rows="4" minlength="10" maxlength="500"></textarea>
+                      <font color="red">${errorMessage}</font>
+                    </p>
 
+                    <p>
+                        <input type="submit" class="btn btn-secondary" value="Изпрати"/>
+                    </p>
 
-                <p>
-                    <label>Име</label>
-                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value=${name} readonly>
-                </p>
+                    <p>
+                        <a type="button" class="btn btn-dark" href="/list-educations" >Отказ</a>
+                    </p>
 
-                <p>
-                    <label>Нова Парола</label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1"/>
-                </p>
-                <p>
-                    <label>Повторете Новата Парола</label>
-                    <input type="password" name="confirmPassword" class="form-control" id="exampleFormControlInput1"/>
-                    <br>
-                    <font color="red">${errorMessage}</font>
-                </p>
-                <p>
-                    <label>E-mail</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email}>
-                </p>
-                <p>
-                    <input type="submit" class="btn btn-secondary" value="Промени"/>
-                </p>
-
-                <p>
-                    <input type="reset" class="btn btn-dark" value="Изчисти">
-                </p>
-
-                <p>
-                <a id="back" href="/user">Отказ</a>
-                </p>
-
-                </form>
+                </form:form>
             </div>
+
     </body>
-        <footer>
-            <h5>
-                <a href="/information">Информация за нас</a>
-            </h5>
-        </footer>
+    <footer>
+        <h5>
+            <a href="/information">Информация за нас</a>
+        </h5>
+    </footer>
     </html>

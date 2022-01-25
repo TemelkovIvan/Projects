@@ -31,36 +31,8 @@ public class KSSController extends BaseController {
         return this.view("list-smr");
     }
 
-    /*
-    @RequestMapping(value="/add-smr",method = RequestMethod.GET)
-    public ModelAndView showAddTodoPage(ModelMap model) {
-        model.addAttribute("kss",new SMR(1,(String) model.get("name"),"","",1.0));
-        return this.view("add-smr");
-    }
-
-    @RequestMapping(value="/add-smr",method = RequestMethod.POST)
-    public ModelAndView addTodo(ModelMap model, @Valid SMR smr, BindingResult result) {
-        if(result.hasErrors()){
-            return this.view("add-smr");
-        }
-
-        kss.setUser((String) model.get("name"));
-        repository.save(kss);
-        service.addTodo((String) model.get("name"),todo.getDesc(),todo.getTargetDate(),"");
-
-
-        return this.redirect("/list-smr");
-    }
- */
-    @RequestMapping(value="/delete-smr",method = RequestMethod.GET)
-    public ModelAndView deleteTodo(@RequestParam int id) {
-        repository.deleteById(id);
-        return this.redirect("/list-smr");
-    }
-
     @RequestMapping(value="/calculator",method = RequestMethod.GET)
     public ModelAndView showCalculator(ModelMap model) {
-        String name = (String) model.get("name");
 
         model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
         return this.view("calculator");
@@ -89,29 +61,42 @@ public class KSSController extends BaseController {
         return this.view("welcome");
     }
 
-    @RequestMapping(value="/calculator_with_existing_case",method = RequestMethod.GET)
-    public ModelAndView showCalculatorWithExictingCase(ModelMap model) {
-        String name = (String) model.get("name");
 
-        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+    @RequestMapping(value="/search",method = RequestMethod.GET)
+    public ModelAndView showSearchCase(ModelMap model) {
 
-        Cases cases = this.casesRepository.findByNumberOfCase(1234).orElse(null);
+        model.put("cases", casesRepository.findAll());
 
-        if (!(cases == null)) {
-            model.put("client", cases.getClient());
-            model.put("address", cases.getAddress());
-            model.put("numberOfCase", cases.getNumberOfCase());
-            model.put("contract", cases.getContract());
+        return this.view("search");
+    }
 
+    @RequestMapping(value="/search",method = RequestMethod.POST)
+    public ModelAndView search(ModelMap model, @RequestParam(defaultValue="0") int number, @RequestParam String byName) {
 
-            for (int i = 0; i < cases.getSMR().toArray().length; i++) {
-                model.put("qty_"+(i+1),cases.getSMR().get(i));
+        if (number > 0) {
+
+            Cases byCase = this.casesRepository.findByNumberOfCase(number).orElse(null);
+
+            if (!(byCase == null)) {
+
+                model.put("smr", repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+                model.put("client", byCase.getClient());
+                model.put("address", byCase.getAddress());
+                model.put("numberOfCase", byCase.getNumberOfCase());
+                model.put("contract", byCase.getContract());
+                model.put("cases", byCase.getSMR());
+
+                return this.view("calculator_with_existing_case");
             }
-
-            return this.view("/calculator_with_existing_case");
         }
 
-        return this.view("welcome");
+        if(!(byName == null)) {
+
+            model.put("cases", casesRepository.findByUserName(byName));
+            return this.view("search");
+        }
+        model.put("errorMessage", "Не се намират подадените данни");
+        return this.view("search");
     }
 
 }

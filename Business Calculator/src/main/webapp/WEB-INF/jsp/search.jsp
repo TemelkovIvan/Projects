@@ -55,6 +55,7 @@
     	border-collapse: collapse;
     	border-spacing: 0;
     }
+
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
@@ -66,12 +67,45 @@
         top: 0;
     }
 
- 	div .row{
+ 	div{
  	    text-transform: uppercase;
  	    color: white;
  	    font-size: 22px;
  	    padding: 2px;
  	}
+
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:980px){
+        nav{
+            position: relative;
+        }
+
+
+        div{
+            font-size: 30px;
+        }
+        ul {
+            font-size: 30px;
+            display: block;
+        }
+    }
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:980px){
 
      ul {
          top:100%;
@@ -87,23 +121,6 @@
         background-color: black;
      }
 
-    div a {
-        text-decoration: none;
- 	    color: white;
-    }
-
- 	div a:hover {
-         text-decoration: none;
- 	     color: orange;
- 	}
-
-    @media (max-width:800px){
-        #icons {
-            display: none;
-        }
-    }
-
-    @media (min-width:1200px){
         .col-lg-2 {
             height: 85px;
             text-align:center;
@@ -229,45 +246,60 @@
             </div>
         </nav>
 
-    <h1>"${name}"</h1>
+    <h1>Търсене на случай</h1>
+        <form method="post">
+            <div>
+                <p>
+                    <input type="text" name="number" placeholder="Отваряне на случай">
+                </p>
+                 <p>
+                    <input type="text" name="byName" placeholder="Търсене по Потребител">
+                    <br>
+                    <font color="red">${errorMessage}</font>
+                </p>
+                <p>
+                    <input type="submit" class="btn btn-secondary" value="OK"/>
+                </p>
+            </div>
+        </form>
 
-        <div>
+                <p>
+                    <input id="myInput" type="text" placeholder="Търсене в резултати..">
+                </p>
 
-            <h3>Прoектът е изработен от Иван Георгиев Темелков</h3>
+                <table class="table">
 
-            <p>телефон: 0877766276</p>
-            <p>e-mail: ivan_temelkow@abv.bg</p>
-            <p><a href="https://github.com/TemelkovIvan">GitHub</a></p>
-            <p><a href="http://linkedin.com/in/ivan-temelkov-101988110">Linkedin</a></p>
-            <br>
-            <br>
-            <br>
-            <p>Иван изучава светът на JAVA</p>
-            <p>Това е вторият му проект със Spring Boot</p>
-            <p>Има огромно желание да работи като Разработчик</p>
-            <br>
-            <p>Проектът има следните функционалности:
-                <ol>
-                    <li>&diams;&emsp;Регистрация на нов потребител, като се изпраща на посочен e-mail поздрав с успешна регистрация</li>
-                    <li>&diams;&emsp;Не е възможно да се направи регистрация без да бъдат въведени потребител, парола, потвърждение на парола, e-mail, години</li>
-                    <li>&diams;&emsp;Не е възможно да се направи регистрация при въведени потребител и парола с празен символ</li>
-                    <li>&diams;&emsp;Паролите са кодирани чрез sha256Hex</li>
-                    <li>&diams;&emsp;За вход се изисква оторизация с Потребителско име и парола, които се проверяват в база данни</li>
-                    <li>&diams;&emsp;Менюто се променя според разделителната способност на екрана на потребителят</li>
-                    <li>&diams;&emsp;Възможност за изпращане на e-mail от регистриран потребител към <a id="link" href="/mail">noreply.sprboot@gmail.com</a></li>
-                    <li>&diams;&emsp;Всеки потребител има възможност да промени паролата си, годините си и e-mail</li>
-                    <li>&diams;&emsp;Всеки потребител има уникален списък с обучения</li>
-                    <li>&diams;&emsp;Всеки потребител има възможност да управлява списъкът си с обучения - да добавя, променя или изтрива</li>
-                    <li>&diams;&emsp;За добавяне или промяна на обучение има календар за улеснение избора на дата</li>
-                    <li>&diams;&emsp;Потребител с администраторски права има възможност да вижда списък с всички регистрирани потребители</li>
-                    <li>&diams;&emsp;Потребител с администраторски права има възможност да вижда списък с вписвания на конкретен потребител или всички потребители</li>
-                    <li>&diams;&emsp;За проектите, които има създадени страници - в менюто се визуализира краен срок и оставащо време до този срок</li>
-                    <li>&diams;&emsp;В проект JQuery визията е различна за да се покажат възможности на JQuery</li>
-                </ol>
-            </p>
-        </div>
+                    <thead>
+                        <tr>
+                            <th>Потребител</th>
+                            <th>Случаи</th>
+                            </tr>
+                        </thead>
+                    <tbody id="myTable">
+                        <c:forEach items="${cases}" var="cases">
+                        <tr>
+                            <td>${cases.userName}</td>
+                            <td>${cases.numberOfCase}</td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+
+
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
 
 </body>
         <footer>

@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CasesRepository extends JpaRepository<Cases, Integer> {
+public interface CasesRepository extends JpaRepository<Cases, String> {
         List<Cases> findAll();
         Optional<Cases> findByNumberOfCase(Integer numberOfCase);
+        List<Cases> findByUserName(String userName);
 }
 

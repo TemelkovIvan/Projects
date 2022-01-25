@@ -1,9 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
     <title>Business Calculator</title>
     <link href="calc.png" rel="shortcut icon" type="ico">
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 <style type="text/css">
     html, body, div, span, applet, object, iframe,
@@ -52,64 +55,97 @@
     /* ------------------- RESET FOR CSS ------------------- */
 
     body {
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
     }
 
-    ul {
-        padding-top: 180px;
-        color: burlywood;
-        list-style: none;
+    nav{
+    	background-color: black;
+    	position: sticky;
+        top: 0;
     }
+
+ 	div .row{
+ 	    text-transform: uppercase;
+ 	    color: white;
+ 	    font-size: 22px;
+ 	    padding: 2px;
+ 	}
+
+    div .row a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
+        .col-lg-2 {
+            height: 85px;
+            text-align:center;
+            line-height: 20px;
+        }
+
+        #icons {
+            padding: 10px;
+            height: 45px;
+            width: 35px;
+            border-radius: 50%;
+            display: inline-block;
+            color: orange;
+        }
+    }
+
+    .col-lg-2:hover {
+        color: orange;
+    }
+
+/* ------------------- END NAVBAR ------------------- */
+
 
     h1 {
-        font-size: 35px;
-        margin: 50px;
+        font-family: Gabriola;
+        color: black;
         text-align: center;
+        margin-top: 25px 0 25px 0;
+        font-weight: bold;
+        font-size: 50px;
+        padding: 60px;
         text-transform: uppercase;
     }
 
-    h3 {
-        width: 80&;
-        font-size: 30px;
-        text-align: center;
-    }
+        h2 {
+            font-family: Gabriola;
+            color: blue;
+            text-align: center;
+            margin-top: 25px 0 25px 0;
+            font-weight: bold;
+            font-size: 30px;
+            padding: 40px;
+            text-transform: uppercase;
+        }
 
-    p {
-        text-align: center;
-    }
-
-    #commentar {
-        color:green;
-        text-align: center;
-    }
-    div {
-
-        padding:10px;
-        margin: 20px;
-        margin-top: 50px;
-    }
-
-    p {
-        font-size: 20px;
-        margin: 20px;
-    }
-
-
-    p>a {
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 40px;
-    }
-
-
-    p>a:hover {
-        text-decoration: none;
-        color:orange;
-    }
-
-    a {
-        text-decoration: none;
-        color: blue;
-    }
+        h3 {
+            font-family: Gabriola;
+            color: gray;
+            text-align: center;
+            margin-top: 0 0 25px 0;
+            font-weight: bold;
+            font-size: 30px;
+            padding: 20px;
+            text-transform: uppercase;
+        }
 
 /* ------------------- START FOOTER ------------------- */
 
@@ -117,14 +153,12 @@
           position: absolute;
           bottom: 10px;
           margin 0;
-          padding: 10px 0 10px 0;
-          background-color: #000;
+          padding: 10px;
           width: 100%;
     }
 
     h5 {
         text-transform: uppercase;
-        background-color: black;
     	font-size: 25px;
         text-align: center;
         text-decoration: none;
@@ -146,35 +180,38 @@
 </head>
 
 <body>
+    <nav role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                </div>
+            </div>
+        </nav>
+
+
     <div>
         <h1>Здравейте, <a href="/user">${name}</a>!!!</h1>
 
         <h3>Добре дошли!</h3>
+
+        <h3>Създайте Вашият бизнес калуклатор!</h3>
+
+        <h3>Изчислете колко ще струва спрямо различни договори!</h3>
     </div>
-        <p>
-            <a href="/calculator">&#62;&#62; Нов Калкулатор &#60;&#60;</a>
-        </p>
 
-        <p>
-            <a href="/calculator_with_existing_case">&#62;&#62; Калкулатор за случай 123 &#60;&#60;</a>
-        </p>
-
-        <p>
-            <a href="/pdf">&#62;&#62; Експорт Потребители в PDF &#60;&#60;</a>
-
-            <h3> Всички потребители
-            <a href="/pdf" style="float:right;"><img src="/excel.png" alt="excel" style="width:40px;"></a>
-            <a href="/pdf" style="float:right;"><img src="/pdf.png" alt="pdf" style="width:40px;"></a>
-            </h3>
-        </p>
-        <p>
-        "Най-доброто образование в света е да гледаш майстора по време на работа"
-        </p>
 
 </body>
     <footer>
         <h5>
-            <a href="/information">Информация за нас</a>
+            <a href="/information">Информация за нас
+                        <a href="/pdf" style="float:right;"><img src="/excel.png" alt="excel" style="width:20px;"></a>
+                        <a href="/pdf" style="float:right;"><img src="/pdf.png" alt="pdf" style="width:20px;"></a>
+                        </a>
         </h5>
     </footer>
 </html>

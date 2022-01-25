@@ -23,6 +23,9 @@ import java.util.Objects;
 public class UsersController extends BaseController {
 
     @Autowired
+    private EmailSenderService serviceEmail;
+
+    @Autowired
     private UsersServices service;
 
     @Autowired
@@ -96,6 +99,28 @@ public class UsersController extends BaseController {
         return this.view("new-user");
     }
 
+    @GetMapping("/welcome")
+    public ModelAndView welcome(ModelMap model) {
+        return this.view("welcome");
+    }
+
+    @GetMapping("/user")
+    public ModelAndView user(ModelMap model) {
+        String name = (String) model.get("name");
+
+        Users user = this.repository.findByUsername(name).orElse(null);
+
+        if (user == null) {
+
+            return this.redirect("/");
+
+        } else {
+
+            model.put("email",user.getEmail());
+            return this.view("user");
+        }
+    }
+
     @GetMapping("/change")
     public ModelAndView change(ModelMap model) {
         String name = (String) model.get("name");
@@ -160,6 +185,41 @@ public class UsersController extends BaseController {
 
             return this.view("information");
         }
+    }
+
+
+    @GetMapping("/mail")
+    public ModelAndView mail(ModelMap model) {
+        String name = (String) model.get("name");
+
+        Users user = this.repository.findByUsername(name).orElse(null);
+
+        if (user == null) {
+
+            return this.redirect("/");
+
+        } else {
+
+            model.put("email", user.getEmail());
+
+            return this.view("mail");
+        }
+    }
+
+    @RequestMapping(value = "/mail", method = RequestMethod.POST)
+    public ModelAndView mail(ModelMap model, @RequestParam String email, @RequestParam String textarea) {
+
+        if (!textarea.equals("")) {
+            serviceEmail.sendSimpleEmail("noreply.sprboot@gmail.com", "Изпратено съобщение от "+ email,
+                    "Съобщението е: "+ textarea + "\nEmail: " + email);
+
+            return this.redirect("/calculator");
+        }
+
+        model.put("email", email);
+        model.put("errorMessage", "Моля въведете текст!");
+
+        return this.view("mail");
     }
 
     @GetMapping("/pdf")

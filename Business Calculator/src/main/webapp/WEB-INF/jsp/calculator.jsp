@@ -56,7 +56,7 @@
     	border-collapse: collapse;
     	border-spacing: 0;
     }
-    /* ------------------- RESET FOR CSS ------------------- */
+        /* ------------------- RESET FOR CSS ------------------- */
 
     body {
     }
@@ -74,39 +74,6 @@
  	    padding: 2px;
  	}
 
-    div a {
-        text-decoration: none;
- 	    color: white;
-    }
-
- 	div a:hover {
-         text-decoration: none;
- 	     color: orange;
- 	}
-
-    @media (max-width:980px){
-        nav{
-            position: relative;
-        }
-
-
-        div{
-            font-size: 30px;
-        }
-        ul {
-            font-size: 30px;
-            display: block;
-        }
-    }
-
-    @media (max-width:800px){
-        #icons {
-            display: none;
-        }
-    }
-
-    @media (min-width:980px){
-
      ul {
          top:100%;
          position: absolute;
@@ -121,6 +88,23 @@
         background-color: black;
      }
 
+    div a {
+        text-decoration: none;
+ 	    color: white;
+    }
+
+ 	div a:hover {
+         text-decoration: none;
+ 	     color: orange;
+ 	}
+
+    @media (max-width:800px){
+        #icons {
+            display: none;
+        }
+    }
+
+    @media (min-width:1200px){
         .col-lg-2 {
             height: 85px;
             text-align:center;
@@ -141,7 +125,7 @@
         color: orange;
     }
 
-/* ------------------- END NAVBAR ------------------- */
+    /* ------------------- END NAVBAR ------------------- */
 
     h1 {
         font-family: Gabriola;
@@ -242,16 +226,18 @@
 
 <body>
 
-<nav role="navigation">
-            <div class="row">
-                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+    <nav role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                </div>
             </div>
-    </nav>
+        </nav>
 
      <h1>Бизнес Калкулатор</h1>
         <div id="div">

@@ -65,26 +65,12 @@ table {
         top: 0;
     }
 
- 	div{
+ 	div {
  	    text-transform: uppercase;
  	    color: white;
  	    font-size: 22px;
  	    padding: 2px;
  	}
-
-     ul {
-         top:100%;
-         position: absolute;
-         font-size: 20px;
-         display: none;
-     }
-
-     div:hover > ul {
-        text-align:left;
-        line-height: 15px;
-        display: block;
-        background-color: black;
-     }
 
     div a {
         text-decoration: none;
@@ -123,7 +109,7 @@ table {
         color: orange;
     }
 
-/* ------------------- NAVBAR ------------------- */
+/* ------------------- END NAVBAR ------------------- */
 
     h1 {
         font-family: Gabriola;
@@ -192,16 +178,19 @@ table {
 
 </style>
 <body>
+
     <nav role="navigation">
-            <div class="row">
-                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/change';" style="cursor: pointer"><i id="icons" class="fas fa-key"></i><br>Смяна на парола</div>
+                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                </div>
             </div>
-    </nav>
+        </nav>
 
     <h1>"${name}"</h1>
 

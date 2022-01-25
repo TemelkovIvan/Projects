@@ -242,47 +242,39 @@
 
 <body>
 
-<nav role="navigation">
-            <div class="row">
-                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12"></div>
-                    <div class="col-lg-2 col-xs-12" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+    <nav role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                        <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
+                </div>
             </div>
-    </nav>
+        </nav>
 
      <h1>Бизнес Калкулатор</h1>
         <div id="div">
-<p class="buttons">
-<button class="btn btn-secondary" type="button" onclick="myFunction(1)">Договор A</button>
-<button class="btn btn-dark" type="button" onclick="myFunction(2)">Договор B</button>
-<button class="btn btn-secondary" type="button" onclick="myFunction(3)">Договор C</button>
-<button class="btn btn-dark" type="button" onclick="myFunction(4)">Договор D</button>
-<button class="btn btn-secondary" type="button" onclick="myFunction(5)">Договор E</button>
-</p>
+            <p class="buttons">
+                <button class="btn btn-secondary" type="button" onclick="myFunction(1)">Договор A</button>
+                <button class="btn btn-dark" type="button" onclick="myFunction(2)">Договор B</button>
+                <button class="btn btn-secondary" type="button" onclick="myFunction(3)">Договор C</button>
+                <button class="btn btn-dark" type="button" onclick="myFunction(4)">Договор D</button>
+                <button class="btn btn-secondary" type="button" onclick="myFunction(5)">Договор E</button>
+            </p>
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+            <p>
+
+                <input name="client" type="text" value=${client} readonly>
+                <input name="address" type="text" value=${address} readonly>
+                <input name="numberOfCase" type="text" value=${numberOfCase} readonly>
+                <input name="contract" id="contract" type="text" value=${contract} readonly>
+
+            </p>
 
 
-<p>
-
-    <input name="client" type="text" value=${client} readonly>
-    <input name="address" type="text" value=${address} readonly>
-    <input name="numberOfCase" type="text" value=${numberOfCase} readonly>
-    <input name="contract" id="contract" type="text" value=${contract} readonly>
-
-</p>
 <form method="post">
 <p>
 <input id="myInput" type="text" placeholder="Търсене..">
@@ -306,9 +298,10 @@ $(document).ready(function(){
             </thead>
             <tbody id="myTable">
 
-                <c:forEach items="${smr}" var= "smr" begin="0" varStatus="status">
+                <c:forEach items="${smr}" var="smr" varStatus="status">
+
                             <tr>
-                                <td>${smr.position}</td>
+                                <td>${status.count}</td>
                                 <td>${smr.action}</td>
                                 <td>${smr.descr}</td>
                                 <td>${smr.price_contract_1}</td>
@@ -317,22 +310,27 @@ $(document).ready(function(){
                                 <td>${smr.price_contract_4}</td>
                                 <td>${smr.price_contract_5}</td>
                                 <td>${smr.type}</td>
-                                <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${qty_1} step="1" min="0" max="100000" ><span class="validity"></td>
+
+                                <c:forEach items="${cases}" var="cases" begin="${status.count-1}" end="${status.count-1}">
+                                    <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} step="1" min="0" max="100000" ><span class="validity"></td>
+                                </c:forEach>
+
                                 <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
 
                             </tr>
+
                 </c:forEach>
             </tbody>
         </table>
 
-            <h1>
-            Обща сума : <input type="text" name="total" id="total" readonly/>лв.
-            </h1>
+                    <h1>
+                        Обща сума : <input type="text" name="total" id="total" readonly/>лв.
+                    </h1>
 
-     <br/>
-     <p>
-                         <input type="submit" class="btn btn-secondary" onclick="return confirm('Моля потвърдете');" value="Промени"/>
-                     </p>
+                    <br/>
+                    <p>
+                        <input type="submit" class="btn btn-secondary" onclick="return confirm('Моля потвърдете');" value="Промени"/>
+                    </p>
 </form>
     </div>
 
@@ -341,6 +339,7 @@ $(document).ready(function(){
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <script type="text/javascript">
 
             var price1;
@@ -396,6 +395,17 @@ $(document).ready(function(){
         result.value = sum.toFixed(2);
         }
 
+        </script>
+
+        <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
         </script>
 
     </html>

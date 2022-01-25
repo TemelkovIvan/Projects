@@ -159,17 +159,26 @@
     }
 
     table {
+        font-size: 12px;
         border-spacing: 0;
-        margin-left: auto;
         border: 2px solid black;
+    }
+
+    th {
+        font-size: 15px;
+        font-weight: bold;
+        width: 1%;
+        text-align: center;
     }
 
     tr:nth-child(even) td {
         background-color: whitesmoke;
+        text-align: center;
     }
 
     tr:nth-child(odd) td {
         background-color: gray;
+        text-align: center;
     }
 
     #add {
@@ -244,7 +253,11 @@
                     <th>Позиция</th>
                     <th>Дейност</th>
                     <th>Описание</th>
-                    <th>Цена</th>
+                    <th>Цена Договор A</th>
+                    <th>Цена Договор B</th>
+                    <th>Цена Договор C</th>
+                    <th>Цена Договор D</th>
+                    <th>Цена Договор E</th>
                     <th>Промяна</th>
                     <th>Изтриване</th>
                 </tr>
@@ -256,9 +269,13 @@
                                 <td>${smr.position}</td>
                                 <td>${smr.action}</td>
                                 <td>${smr.descr}</td>
-                                <td>${smr.price}</td>
-                                <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Промени</a></td>
-                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete-education?id=${todo.id}">Изтрий</a></td>
+                                <td>${smr.price_contract_1}</td>
+                                <td>${smr.price_contract_2}</td>
+                                <td>${smr.price_contract_3}</td>
+                                <td>${smr.price_contract_4}</td>
+                                <td>${smr.price_contract_5}</td>
+                                <td><a type="button" class="btn btn-secondary" href="/update">Промени</a></td>
+                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete">Изтрий</a></td>
                             </tr>
                 </c:forEach>
             </tbody>
@@ -267,7 +284,7 @@
      <br/>
 
     </div>
-    <a id="add" href="/add-education">Добавяне на СМР и Материали</a>
+    <a id="add" href="/add">Добавяне на СМР</a>
     <br><br><br><br><br><br><br>
         <footer>
             <h5>
