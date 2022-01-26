@@ -257,15 +257,23 @@
 
      <h1>Бизнес Калкулатор</h1>
         <div id="div">
-
+            <p class="buttons">
+                <button class="btn btn-secondary" type="button" onclick="myFunction(1)">Договор A</button>
+                <button class="btn btn-dark" type="button" onclick="myFunction(2)">Договор B</button>
+                <button class="btn btn-secondary" type="button" onclick="myFunction(3)">Договор C</button>
+                <button class="btn btn-dark" type="button" onclick="myFunction(4)">Договор D</button>
+                <button class="btn btn-secondary" type="button" onclick="myFunction(5)">Договор E</button>
+            </p>
+<form method="post">
             <p>
 
-                <input name="client" type="text" value="${client}" readonly>
-                <input name="address" type="text" value="${address}" readonly>
+                <input name="client" type="text" value="${client}">
+                <input name="address" type="text" value="${address}">
                 <input name="numberOfCase" type="text" value=${numberOfCase} readonly>
                 <input name="contract" id="contract" type="text" value="${contract}" readonly>
 
             </p>
+
 
 
 <p>
@@ -304,7 +312,7 @@
                                 <td>${smr.type}</td>
 
                                 <c:forEach items="${cases}" var="cases" begin="${status.count-1}" end="${status.count-1}">
-                                    <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} readonly><span class="validity"></td>
+                                    <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} step="1" min="0" max="100000" ><span class="validity"></td>
                                 </c:forEach>
 
                                 <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
@@ -314,10 +322,17 @@
                 </c:forEach>
             </tbody>
         </table>
-            <form action="calculator_change" method="get">
-                <button name="number" value="${numberOfCase}" class="btn-dark" onclick="location.href='/calculator_change'">Промени</button>
-            </form>
-        </div>
+
+                    <h1>
+                        Обща сума : <input type="text" name="total" id="total" readonly/>лв.
+                    </h1>
+
+                    <br/>
+                    <p>
+                        <input type="submit" class="btn btn-secondary" onclick="return confirm('Моля потвърдете');" value="Промени"/>
+                    </p>
+</form>
+    </div>
 
 
 
@@ -325,15 +340,72 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script>
+        <script type="text/javascript">
+
+            var price1;
+            var price = price1;
+
+              function myFunction(idc) {
+                price = "price"+idc;
+                document.getElementById('contract').value = idc;
+                return this.price;
+              }
+
+        function compute(id,price1,price2,price3,price4,price5) {
+              var txtFirstNumberValue = document.getElementById('qty_'+id).value;
+
+              if (txtFirstNumberValue >= 0 ) {
+
+              var result = parseFloat(txtFirstNumberValue) * price1;
+
+                if(price == "price1") {
+                    var result = parseFloat(txtFirstNumberValue) * price1;
+                }
+                if (price == "price2") {
+                    var result = parseFloat(txtFirstNumberValue) * price2;
+                }
+                if(price == "price3") {
+                    var result = parseFloat(txtFirstNumberValue) * price3;
+                }
+                if(price == "price4") {
+                    var result = parseFloat(txtFirstNumberValue) * price4;
+                }
+                if(price == "price5") {
+                    var result = parseFloat(txtFirstNumberValue) * price5;
+                }
+
+
+                document.getElementById('result_'+id).value = result.toFixed(2);
+              } else {
+              document.getElementById('result_'+id).value = 0;
+              }
+
+            var inputs = document.getElementsByName('row'),
+            result = document.getElementById('total'),
+            sum = 0;
+
+            for(var i=0; i<inputs.length; i++) {
+                var ip = inputs[i];
+
+            if (ip.name && ip.name.indexOf("total") < 0) {
+                sum += parseFloat(ip.value) || 0;
+            }
+        }
+
+        result.value = sum.toFixed(2);
+        }
+
+        </script>
+
+        <script>
         $(document).ready(function(){
-                  $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
           });
         });
-    </script>
+        </script>
 
     </html>

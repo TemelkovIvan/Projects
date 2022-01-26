@@ -48,7 +48,7 @@ public class UsersController extends BaseController {
 
             model.put("name", name);
             model.put("password", password);
-            return this.view("welcome");
+            return this.view("home");
         }
 
         model.put("errorMessage", "Грешно Име или Парола!");
@@ -79,7 +79,7 @@ public class UsersController extends BaseController {
                     model.put("name", userId);
                     model.put("password", password);
                     model.put("email", email);
-                    return this.view("welcome");
+                    return this.view("home");
                 } else {
                     model.put("errorMessage", "Грешно въведени Пароли!");
                     model.put("userId", userId);
@@ -99,9 +99,9 @@ public class UsersController extends BaseController {
         return this.view("new-user");
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/home")
     public ModelAndView welcome(ModelMap model) {
-        return this.view("welcome");
+        return this.view("home");
     }
 
     @GetMapping("/user")

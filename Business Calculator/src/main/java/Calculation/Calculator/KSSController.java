@@ -16,6 +16,9 @@ import java.util.ArrayList;
 public class KSSController extends BaseController {
 
     @Autowired
+    CasesService service = new CasesService();
+
+    @Autowired
     CasesRepository casesRepository;
 
     Cases newCase = new Cases();
@@ -58,7 +61,7 @@ public class KSSController extends BaseController {
         newCase.setSMR(SMR);
         casesRepository.save(newCase);
 
-        return this.view("welcome");
+        return this.view("home");
     }
 
 
@@ -97,6 +100,50 @@ public class KSSController extends BaseController {
         }
         model.put("errorMessage", "Не се намират подадените данни");
         return this.view("search");
+    }
+
+    @RequestMapping(value="/calculator_change",method = RequestMethod.GET)
+    public ModelAndView showCalcWithExistingCase(ModelMap model,@RequestParam(value="number") int number) {
+
+        Cases byCase = this.casesRepository.findByNumberOfCase(number).orElse(null);
+
+        if (!(byCase == null)) {
+
+            System.out.println(byCase);
+
+            model.put("smr", repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+            model.put("client", byCase.getClient());
+            model.put("address", byCase.getAddress());
+            model.put("numberOfCase", byCase.getNumberOfCase());
+            model.put("contract", byCase.getContract());
+            model.put("cases", byCase.getSMR());
+
+            return this.view("calculator_change");
+        }
+
+        model.put("errorMessage", "Не се намират подадените данни");
+        return this.view("search");
+    }
+
+    @RequestMapping(value="/calculator_change",method = RequestMethod.POST)
+        public ModelAndView showCalcWithExistingCase(ModelMap model, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract,
+                                                     @RequestParam int qty_1, @RequestParam int qty_2, @RequestParam int qty_3, @RequestParam int qty_4) {
+
+        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+
+        ArrayList<Integer> SMR = new ArrayList<>();
+        byCase.setUserName((String) model.get("name"));
+        byCase.setClient(client);
+        byCase.setAddress(address);
+        byCase.setContract(contract);
+        SMR.add(0, qty_1);
+        SMR.add(1, qty_2);
+        SMR.add(2, qty_3);
+        SMR.add(3, qty_4);
+        byCase.setSMR(SMR);
+        casesRepository.save(byCase);
+
+        return this.redirect("/home");
     }
 
 }

@@ -23,7 +23,7 @@ public class Cases {
     @Column(name = "client", nullable = false)
     private String client;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address", length = 50, nullable = false)
     private String address;
 
     @Column(name = "contract", nullable = false)

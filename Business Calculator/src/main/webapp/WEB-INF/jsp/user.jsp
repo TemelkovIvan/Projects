@@ -183,7 +183,7 @@ table {
             <div class="container-fluid">
                 <div class="row">
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/welcome';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/home';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/change';" style="cursor: pointer"><i id="icons" class="fas fa-key"></i><br>Смяна на парола</div>
