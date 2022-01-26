@@ -286,6 +286,7 @@
                 </table>
 
 
+
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -302,9 +303,9 @@
 
 
 </body>
-        <footer>
-            <h5>
-                <a href="/information">Информация за нас</a>
-            </h5>
-        </footer>
+    <footer>
+        <h5>
+            <a href="/information">Информация за нас</a>
+        </h5>
+    </footer>
     </html>

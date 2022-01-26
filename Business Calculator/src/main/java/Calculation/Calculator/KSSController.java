@@ -1,5 +1,6 @@
 package Calculation.Calculator;
 
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+
 
 @Controller
 @SessionAttributes("name")
@@ -109,8 +111,6 @@ public class KSSController extends BaseController {
 
         if (!(byCase == null)) {
 
-            System.out.println(byCase);
-
             model.put("smr", repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
             model.put("client", byCase.getClient());
             model.put("address", byCase.getAddress());
@@ -145,5 +145,4 @@ public class KSSController extends BaseController {
 
         return this.redirect("/home");
     }
-
 }

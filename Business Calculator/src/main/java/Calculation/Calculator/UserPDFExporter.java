@@ -52,8 +52,6 @@ public class UserPDFExporter {
         font.setSize(18);
         font.setColor(Color.BLUE);
 
-        Paragraph icon = new Paragraph();
-
         Paragraph p = new Paragraph("Списък с потребители", font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
 
@@ -72,4 +70,5 @@ public class UserPDFExporter {
         document.close();
 
     }
+
 }
