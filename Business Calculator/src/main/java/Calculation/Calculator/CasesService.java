@@ -14,4 +14,8 @@ public class CasesService {
 
     private static List<Cases> cases = new ArrayList<Cases>();
 
+    public ArrayList<Integer> listSMRbyCase(int number) {
+        Cases byCase = this.repository.findByNumberOfCase(number).orElse(null);
+        return byCase.getSMR();
+    }
 }

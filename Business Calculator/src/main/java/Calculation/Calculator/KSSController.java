@@ -9,8 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -19,6 +25,12 @@ public class KSSController extends BaseController {
 
     @Autowired
     CasesService service = new CasesService();
+
+    @Autowired
+    private SMRService serviceSMR;
+
+    @Autowired
+    private CasesService serviceByCase;
 
     @Autowired
     CasesRepository casesRepository;
@@ -144,5 +156,26 @@ public class KSSController extends BaseController {
         casesRepository.save(byCase);
 
         return this.redirect("/home");
+    }
+
+    @GetMapping("/pdfCase")
+    public void exportToPDF(HttpServletResponse response, @RequestParam int numberOfCase) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=case_" + numberOfCase + "_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<SMR> SMR = serviceSMR.listAll();
+
+        ArrayList<Integer> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
+
+        UserPDFExporter exporter = new UserPDFExporter(SMR, listSMRbyCase, numberOfCase);
+        exporter.export(response, numberOfCase);
+
     }
 }

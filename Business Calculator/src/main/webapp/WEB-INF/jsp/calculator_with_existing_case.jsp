@@ -317,6 +317,9 @@
             <form action="calculator_change" method="get">
                 <button name="number" value="${numberOfCase}" class="btn-dark" onclick="location.href='/calculator_change'">Промени</button>
             </form>
+            <form action="pdfCase" method="get">
+                <button name="numberOfCase" value="${numberOfCase}" class="btn-dark" onclick="location.href='/pdfCase'">Експорт PDF</button>
+            </form>
         </div>
 
 
