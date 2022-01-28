@@ -301,7 +301,7 @@
                 <c:forEach items="${smr}" var="smr" varStatus="status">
 
                             <tr>
-                                <td>${status.count}</td>
+                                <td>${smr.position}</td>
                                 <td>${smr.action}</td>
                                 <td>${smr.descr}</td>
                                 <td>${smr.price_contract_1}</td>
@@ -315,7 +315,7 @@
                                     <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} step="1" min="0" max="100000" ><span class="validity"></td>
                                 </c:forEach>
 
-                                <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
+                                <td><input type="text" name="row_${smr.position}" class="form-control" id="result_${smr.position}" readonly></td>
 
                             </tr>
 

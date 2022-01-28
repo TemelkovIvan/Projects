@@ -293,7 +293,7 @@
                 <c:forEach items="${smr}" var="smr" varStatus="status">
 
                             <tr>
-                                <td>${status.count}</td>
+                                <td>${smr.position}</td>
                                 <td>${smr.action}</td>
                                 <td>${smr.descr}</td>
                                 <td>${smr.price_contract_1}</td>
@@ -306,9 +306,9 @@
                                 <c:forEach items="${cases}" var="cases" begin="${status.count-1}" end="${status.count-1}">
                                     <td><input type="number" name="qty_${smr.position}" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} readonly><span class="validity"></td>
                                 </c:forEach>
-
-                                <td><input type="text" name="row" class="form-control" id="result_${smr.position}" readonly></td>
-
+                                <c:forEach items="${prices}" var="prices" begin="${status.count-1}" end="${status.count-1}">
+                                    <td><input type="number" name="row_${status.count}" class="form-control" id="result_${smr.position}" value=${prices} readonly></td>
+                                </c:forEach>
                             </tr>
 
                 </c:forEach>
@@ -318,7 +318,7 @@
                 <button name="number" value="${numberOfCase}" class="btn-dark" onclick="location.href='/calculator_change'">Промени</button>
             </form>
             <form action="pdfCase" method="get">
-                <button name="numberOfCase" value="${numberOfCase}" class="btn-dark" onclick="location.href='/pdfCase'">Експорт PDF</button>
+                <button name="numberOfCase" value="${numberOfCase}" class="btn-dark" onclick="location.href='/pdfCase'">Свали <img src="/pdf.png" alt="pdf" style="width:20px;"></button>
             </form>
         </div>
 

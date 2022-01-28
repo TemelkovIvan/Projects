@@ -20,13 +20,16 @@ public class UserPDFExporter {
 
     private ArrayList<Integer> listSMRbyCase;
 
+    private ArrayList<Double> listPricesByCase;
+
     public UserPDFExporter(List<Users> listUsers) {
         this.listUsers = listUsers;
     }
 
-    public UserPDFExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, int number) {
+    public UserPDFExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, ArrayList<Double> listPricesByCase) {
         this.listSMR = listSMR;
         this.listSMRbyCase = listSMRbyCase;
+        this.listPricesByCase = listPricesByCase;
     }
 
     private void writeTableHeader(PdfPTable table) {
@@ -61,6 +64,7 @@ public class UserPDFExporter {
                 tableCase.addCell(listSMR.get(i).getAction());
                 tableCase.addCell(listSMR.get(i).getType());
                 tableCase.addCell(String.valueOf(listSMRbyCase.get(i)));
+                tableCase.addCell(String.valueOf(listPricesByCase.get(i)));
             }
         }
 
@@ -95,10 +99,11 @@ public class UserPDFExporter {
     private void writeTableHeaderCase(PdfPTable table) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.GRAY);
-        cell.setPadding(5);
+        cell.setHorizontalAlignment(cell.ALIGN_CENTER);
 
         Font font = FontFactory.getFont(fontCyrillic, BaseFont.IDENTITY_H, true);
-        font.setColor(Color.WHITE);
+        font.setColor(Color.BLACK);
+        font.isBold();
 
         cell.setPhrase(new Phrase("Позиция", font));
         table.addCell(cell);
@@ -112,26 +117,33 @@ public class UserPDFExporter {
         cell.setPhrase(new Phrase("Количество", font));
         table.addCell(cell);
 
+        cell.setPhrase(new Phrase("Цена, лв.", font));
+        table.addCell(cell);
+
     }
 
-    public void export(HttpServletResponse response, int numberOfCase) throws DocumentException, IOException {
+    public void export(HttpServletResponse response, int numberOfCase, String client, String address) throws DocumentException, IOException {
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
 
         document.open();
         Font font = FontFactory.getFont(fontCyrillic, BaseFont.IDENTITY_H, true);
         font.setSize(18);
-        font.setColor(Color.BLUE);
+        font.setColor(Color.BLACK);
 
-        Paragraph p = new Paragraph("Списък СМР " + numberOfCase, font);
+        Paragraph p = new Paragraph("Списък СМР" +
+                "\nСлучай: " + numberOfCase +
+                "\nКлиент: " + client +
+                "   Адрес: " + address, font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
 
         document.add(p);
 
-        PdfPTable table = new PdfPTable(4);
+        PdfPTable table = new PdfPTable(5);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[] {3.5f, 3.5f, 3.5f, 3.5f});
+        table.setWidths(new float[] {1.5f, 4.5f, 1.5f, 1.5f, 2.0f});
         table.setSpacingBefore(10);
+        table.setHorizontalAlignment(table.ALIGN_CENTER);
 
         writeTableHeaderCase(table);
         writeTableDataForCase(table);

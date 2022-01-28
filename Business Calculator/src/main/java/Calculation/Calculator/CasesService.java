@@ -18,4 +18,10 @@ public class CasesService {
         Cases byCase = this.repository.findByNumberOfCase(number).orElse(null);
         return byCase.getSMR();
     }
+
+    public ArrayList<Double> listPricesByCase(int number) {
+        Cases byCase = this.repository.findByNumberOfCase(number).orElse(null);
+        return byCase.getPrices();
+    }
+
 }

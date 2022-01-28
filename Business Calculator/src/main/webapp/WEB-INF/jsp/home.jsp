@@ -116,12 +116,11 @@
 
     h1 {
         font-family: Gabriola;
-        color: black;
-        text-align: center;
+        color: white;
         margin-top: 25px 0 25px 0;
         font-weight: bold;
-        font-size: 50px;
-        padding: 60px;
+        font-size: 40px;
+        padding: 100px 0 0 1080px;
         text-transform: uppercase;
     }
 
@@ -138,12 +137,11 @@
 
         h3 {
             font-family: Gabriola;
-            color: gray;
-            text-align: center;
-            margin-top: 0 0 25px 0;
+            color: black;
+            margin-top: 0 0 15px 0;
             font-weight: bold;
             font-size: 30px;
-            padding: 20px;
+            padding: 370px 0 0 240px;
             text-transform: uppercase;
         }
 
@@ -160,8 +158,8 @@
     h5 {
         text-transform: uppercase;
     	font-size: 25px;
-        text-align: center;
         text-decoration: none;
+        padding-left: 75%;
     }
 
     h5>a {
@@ -198,11 +196,11 @@
     <div>
         <h1>Здравейте, <a href="/user">${name}</a>!!!</h1>
 
-        <h3>Добре дошли!</h3>
-
-        <h3>Създайте Вашият бизнес калуклатор!</h3>
-
-        <h3>Изчислете колко ще струва спрямо различни договори!</h3>
+        <h3>&emsp;&emsp;&emsp;&emsp;Добре дошли!
+            <br><br>
+            Създайте Вашият бизнес калуклатор!
+            <br><br>
+            &emsp;&emsp;Изчислете колко ще струва <br> &emsp;&emsp;спрямо различни договори!</h3>
     </div>
 
 
