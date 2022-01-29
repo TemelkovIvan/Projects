@@ -58,6 +58,8 @@ public class UserPDFExporter {
 
     private void writeTableDataForCase(PdfPTable tableCase) {
 
+        tableCase.getDefaultCell().setHorizontalAlignment(tableCase.ALIGN_CENTER);
+
         for (int i = 0; i < listSMR.size(); i++) {
 
                 tableCase.addCell(String.valueOf(listSMR.get(i).getPosition()));
