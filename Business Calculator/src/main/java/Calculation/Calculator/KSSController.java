@@ -187,6 +187,7 @@ public class KSSController extends BaseController {
 
         String client = byCase.getClient();
         String address = byCase.getAddress();
+        double total = byCase.getTotal();
 
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=case_" + numberOfCase + "_" + currentDateTime + ".pdf";
@@ -197,7 +198,7 @@ public class KSSController extends BaseController {
         ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
 
         UserPDFExporter exporter = new UserPDFExporter(SMR, listSMRbyCase, listPricesByCase);
-        exporter.export(response, numberOfCase, client, address);
+        exporter.export(response, numberOfCase, client, address, total);
 
     }
 }

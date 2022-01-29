@@ -122,7 +122,7 @@ public class UserPDFExporter {
 
     }
 
-    public void export(HttpServletResponse response, int numberOfCase, String client, String address) throws DocumentException, IOException {
+    public void export(HttpServletResponse response, int numberOfCase, String client, String address, double total) throws DocumentException, IOException {
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
 
@@ -149,6 +149,11 @@ public class UserPDFExporter {
         writeTableDataForCase(table);
 
         document.add(table);
+
+        Paragraph paragraphTotal = new Paragraph("Обща сума: " + total + " лв.", font);
+        paragraphTotal.setAlignment(Paragraph.ALIGN_RIGHT);
+
+        document.add(paragraphTotal);
 
         document.close();
 
