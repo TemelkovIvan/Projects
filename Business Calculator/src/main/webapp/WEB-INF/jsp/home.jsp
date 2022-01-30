@@ -208,7 +208,7 @@
     <footer>
         <h5>
             <a href="/information">Информация за нас
-                        <a href="/pdf" style="float:right;"><img src="/excel.png" alt="excel" style="width:20px;"></a>
+                        <a href="/excel" style="float:right;"><img src="/excel.png" alt="excel" style="width:20px;"></a>
                         <a href="/pdf" style="float:right;"><img src="/pdf.png" alt="pdf" style="width:20px;"></a>
                         </a>
         </h5>

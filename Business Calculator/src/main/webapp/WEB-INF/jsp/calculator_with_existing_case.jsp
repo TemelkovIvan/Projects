@@ -320,6 +320,9 @@
             <form action="pdfCase" method="get">
                 <button name="numberOfCase" value="${numberOfCase}" class="btn-dark" onclick="location.href='/pdfCase'">Свали <img src="/pdf.png" alt="pdf" style="width:20px;"></button>
             </form>
+            <form action="excelCase" method="get">
+                <button name="numberOfCase" value="${numberOfCase}" class="btn-dark" onclick="location.href='/excelCase'">Свали <img src="/excel.png" alt="excel" style="width:20px;"></button>
+            </form>
         </div>
 
 

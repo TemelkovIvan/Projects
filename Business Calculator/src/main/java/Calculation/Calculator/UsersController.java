@@ -234,9 +234,26 @@ public class UsersController extends BaseController {
 
         List<Users> listUsers = service.listAll();
 
-        UserPDFExporter exporter = new UserPDFExporter(listUsers);
+        PDFExporter exporter = new PDFExporter(listUsers);
         exporter.export(response);
 
+    }
+
+    @GetMapping("/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<Users> listUsers = service.listAll();
+
+        ExcelExporter excelExporter = new ExcelExporter(listUsers);
+
+        excelExporter.export(response);
     }
 
 }

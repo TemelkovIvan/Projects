@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -197,8 +196,33 @@ public class KSSController extends BaseController {
         ArrayList<Integer> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
         ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
 
-        UserPDFExporter exporter = new UserPDFExporter(SMR, listSMRbyCase, listPricesByCase);
+        PDFExporter exporter = new PDFExporter(SMR, listSMRbyCase, listPricesByCase);
         exporter.export(response, numberOfCase, client, address, total);
 
+    }
+
+    @GetMapping("/excelCase")
+    public void exportToExcel(HttpServletResponse response, @RequestParam int numberOfCase) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+
+        String client = byCase.getClient();
+        String address = byCase.getAddress();
+        double total = byCase.getTotal();
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Case_" + numberOfCase + "_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<SMR> SMR = serviceSMR.listAll();
+        ArrayList<Integer> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
+        ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
+
+        ExcelExporter excelExporter = new ExcelExporter(SMR, listSMRbyCase, listPricesByCase);
+
+        excelExporter.export(response, numberOfCase, client, address, total);
     }
 }

@@ -10,7 +10,7 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 
 
-public class UserPDFExporter {
+public class PDFExporter {
 
     public static final String fontCyrillic = "HelveticaRegular.ttf";
 
@@ -22,11 +22,11 @@ public class UserPDFExporter {
 
     private ArrayList<Double> listPricesByCase;
 
-    public UserPDFExporter(List<Users> listUsers) {
+    public PDFExporter(List<Users> listUsers) {
         this.listUsers = listUsers;
     }
 
-    public UserPDFExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, ArrayList<Double> listPricesByCase) {
+    public PDFExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, ArrayList<Double> listPricesByCase) {
         this.listSMR = listSMR;
         this.listSMRbyCase = listSMRbyCase;
         this.listPricesByCase = listPricesByCase;
