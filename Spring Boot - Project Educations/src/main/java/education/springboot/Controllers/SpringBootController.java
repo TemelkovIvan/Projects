@@ -1,5 +1,10 @@
-package education.springboot;
+package education.springboot.Controllers;
 
+import education.springboot.Entities.Log;
+import education.springboot.Repositories.LogRepository;
+import education.springboot.Services.EmailSenderService;
+import education.springboot.Entities.Users;
+import education.springboot.Repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

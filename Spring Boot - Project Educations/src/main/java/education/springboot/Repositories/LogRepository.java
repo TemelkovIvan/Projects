@@ -1,5 +1,6 @@
-package education.springboot;
+package education.springboot.Repositories;
 
+import education.springboot.Entities.Log;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

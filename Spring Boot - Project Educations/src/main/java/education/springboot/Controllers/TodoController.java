@@ -1,5 +1,11 @@
-package education.springboot;
+package education.springboot.Controllers;
 
+import education.springboot.Entities.ToDo;
+import education.springboot.Entities.Users;
+import education.springboot.Repositories.LogRepository;
+import education.springboot.Repositories.TodoRepository;
+import education.springboot.Repositories.UsersRepository;
+import education.springboot.Services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;

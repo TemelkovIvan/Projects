@@ -1,4 +1,4 @@
-package education.springboot;
+package education.springboot.Entities;
 
 import javax.persistence.*;
 

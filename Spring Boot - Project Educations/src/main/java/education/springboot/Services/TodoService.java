@@ -1,5 +1,7 @@
-package education.springboot;
+package education.springboot.Services;
 
+import education.springboot.Entities.ToDo;
+import education.springboot.Repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

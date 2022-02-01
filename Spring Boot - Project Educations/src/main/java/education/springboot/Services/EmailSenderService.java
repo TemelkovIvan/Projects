@@ -1,4 +1,4 @@
-package education.springboot;
+package education.springboot.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

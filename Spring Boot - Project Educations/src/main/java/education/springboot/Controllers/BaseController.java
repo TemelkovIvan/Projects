@@ -1,4 +1,4 @@
-package education.springboot;
+package education.springboot.Controllers;
 
 import org.springframework.web.servlet.ModelAndView;
 
