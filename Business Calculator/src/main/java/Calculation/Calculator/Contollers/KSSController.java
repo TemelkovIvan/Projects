@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -81,11 +82,11 @@ public class KSSController extends BaseController {
         return this.view("home");
     }
 
-
     @RequestMapping(value="/search",method = RequestMethod.GET)
     public ModelAndView showSearchCase(ModelMap model) {
 
-        model.put("cases", casesRepository.findAll());
+        String name = (String) model.get("name");
+        model.put("cases", casesRepository.findByUserName(name));
 
         return this.view("search");
     }

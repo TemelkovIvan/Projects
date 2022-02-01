@@ -273,6 +273,8 @@
                         <tr>
                             <th>Потребител</th>
                             <th>Случаи</th>
+                            <th>Клиент</th>
+                            <th>Адрес</th>
                             </tr>
                         </thead>
                     <tbody id="myTable">
@@ -280,6 +282,8 @@
                         <tr>
                             <td>${cases.userName}</td>
                             <td>${cases.numberOfCase}</td>
+                            <td>${cases.client}</td>
+                            <td>${cases.address}</td>
                         </tr>
                         </c:forEach>
                     </tbody>
