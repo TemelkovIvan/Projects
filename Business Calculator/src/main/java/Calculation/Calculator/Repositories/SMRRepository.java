@@ -1,5 +1,6 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Repositories;
 
+import Calculation.Calculator.Entities.SMR;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

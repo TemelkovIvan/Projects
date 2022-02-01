@@ -1,4 +1,4 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

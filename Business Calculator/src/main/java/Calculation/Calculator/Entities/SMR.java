@@ -1,4 +1,4 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Entities;
 
 import javax.persistence.*;
 

@@ -1,5 +1,7 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Services;
 
+import Calculation.Calculator.Entities.Cases;
+import Calculation.Calculator.Repositories.CasesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

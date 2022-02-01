@@ -1,5 +1,11 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Contollers;
 
+import Calculation.Calculator.Entities.Users;
+import Calculation.Calculator.Exporters.ExcelExporter;
+import Calculation.Calculator.Exporters.PDFExporter;
+import Calculation.Calculator.Repositories.UsersRepository;
+import Calculation.Calculator.Services.EmailSenderService;
+import Calculation.Calculator.Services.UsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

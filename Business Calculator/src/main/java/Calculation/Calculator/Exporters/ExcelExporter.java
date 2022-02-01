@@ -1,4 +1,4 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Exporters;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import Calculation.Calculator.Entities.SMR;
+import Calculation.Calculator.Entities.Users;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;

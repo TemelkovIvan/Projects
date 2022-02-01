@@ -1,5 +1,7 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Services;
 
+import Calculation.Calculator.Entities.SMR;
+import Calculation.Calculator.Repositories.SMRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class SMRService {
     @Autowired
     SMRRepository repository;
 
-    private static List<SMR> SMR = new ArrayList<SMR>();
+    private static List<Calculation.Calculator.Entities.SMR> SMR = new ArrayList<SMR>();
 
     public List<SMR> listAll() {
         return repository.findAll();

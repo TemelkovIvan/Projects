@@ -1,4 +1,4 @@
-package Calculation.Calculator;
+package Calculation.Calculator.Exporters;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import Calculation.Calculator.Entities.SMR;
+import Calculation.Calculator.Entities.Users;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 
