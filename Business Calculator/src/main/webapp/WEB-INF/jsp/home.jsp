@@ -113,25 +113,102 @@
 
 /* ------------------- END NAVBAR ------------------- */
 
+        @media (min-width:800px){
+                        h1 {
+                            font-family: Gabriola;
+                            color: white;
+                            margin-top: 25px 0 25px 0;
+                            font-weight: bold;
+                            font-size: 20px;
+                            padding: 5% 0 0 57%;
+                            text-transform: uppercase;
+                        }
 
-    h1 {
-        font-family: Gabriola;
-        color: white;
-        margin-top: 25px 0 25px 0;
-        font-weight: bold;
-        font-size: 40px;
-        padding: 100px 0 0 1080px;
-        text-transform: uppercase;
-    }
+                        h3 {
+                            font-family: Gabriola;
+                            color: black;
+                            margin-top: 0 0 15px 0;
+                            font-weight: bold;
+                            font-size: 12px;
+                            padding: 18% 0 0 12.5%;
+                            text-transform: uppercase;
+                        }
+                    }
 
-        h2 {
+        @media (min-width:1000px){
+                        h1 {
+                            font-family: Gabriola;
+                            color: white;
+                            margin-top: 25px 0 25px 0;
+                            font-weight: bold;
+                            font-size: 24px;
+                            padding: 5% 0 0 57%;
+                            text-transform: uppercase;
+                        }
+
+                        h3 {
+                            font-family: Gabriola;
+                            color: black;
+                            margin-top: 0 0 15px 0;
+                            font-weight: bold;
+                            font-size: 16px;
+                            padding: 18% 0 0 12.5%;
+                            text-transform: uppercase;
+                        }
+                    }
+
+        @media (min-width:1300px){
+                h1 {
+                    font-family: Gabriola;
+                    color: white;
+                    margin-top: 25px 0 25px 0;
+                    font-weight: bold;
+                    font-size: 28px;
+                    padding: 5% 0 0 57%;
+                    text-transform: uppercase;
+                }
+
+                h3 {
+                    font-family: Gabriola;
+                    color: black;
+                    margin-top: 0 0 15px 0;
+                    font-weight: bold;
+                    font-size: 20px;
+                    padding: 18% 0 0 12.5%;
+                    text-transform: uppercase;
+                }
+            }
+
+    @media (min-width:1500px){
+            h1 {
+                font-family: Gabriola;
+                color: white;
+                margin-top: 25px 0 25px 0;
+                font-weight: bold;
+                font-size: 32px;
+                padding: 5% 0 0 57%;
+                text-transform: uppercase;
+            }
+
+            h3 {
+                font-family: Gabriola;
+                color: black;
+                margin-top: 0 0 15px 0;
+                font-weight: bold;
+                font-size: 24px;
+                padding: 18% 0 0 12.5%;
+                text-transform: uppercase;
+            }
+        }
+
+    @media (min-width:1700px){
+        h1 {
             font-family: Gabriola;
-            color: blue;
-            text-align: center;
+            color: white;
             margin-top: 25px 0 25px 0;
             font-weight: bold;
-            font-size: 30px;
-            padding: 40px;
+            font-size: 40px;
+            padding: 5% 0 0 57%;
             text-transform: uppercase;
         }
 
@@ -141,9 +218,12 @@
             margin-top: 0 0 15px 0;
             font-weight: bold;
             font-size: 30px;
-            padding: 370px 0 0 240px;
+            padding: 18% 0 0 12.5%;
             text-transform: uppercase;
         }
+    }
+
+
 
 /* ------------------- START FOOTER ------------------- */
 
