@@ -63,12 +63,8 @@ public class KSSController extends BaseController {
     }
 
     @RequestMapping(value="/calculator",method = RequestMethod.POST)
-    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract,
-                                    @RequestParam int qty_1, @RequestParam int qty_2, @RequestParam int qty_3, @RequestParam int qty_4,
-                                   @RequestParam double row_1, @RequestParam double row_2, @RequestParam double row_3, @RequestParam double row_4, @RequestParam double total) {
-
-        ArrayList<Integer> SMR = new ArrayList<>();
-        ArrayList<Double> Prices = new ArrayList<>();
+    public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
+                                   @RequestParam int contract, @RequestParam ArrayList<Integer> qty, @RequestParam ArrayList<Double> row,  @RequestParam double total) {
 
         String name = (String) model.get("name");
 
@@ -77,16 +73,8 @@ public class KSSController extends BaseController {
         newCase.setClient(client);
         newCase.setAddress(address);
         newCase.setContract(contract);
-        SMR.add(0,qty_1);
-        SMR.add(1,qty_2);
-        SMR.add(2,qty_3);
-        SMR.add(3,qty_4);
-        newCase.setSMR(SMR);
-        Prices.add(0,row_1);
-        Prices.add(1,row_2);
-        Prices.add(2,row_3);
-        Prices.add(3,row_4);
-        newCase.setPrices(Prices);
+        newCase.setSMR(qty);
+        newCase.setPrices(row);
         newCase.setTotal(total);
         casesRepository.save(newCase);
 
@@ -157,29 +145,17 @@ public class KSSController extends BaseController {
     }
 
     @RequestMapping(value="/calculator_change",method = RequestMethod.POST)
-        public ModelAndView showCalcWithExistingCase(ModelMap model, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address, @RequestParam int contract,
-                                                     @RequestParam int qty_1, @RequestParam int qty_2, @RequestParam int qty_3, @RequestParam int qty_4,
-                                                     @RequestParam double row_1, @RequestParam double row_2, @RequestParam double row_3, @RequestParam double row_4, @RequestParam double total) {
+        public ModelAndView showCalcWithExistingCase(ModelMap model, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
+                                                     @RequestParam int contract, @RequestParam ArrayList<Integer> qty, @RequestParam ArrayList<Double> row, @RequestParam double total) {
 
         Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
-
-        ArrayList<Integer> SMR = new ArrayList<>();
-        ArrayList<Double> Prices = new ArrayList<>();
 
         byCase.setUserName((String) model.get("name"));
         byCase.setClient(client);
         byCase.setAddress(address);
         byCase.setContract(contract);
-        SMR.add(0, qty_1);
-        SMR.add(1, qty_2);
-        SMR.add(2, qty_3);
-        SMR.add(3, qty_4);
-        byCase.setSMR(SMR);
-        Prices.add(0, row_1);
-        Prices.add(1,row_2);
-        Prices.add(2,row_3);
-        Prices.add(3,row_4);
-        byCase.setPrices(Prices);
+        byCase.setSMR(qty);
+        byCase.setPrices(row);
         byCase.setTotal(total);
         casesRepository.save(byCase);
 
