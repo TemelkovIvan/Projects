@@ -61,12 +61,13 @@ public class PDFExporter {
         tableCase.getDefaultCell().setHorizontalAlignment(tableCase.ALIGN_CENTER);
 
         for (int i = 0; i < listSMR.size(); i++) {
-
-                tableCase.addCell(String.valueOf(listSMR.get(i).getPosition()));
-                tableCase.addCell(listSMR.get(i).getAction());
-                tableCase.addCell(listSMR.get(i).getType());
-                tableCase.addCell(String.valueOf(listSMRbyCase.get(i)));
-                tableCase.addCell(String.valueOf(listPricesByCase.get(i)));
+                if(listSMRbyCase.get(i)>0) {
+                    tableCase.addCell(String.valueOf(listSMR.get(i).getPosition()));
+                    tableCase.addCell(listSMR.get(i).getAction());
+                    tableCase.addCell(listSMR.get(i).getType());
+                    tableCase.addCell(String.valueOf(listSMRbyCase.get(i)));
+                    tableCase.addCell(String.valueOf(listPricesByCase.get(i)));
+                }
             }
         }
 

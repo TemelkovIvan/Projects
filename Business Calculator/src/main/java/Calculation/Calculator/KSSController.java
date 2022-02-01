@@ -110,6 +110,7 @@ public class KSSController extends BaseController {
                 model.put("contract", byCase.getContract());
                 model.put("cases", byCase.getSMR());
                 model.put("prices", byCase.getPrices());
+                model.put("total", byCase.getTotal());
 
                 return this.view("calculator_with_existing_case");
             }
@@ -138,6 +139,7 @@ public class KSSController extends BaseController {
             model.put("contract", byCase.getContract());
             model.put("cases", byCase.getSMR());
             model.put("prices", byCase.getPrices());
+            model.put("total", byCase.getTotal());
 
             return this.view("calculator_change");
         }

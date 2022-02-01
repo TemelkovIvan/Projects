@@ -140,15 +140,18 @@ public class ExcelExporter {
 
         for (int i = 0; i < listSMR.size(); i++) {
 
-            Row row = sheet.createRow(rowCount++);
-            int columnCount = 0;
+            if(listSMRbyCase.get(i)>0) {
 
-            createCell(row, columnCount++, String.valueOf(listSMR.get(i).getPosition()), style);
-            createCell(row, columnCount++, listSMR.get(i).getAction(), style);
-            createCell(row, columnCount++, listSMR.get(i).getType(), style);
-            createCell(row, columnCount++, String.valueOf(listSMRbyCase.get(i)), style);
-            createCell(row, columnCount++, String.valueOf(listPricesByCase.get(i)), style);
-            createCell(sheet.createRow(rowCount), columnCount-1, "Общо: " + total + " лв.", style_total);
+                Row row = sheet.createRow(rowCount++);
+                int columnCount = 0;
+
+                createCell(row, columnCount++, String.valueOf(listSMR.get(i).getPosition()), style);
+                createCell(row, columnCount++, listSMR.get(i).getAction(), style);
+                createCell(row, columnCount++, listSMR.get(i).getType(), style);
+                createCell(row, columnCount++, String.valueOf(listSMRbyCase.get(i)), style);
+                createCell(row, columnCount++, String.valueOf(listPricesByCase.get(i)), style);
+                createCell(sheet.createRow(rowCount), columnCount - 1, "Общо: " + total + " лв.", style_total);
+            }
         }
 
 

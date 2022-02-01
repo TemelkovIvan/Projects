@@ -312,8 +312,14 @@
                             </tr>
 
                 </c:forEach>
+
+
             </tbody>
         </table>
+
+                    <h1>
+                        Обща сума : <input type="number" name="total" id="total" value=${total} readonly/>лв.
+                    </h1>
             <form action="calculator_change" method="get">
                 <button name="number" value="${numberOfCase}" class="btn-dark" onclick="location.href='/calculator_change'">Промени</button>
             </form>
