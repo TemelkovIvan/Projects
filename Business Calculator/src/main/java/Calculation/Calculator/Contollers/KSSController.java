@@ -50,7 +50,6 @@ public class KSSController extends BaseController {
 
     @RequestMapping(value="/list-smr",method = RequestMethod.GET)
     public ModelAndView showKSS(ModelMap model) {
-        String name = (String) model.get("name");
 
         model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
         return this.view("list-smr");
@@ -67,19 +66,46 @@ public class KSSController extends BaseController {
     public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
                                    @RequestParam int contract, @RequestParam ArrayList<Integer> qty, @RequestParam ArrayList<Double> row,  @RequestParam double total) {
 
-        String name = (String) model.get("name");
+        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
 
-        newCase.setUserName(name);
-        newCase.setNumberOfCase(numberOfCase);
-        newCase.setClient(client);
-        newCase.setAddress(address);
-        newCase.setContract(contract);
-        newCase.setSMR(qty);
-        newCase.setPrices(row);
-        newCase.setTotal(total);
-        casesRepository.save(newCase);
+        if(byCase == null) {
+            if(!(qty == null) & total>0) {
+                String name = (String) model.get("name");
 
-        return this.view("home");
+                newCase.setUserName(name);
+                newCase.setNumberOfCase(numberOfCase);
+                newCase.setClient(client);
+                newCase.setAddress(address);
+                newCase.setContract(contract);
+                newCase.setSMR(qty);
+                newCase.setPrices(row);
+                newCase.setTotal(total);
+                casesRepository.save(newCase);
+
+                return this.view("home");
+            }
+            model.put("numberOfCase",numberOfCase);
+            model.put("client",client);
+            model.put("address",address);
+            model.put("contract",contract);
+            model.put("cases",qty);
+            model.put("prices",row);
+            model.put("total",total);
+            model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+            model.put("errorMessage", "Необходимо е да попълните данни за количествата");
+            return this.view("calculator_change");
+        }
+        model.put("numberOfCase",numberOfCase);
+        model.put("client",client);
+        model.put("address",address);
+        model.put("contract",contract);
+        model.put("cases",qty);
+        model.put("prices",row);
+        model.put("total",total);
+        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+        model.put("errorMessage", "Вече има създаден такъв случай!");
+        return this.view("calculator_change");
+
     }
 
     @RequestMapping(value="/search",method = RequestMethod.GET)
@@ -176,7 +202,7 @@ public class KSSController extends BaseController {
         double total = byCase.getTotal();
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=case_" + numberOfCase + "_" + currentDateTime + ".pdf";
+        String headerValue = "attachment; filename=Case_" + numberOfCase + "_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
         List<SMR> SMR = serviceSMR.listAll();

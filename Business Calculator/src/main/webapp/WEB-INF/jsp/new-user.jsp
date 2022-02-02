@@ -102,21 +102,21 @@
 
                 <p>
                     <label>Потребителско име</label>
-                    <input type="text" name="userId" class="form-control" id="exampleFormControlInput1" minlength="4" maxlength="10" value=${userId}>
+                    <input type="text" name="userId" class="form-control" id="exampleFormControlInput1" minlength="4" maxlength="10" value=${userId} required>
                 </p>
                 <p>
                     <label>Парола</label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1">
+                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1" required>
                 </p>
                 <p>
                     <label>Повторете Парола</label>
-                    <input type="password" name="confirmPassword" class="form-control" id="exampleFormControlInput1">
+                    <input type="password" name="confirmPassword" class="form-control" id="exampleFormControlInput1" required>
                     <br>
                     <font color="red">${errorMessage}</font>
                 </p>
                 <p>
                     <label>E-mail</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email}>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email} required>
                 </p>
 
                 <p>

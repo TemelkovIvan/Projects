@@ -261,16 +261,16 @@ $(document).ready(function(){
 </script>
 
 <form method="post">
-<p>
 
-<input name="client" type="text" placeholder="Клиент">
-<input name="address" type="text" placeholder="Адрес">
-<input name="numberOfCase" type="text" placeholder="№ Случай">
-<input name="contract" id="contract" type="text" placeholder="Договор" readonly>
-</p>
-<p>
-<input id="myInput" type="text" placeholder="Търсене..">
-</p>
+    <p>
+        <input name="client" type="text" placeholder="Клиент" required>
+        <input name="address" type="text" placeholder="Адрес" required>
+        <input name="numberOfCase" type="text" placeholder="№ Случай" required>
+        <input name="contract" id="contract" type="text" required placeholder="Договор" value="1" readonly >
+    </p>
+    <p>
+        <input id="myInput" type="text" placeholder="Търсене..">
+    </p>
         <table class="table">
 
             <thead>
@@ -311,7 +311,7 @@ $(document).ready(function(){
         </table>
 
             <h1>
-            Обща сума : <input type="number" name="total" id="total" readonly/>лв.
+                Обща сума : <input type="number" name="total" id="total" value="0" required readonly/>лв.
             </h1>
 
      <br/>

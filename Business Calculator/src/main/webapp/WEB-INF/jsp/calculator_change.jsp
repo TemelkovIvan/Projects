@@ -269,9 +269,10 @@
 
                 <input name="client" type="text" value="${client}">
                 <input name="address" type="text" value="${address}">
-                <input name="numberOfCase" type="text" value=${numberOfCase} readonly>
+                <input name="numberOfCase" type="text" value=${numberOfCase}>
                 <input name="contract" id="contract" type="text" value="${contract}" readonly>
-
+                <br>
+                <font color="red">${errorMessage}</font>
             </p>
 
 
