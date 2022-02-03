@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CasesService {
 
     @Autowired
-    CasesRepository repository;
+    private CasesRepository repository;
 
     private static List<Cases> cases = new ArrayList<Cases>();
 
@@ -26,4 +27,15 @@ public class CasesService {
         return byCase.getPrices();
     }
 
+    public Optional<Cases> findByNumberOfCase(int numberOfCase) {
+        return repository.findByNumberOfCase(numberOfCase);
+    }
+
+    public List<Cases> findByUserName(String name) {
+        return repository.findByUserName(name);
+    }
+
+    public Cases save(Cases enterCase) {
+        return repository.save(enterCase);
+    }
 }

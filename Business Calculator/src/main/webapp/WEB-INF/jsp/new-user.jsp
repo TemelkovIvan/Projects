@@ -102,7 +102,7 @@
 
                 <p>
                     <label>Потребителско име</label>
-                    <input type="text" name="userId" class="form-control" id="exampleFormControlInput1" minlength="4" maxlength="10" value=${userId} required>
+                    <input type="text" name="userId" class="form-control" id="exampleFormControlInput1" minlength="4" maxlength="10" value="${userId}" required>
                 </p>
                 <p>
                     <label>Парола</label>
@@ -116,7 +116,7 @@
                 </p>
                 <p>
                     <label>E-mail</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value=${email} required>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value="${email}" required>
                 </p>
 
                 <p>

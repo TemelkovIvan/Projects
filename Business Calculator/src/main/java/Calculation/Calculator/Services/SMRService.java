@@ -3,6 +3,7 @@ package Calculation.Calculator.Services;
 import Calculation.Calculator.Entities.SMR;
 import Calculation.Calculator.Repositories.SMRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,4 +21,7 @@ public class SMRService {
         return repository.findAll();
     }
 
+    public List<SMR> findAll(Sort position) {
+        return repository.findAll();
+    }
 }

@@ -15,8 +15,6 @@ public class Users {
     private String password;
     private String email;
 
-
-
     public Users() {
     }
 

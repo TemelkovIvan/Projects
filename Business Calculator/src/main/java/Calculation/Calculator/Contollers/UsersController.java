@@ -3,9 +3,8 @@ package Calculation.Calculator.Contollers;
 import Calculation.Calculator.Entities.Users;
 import Calculation.Calculator.Exporters.ExcelExporter;
 import Calculation.Calculator.Exporters.PDFExporter;
-import Calculation.Calculator.Repositories.UsersRepository;
 import Calculation.Calculator.Services.EmailSenderService;
-import Calculation.Calculator.Services.UsersServices;
+import Calculation.Calculator.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,10 +31,7 @@ public class UsersController extends BaseController {
     private EmailSenderService serviceEmail;
 
     @Autowired
-    private UsersServices service;
-
-    @Autowired
-    UsersRepository repository;
+    private UsersService service;
 
     Users newUserDB = new Users();
 
@@ -47,7 +43,7 @@ public class UsersController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ModelAndView showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (!(user == null) && user.getPassword().equals(DigestUtils.sha256Hex(password))) {
 
@@ -69,7 +65,7 @@ public class UsersController extends BaseController {
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
     public ModelAndView showLoginPageWithNewUser(ModelMap model, @Valid Users newUserDB, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email) {
 
-        Users user = this.repository.findByUsername(userId).orElse(null);
+        Users user = this.service.findByUsername(userId).orElse(null);
 
         if (user == null) {
 
@@ -80,7 +76,7 @@ public class UsersController extends BaseController {
                     newUserDB.setPassword(DigestUtils.sha256Hex(password));
                     newUserDB.setEmail(email);
 
-                    repository.save(newUserDB);
+                    service.save(newUserDB);
 
                     model.put("name", userId);
                     model.put("password", password);
@@ -114,7 +110,7 @@ public class UsersController extends BaseController {
     public ModelAndView user(ModelMap model) {
         String name = (String) model.get("name");
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (user == null) {
 
@@ -131,7 +127,7 @@ public class UsersController extends BaseController {
     public ModelAndView change(ModelMap model) {
         String name = (String) model.get("name");
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (user == null) {
 
@@ -147,14 +143,14 @@ public class UsersController extends BaseController {
 
     @RequestMapping(value = "/change", method = RequestMethod.POST)
     public ModelAndView showChange(ModelMap model, @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email) {
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
             if (Objects.equals(password, confirmPassword)) {
 
                 user.setPassword(DigestUtils.sha256Hex(password));
                 user.setEmail(email);
-                repository.save(user);
+                service.save(user);
 
                 return this.redirect("/");
             } else {
@@ -198,7 +194,7 @@ public class UsersController extends BaseController {
     public ModelAndView mail(ModelMap model) {
         String name = (String) model.get("name");
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (user == null) {
 

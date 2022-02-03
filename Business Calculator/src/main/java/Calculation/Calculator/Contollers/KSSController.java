@@ -4,8 +4,6 @@ import Calculation.Calculator.Entities.Cases;
 import Calculation.Calculator.Entities.SMR;
 import Calculation.Calculator.Exporters.ExcelExporter;
 import Calculation.Calculator.Exporters.PDFExporter;
-import Calculation.Calculator.Repositories.CasesRepository;
-import Calculation.Calculator.Repositories.SMRRepository;
 import Calculation.Calculator.Services.CasesService;
 import Calculation.Calculator.Services.SMRService;
 import com.lowagie.text.DocumentException;
@@ -31,33 +29,24 @@ import java.util.List;
 public class KSSController extends BaseController {
 
     @Autowired
-    CasesService service = new CasesService();
-
-    @Autowired
     private SMRService serviceSMR;
 
     @Autowired
-    private CasesService serviceByCase;
-
-    @Autowired
-    CasesRepository casesRepository;
+    private CasesService casesService;
 
     Date date = new Date(System.currentTimeMillis());
-
-    @Autowired
-    SMRRepository repository;
 
     @RequestMapping(value="/list-smr",method = RequestMethod.GET)
     public ModelAndView showKSS(ModelMap model) {
 
-        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+        model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
         return this.view("list-smr");
     }
 
     @RequestMapping(value="/calculator",method = RequestMethod.GET)
     public ModelAndView showCalculator(ModelMap model) {
 
-        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+        model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
         return this.view("calculator");
     }
 
@@ -65,7 +54,7 @@ public class KSSController extends BaseController {
     public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
                                    @RequestParam int contract, @RequestParam ArrayList<Double> qty, @RequestParam ArrayList<Double> row,  @RequestParam double total) {
 
-        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+        Cases byCase = this.casesService.findByNumberOfCase(numberOfCase).orElse(null);
 
         if(byCase == null) {
             if(!(qty == null) & total>0) {
@@ -80,7 +69,7 @@ public class KSSController extends BaseController {
                 newCase.setPrices(row);
                 newCase.setTotal(total);
                 newCase.setDate(date);
-                casesRepository.save(newCase);
+                casesService.save(newCase);
 
                 return this.view("home");
             }
@@ -91,7 +80,7 @@ public class KSSController extends BaseController {
             model.put("cases",qty);
             model.put("prices",row);
             model.put("total",total);
-            model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+            model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
             model.put("errorMessage", "Необходимо е да попълните данни за количествата");
             return this.view("calculator_change");
         }
@@ -102,7 +91,7 @@ public class KSSController extends BaseController {
         model.put("cases",qty);
         model.put("prices",row);
         model.put("total",total);
-        model.put("smr",repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+        model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
         model.put("errorMessage", "Вече има създаден такъв случай!");
         return this.view("calculator_change");
 
@@ -112,7 +101,7 @@ public class KSSController extends BaseController {
     public ModelAndView showSearchCase(ModelMap model) {
 
         String name = (String) model.get("name");
-        model.put("cases", casesRepository.findByUserName(name));
+        model.put("cases", casesService.findByUserName(name));
 
         return this.view("search");
     }
@@ -122,11 +111,11 @@ public class KSSController extends BaseController {
 
         if (number > 0) {
 
-            Cases byCase = this.casesRepository.findByNumberOfCase(number).orElse(null);
+            Cases byCase = this.casesService.findByNumberOfCase(number).orElse(null);
 
             if (!(byCase == null)) {
 
-                model.put("smr", repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+                model.put("smr", serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
                 model.put("client", byCase.getClient());
                 model.put("address", byCase.getAddress());
                 model.put("numberOfCase", byCase.getNumberOfCase());
@@ -141,7 +130,7 @@ public class KSSController extends BaseController {
 
         if(!(byName == null)) {
 
-            model.put("cases", casesRepository.findByUserName(byName));
+            model.put("cases", casesService.findByUserName(byName));
             return this.view("search");
         }
         model.put("errorMessage", "Не се намират подадените данни");
@@ -151,11 +140,11 @@ public class KSSController extends BaseController {
     @RequestMapping(value="/calculator_change",method = RequestMethod.GET)
     public ModelAndView showCalcWithExistingCase(ModelMap model,@RequestParam(value="number") int number) {
 
-        Cases byCase = this.casesRepository.findByNumberOfCase(number).orElse(null);
+        Cases byCase = this.casesService.findByNumberOfCase(number).orElse(null);
 
         if (!(byCase == null)) {
 
-            model.put("smr", repository.findAll(Sort.by(Sort.Direction.ASC, "position")));
+            model.put("smr", serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
             model.put("client", byCase.getClient());
             model.put("address", byCase.getAddress());
             model.put("numberOfCase", byCase.getNumberOfCase());
@@ -175,7 +164,7 @@ public class KSSController extends BaseController {
         public ModelAndView showCalcWithExistingCase(ModelMap model, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
                                                      @RequestParam int contract, @RequestParam ArrayList<Double> qty, @RequestParam ArrayList<Double> row, @RequestParam double total) {
 
-        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+        Cases byCase = this.casesService.findByNumberOfCase(numberOfCase).orElse(null);
 
         byCase.setUserName((String) model.get("name"));
         byCase.setClient(client);
@@ -184,7 +173,7 @@ public class KSSController extends BaseController {
         byCase.setSMR(qty);
         byCase.setPrices(row);
         byCase.setTotal(total);
-        casesRepository.save(byCase);
+        casesService.save(byCase);
 
         return this.redirect("/home");
     }
@@ -195,7 +184,7 @@ public class KSSController extends BaseController {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
 
-        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+        Cases byCase = this.casesService.findByNumberOfCase(numberOfCase).orElse(null);
 
         String client = byCase.getClient();
         String address = byCase.getAddress();
@@ -206,8 +195,8 @@ public class KSSController extends BaseController {
         response.setHeader(headerKey, headerValue);
 
         List<SMR> SMR = serviceSMR.listAll();
-        ArrayList<Double> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
-        ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
+        ArrayList<Double> listSMRbyCase = casesService.listSMRbyCase(numberOfCase);
+        ArrayList<Double> listPricesByCase = casesService.listPricesByCase(numberOfCase);
 
         PDFExporter exporter = new PDFExporter(SMR, listSMRbyCase, listPricesByCase);
         exporter.export(response, numberOfCase, client, address, total);
@@ -220,7 +209,7 @@ public class KSSController extends BaseController {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
 
-        Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
+        Cases byCase = this.casesService.findByNumberOfCase(numberOfCase).orElse(null);
 
         String client = byCase.getClient();
         String address = byCase.getAddress();
@@ -231,8 +220,8 @@ public class KSSController extends BaseController {
         response.setHeader(headerKey, headerValue);
 
         List<SMR> SMR = serviceSMR.listAll();
-        ArrayList<Double> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
-        ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
+        ArrayList<Double> listSMRbyCase = casesService.listSMRbyCase(numberOfCase);
+        ArrayList<Double> listPricesByCase = casesService.listPricesByCase(numberOfCase);
 
         ExcelExporter excelExporter = new ExcelExporter(SMR, listSMRbyCase, listPricesByCase);
 
