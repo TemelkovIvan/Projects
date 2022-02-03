@@ -2,6 +2,7 @@ package Calculation.Calculator.Entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -30,7 +31,7 @@ public class Cases {
     private int contract;
 
     @Column(name = "SMR", nullable = false)
-    ArrayList<Integer> SMR = new ArrayList<>();
+    ArrayList<Double> SMR = new ArrayList<>();
 
     @Column(name = "Prices", nullable = false)
     ArrayList<Double> prices = new ArrayList<>();
@@ -38,7 +39,10 @@ public class Cases {
     @Column(name = "Total", nullable = false)
     private double total;
 
-    public Cases(int numberOfCase, String userName, String client, String address, int contract, ArrayList<Integer> SMR, ArrayList<Double> prices, double total) {
+    @Column(name = "date")
+    private Date date;
+
+    public Cases(int numberOfCase, String userName, String client, String address, int contract, ArrayList<Double> SMR, ArrayList<Double> prices, double total, Date date) {
         super();
         this.numberOfCase = numberOfCase;
         this.userName = userName;
@@ -48,6 +52,7 @@ public class Cases {
         this.SMR = SMR;
         this.prices = prices;
         this.total = total;
+        this.date = date;
     }
 
     public int getId() {
@@ -98,11 +103,11 @@ public class Cases {
         this.contract = contract;
     }
 
-    public ArrayList<Integer> getSMR() {
+    public ArrayList<Double> getSMR() {
         return SMR;
     }
 
-    public void setSMR(ArrayList<Integer> SMR) {
+    public void setSMR(ArrayList<Double> SMR) {
         this.SMR = SMR;
     }
 
@@ -122,6 +127,14 @@ public class Cases {
         this.total = total;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Cases() {
         super();
     }
@@ -129,8 +142,8 @@ public class Cases {
 
     @Override
     public String toString() {
-        return String.format("Cases [ id=%s, numberOfCase=%s, userName=%s, client=%s, address=%s, contract=%s, SMR=%s, prices=%s, total=%s",
-                id, numberOfCase, userName, client, address, contract, SMR, prices, total);
+        return String.format("Cases [ id=%s, numberOfCase=%s, userName=%s, client=%s, address=%s, contract=%s, SMR=%s, prices=%s, total=%s, date=%s",
+                id, numberOfCase, userName, client, address, contract, SMR, prices, total, date);
     }
 
 }

@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class KSSController extends BaseController {
     @Autowired
     CasesRepository casesRepository;
 
-    Cases newCase = new Cases();
+    Date date = new Date(System.currentTimeMillis());
 
     @Autowired
     SMRRepository repository;
@@ -64,7 +63,7 @@ public class KSSController extends BaseController {
 
     @RequestMapping(value="/calculator",method = RequestMethod.POST)
     public ModelAndView addNewCase(ModelMap model,@Valid Cases newCase, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
-                                   @RequestParam int contract, @RequestParam ArrayList<Integer> qty, @RequestParam ArrayList<Double> row,  @RequestParam double total) {
+                                   @RequestParam int contract, @RequestParam ArrayList<Double> qty, @RequestParam ArrayList<Double> row,  @RequestParam double total) {
 
         Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
 
@@ -80,6 +79,7 @@ public class KSSController extends BaseController {
                 newCase.setSMR(qty);
                 newCase.setPrices(row);
                 newCase.setTotal(total);
+                newCase.setDate(date);
                 casesRepository.save(newCase);
 
                 return this.view("home");
@@ -173,7 +173,7 @@ public class KSSController extends BaseController {
 
     @RequestMapping(value="/calculator_change",method = RequestMethod.POST)
         public ModelAndView showCalcWithExistingCase(ModelMap model, @RequestParam int numberOfCase, @RequestParam String client,@RequestParam String address,
-                                                     @RequestParam int contract, @RequestParam ArrayList<Integer> qty, @RequestParam ArrayList<Double> row, @RequestParam double total) {
+                                                     @RequestParam int contract, @RequestParam ArrayList<Double> qty, @RequestParam ArrayList<Double> row, @RequestParam double total) {
 
         Cases byCase = this.casesRepository.findByNumberOfCase(numberOfCase).orElse(null);
 
@@ -206,7 +206,7 @@ public class KSSController extends BaseController {
         response.setHeader(headerKey, headerValue);
 
         List<SMR> SMR = serviceSMR.listAll();
-        ArrayList<Integer> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
+        ArrayList<Double> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
         ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
 
         PDFExporter exporter = new PDFExporter(SMR, listSMRbyCase, listPricesByCase);
@@ -231,7 +231,7 @@ public class KSSController extends BaseController {
         response.setHeader(headerKey, headerValue);
 
         List<SMR> SMR = serviceSMR.listAll();
-        ArrayList<Integer> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
+        ArrayList<Double> listSMRbyCase = serviceByCase.listSMRbyCase(numberOfCase);
         ArrayList<Double> listPricesByCase = serviceByCase.listPricesByCase(numberOfCase);
 
         ExcelExporter excelExporter = new ExcelExporter(SMR, listSMRbyCase, listPricesByCase);

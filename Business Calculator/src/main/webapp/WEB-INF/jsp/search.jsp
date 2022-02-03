@@ -275,6 +275,7 @@
                             <th>Случаи</th>
                             <th>Клиент</th>
                             <th>Адрес</th>
+                            <th>Дата на създаване</th>
                             </tr>
                         </thead>
                     <tbody id="myTable">
@@ -284,6 +285,7 @@
                             <td>${cases.numberOfCase}</td>
                             <td>${cases.client}</td>
                             <td>${cases.address}</td>
+                            <td><fmt:formatDate value="${cases.date}" pattern="dd/MM/yyyy - HH:mm"/></td>
                         </tr>
                         </c:forEach>
                     </tbody>

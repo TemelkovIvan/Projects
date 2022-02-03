@@ -20,7 +20,7 @@ public class PDFExporter {
 
     private List<SMR> listSMR;
 
-    private ArrayList<Integer> listSMRbyCase;
+    private ArrayList<Double> listSMRbyCase;
 
     private ArrayList<Double> listPricesByCase;
 
@@ -28,7 +28,7 @@ public class PDFExporter {
         this.listUsers = listUsers;
     }
 
-    public PDFExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, ArrayList<Double> listPricesByCase) {
+    public PDFExporter(List<SMR> listSMR, ArrayList<Double> listSMRbyCase, ArrayList<Double> listPricesByCase) {
         this.listSMR = listSMR;
         this.listSMRbyCase = listSMRbyCase;
         this.listPricesByCase = listPricesByCase;

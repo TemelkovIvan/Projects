@@ -23,7 +23,7 @@ public class ExcelExporter {
     private XSSFSheet sheet;
     private List<Users> listUsers;
     private List<SMR> listSMR;
-    private ArrayList<Integer> listSMRbyCase;
+    private ArrayList<Double> listSMRbyCase;
     private ArrayList<Double> listPricesByCase;
 
     public ExcelExporter(List<Users> listUsers) {
@@ -31,7 +31,7 @@ public class ExcelExporter {
         workbook = new XSSFWorkbook();
     }
 
-    public ExcelExporter(List<SMR> listSMR, ArrayList<Integer> listSMRbyCase, ArrayList<Double> listPricesByCase) {
+    public ExcelExporter(List<SMR> listSMR, ArrayList<Double> listSMRbyCase, ArrayList<Double> listPricesByCase) {
         this.listSMR = listSMR;
         this.listSMRbyCase = listSMRbyCase;
         this.listPricesByCase = listPricesByCase;

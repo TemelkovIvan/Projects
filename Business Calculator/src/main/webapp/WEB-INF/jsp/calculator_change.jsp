@@ -313,7 +313,7 @@
                                 <td>${smr.type}</td>
 
                                 <c:forEach items="${cases}" var="cases" begin="${status.count-1}" end="${status.count-1}">
-                                    <td><input type="number" name="qty" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} step="1" min="0" max="100000" ><span class="validity"></td>
+                                    <td><input type="number" name="qty" class="form-control" onchange="compute(${smr.position},${smr.price_contract_1},${smr.price_contract_2},${smr.price_contract_3},${smr.price_contract_4},${smr.price_contract_5})" id="qty_${smr.position}" value=${cases} step="0.1" min="0" max="100000" ><span class="validity"></td>
                                 </c:forEach>
 
                                 <c:forEach items="${prices}" var="prices" begin="${status.count-1}" end="${status.count-1}">

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SMRRepository extends JpaRepository<SMR, Integer> {
+public interface SMRRepository extends JpaRepository<SMR, Double> {
     List<SMR> findAll();
 }
