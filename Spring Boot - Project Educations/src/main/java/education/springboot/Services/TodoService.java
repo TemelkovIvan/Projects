@@ -44,4 +44,16 @@ public class TodoService {
 
         return null;
     }
+
+    public List<ToDo> findByUser(String name) {
+        return repository.findByUser(name);
+    }
+
+    public void deleteById(int id) {
+        repository.deleteById(id);
+    }
+
+    public void save(ToDo todo) {
+        repository.save(todo);
+    }
 }

@@ -2,10 +2,9 @@ package education.springboot.Controllers;
 
 import education.springboot.Entities.ToDo;
 import education.springboot.Entities.Users;
-import education.springboot.Repositories.LogRepository;
-import education.springboot.Repositories.TodoRepository;
-import education.springboot.Repositories.UsersRepository;
+import education.springboot.Services.LogService;
 import education.springboot.Services.TodoService;
+import education.springboot.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -27,13 +26,10 @@ public class TodoController extends BaseController {
     TodoService service = new TodoService();
 
     @Autowired
-    UsersRepository userRepository;
+    private UsersService usersService;
 
     @Autowired
-    TodoRepository repository;
-
-    @Autowired
-    LogRepository logRepository;
+    private LogService logService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
@@ -45,7 +41,7 @@ public class TodoController extends BaseController {
     public ModelAndView showTodo(ModelMap model) {
         String name = (String) model.get("name");
         
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         return this.view("list-educations");
     }
 
@@ -57,7 +53,7 @@ public class TodoController extends BaseController {
 
     @RequestMapping(value="/delete-education",method = RequestMethod.GET)
     public ModelAndView deleteTodo(@RequestParam int id) {
-        repository.deleteById(id);
+        service.deleteById(id);
         return this.redirect("/list-educations");
     }
 
@@ -75,7 +71,7 @@ public class TodoController extends BaseController {
             return this.view("add-education");
         }
         todo.setUser((String) model.get("name"));
-        repository.save(todo);
+        service.save(todo);
         return this.redirect("/list-educations");
     }
 
@@ -86,7 +82,7 @@ public class TodoController extends BaseController {
         }
 
         todo.setUser((String) model.get("name"));
-        repository.save(todo);
+        service.save(todo);
         service.addTodo((String) model.get("name"),todo.getDesc(),todo.getTargetDate(),"");
         return this.redirect("/list-educations");
     }
@@ -95,7 +91,7 @@ public class TodoController extends BaseController {
     @RequestMapping(value="/design-patterns",method = RequestMethod.GET)
     public ModelAndView designPattern(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         model.put("targetDate",service.getTargeteDate(name,"LEARN DESIGN PATTERN"));
         return this.view("design-patterns");
     }
@@ -103,7 +99,7 @@ public class TodoController extends BaseController {
     @GetMapping("/html")
     public ModelAndView html(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         model.put("targetDate",service.getTargeteDate(name,"LEARN HTML"));
         return this.view("html");
     }
@@ -111,7 +107,7 @@ public class TodoController extends BaseController {
     @GetMapping("/css")
     public ModelAndView css(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         model.put("targetDate",service.getTargeteDate(name,"Learn CSS"));
         return this.view("css");
     }
@@ -119,7 +115,7 @@ public class TodoController extends BaseController {
     @GetMapping("/spring-mvc")
     public ModelAndView springmvc(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         model.put("targetDate",service.getTargeteDate(name,"LEARN SPRING MVC"));
         return this.view("spring-mvc");
     }
@@ -127,7 +123,7 @@ public class TodoController extends BaseController {
     @GetMapping("/jquery")
     public ModelAndView jquery(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
         model.put("targetDate",service.getTargeteDate(name,"Learn JQuery"));
 
         return this.view("jquery");
@@ -141,7 +137,7 @@ public class TodoController extends BaseController {
     @GetMapping("/information")
     public ModelAndView infoCreator(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
 
         if (name == null) {
 
@@ -156,7 +152,7 @@ public class TodoController extends BaseController {
     @GetMapping("/log")
     public ModelAndView log(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
 
         if (name == null) {
 
@@ -165,8 +161,8 @@ public class TodoController extends BaseController {
         } else {
 
             if (name.equals("IvanT")) {
-                model.put("users", userRepository.findAll());
-                model.put("log", logRepository.findAll());
+                model.put("users", usersService.findAll());
+                model.put("log", logService.findAll());
                 return this.view("log");
             } else {
                 return this.view("list-educations");
@@ -178,9 +174,9 @@ public class TodoController extends BaseController {
     @PostMapping("/log")
     public ModelAndView logSearchByUser(ModelMap model, @RequestParam String userId) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
-        model.put("users",userRepository.findAll());
-        model.put("log",logRepository.findByUsername(userId));
+        model.put("todos",service.findByUser(name));
+        model.put("users",usersService.findAll());
+        model.put("log",logService.findByUsername(userId));
         return this.view("log");
     }
 
@@ -188,9 +184,9 @@ public class TodoController extends BaseController {
     @GetMapping("/user")
     public ModelAndView user(ModelMap model) {
         String name = (String) model.get("name");
-        model.put("todos",repository.findByUser(name));
+        model.put("todos",service.findByUser(name));
 
-        Users user = this.userRepository.findByUsername(name).orElse(null);
+        Users user = this.usersService.findByUsername(name).orElse(null);
 
         if (user == null) {
 

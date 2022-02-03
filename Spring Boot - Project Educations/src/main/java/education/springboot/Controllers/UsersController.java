@@ -1,10 +1,10 @@
 package education.springboot.Controllers;
 
 import education.springboot.Entities.Log;
-import education.springboot.Repositories.LogRepository;
 import education.springboot.Services.EmailSenderService;
 import education.springboot.Entities.Users;
-import education.springboot.Repositories.UsersRepository;
+import education.springboot.Services.LogService;
+import education.springboot.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,18 +18,18 @@ import java.util.Objects;
 
 @Controller
 @SessionAttributes("name")
-public class SpringBootController extends BaseController {
+public class UsersController extends BaseController {
 
     @Autowired
-    private EmailSenderService service;
+    private EmailSenderService serviceEmail;
 
     @Autowired
-    UsersRepository repository;
+    private UsersService service;
 
     Users newUserDB = new Users();
 
     @Autowired
-    LogRepository logRepository;
+    private LogService logService;
 
     Log newlog = new Log();
 
@@ -43,13 +43,13 @@ public class SpringBootController extends BaseController {
     @RequestMapping(value = "/learn", method = RequestMethod.POST)
     public ModelAndView showWelcomePage(ModelMap model, @Valid Log newlog, @RequestParam String name, @RequestParam String password) {
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (!(user == null) && user.getPassword().equals(DigestUtils.sha256Hex(password))) {
 
             newlog.setUsername(name);
             newlog.setDate(new Date(System.currentTimeMillis()));
-            logRepository.save(newlog);
+            logService.save(newlog);
 
             model.put("name", name);
             model.put("password", password);
@@ -68,7 +68,7 @@ public class SpringBootController extends BaseController {
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
     public ModelAndView showLoginPageWithNewUser(ModelMap model, @Valid Users newUserDB, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
 
-        Users user = this.repository.findByUsername(userId).orElse(null);
+        Users user = this.service.findByUsername(userId).orElse(null);
 
         if (user == null) {
 
@@ -81,13 +81,13 @@ public class SpringBootController extends BaseController {
                     newUserDB.setAge(age);
                     newUserDB.setDate(date);
 
-                    service.sendSimpleEmail(email, "Успешна регистрация!",
+                    serviceEmail.sendSimpleEmail(email, "Успешна регистрация!",
                             "Здравейте!\n\n" +
                                     "Успешно се регистрирахте в сайтът за обучение!\n" +
                                     "Вашето потребителско име е: " + userId +
                                     "\n\n\nБлагодарим!");
 
-                    repository.save(newUserDB);
+                    service.save(newUserDB);
 
                     model.put("name", userId);
                     model.put("password", password);
@@ -120,7 +120,7 @@ public class SpringBootController extends BaseController {
     public ModelAndView change(ModelMap model) {
         String name = (String) model.get("name");
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (user == null) {
 
@@ -137,7 +137,7 @@ public class SpringBootController extends BaseController {
 
     @RequestMapping(value = "/change", method = RequestMethod.POST)
     public ModelAndView showChange(ModelMap model, @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email, @RequestParam int age) {
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
             if (Objects.equals(password, confirmPassword)) {
@@ -145,7 +145,7 @@ public class SpringBootController extends BaseController {
                 user.setPassword(DigestUtils.sha256Hex(password));
                 user.setEmail(email);
                 user.setAge(age);
-                repository.save(user);
+                service.save(user);
 
                 return this.redirect("/learn");
             } else {
@@ -171,7 +171,7 @@ public class SpringBootController extends BaseController {
     public ModelAndView mail(ModelMap model) {
         String name = (String) model.get("name");
 
-        Users user = this.repository.findByUsername(name).orElse(null);
+        Users user = this.service.findByUsername(name).orElse(null);
 
         if (user == null) {
 
@@ -189,7 +189,7 @@ public class SpringBootController extends BaseController {
     public ModelAndView mail(ModelMap model, @RequestParam String email, @RequestParam String textarea) {
 
         if (!textarea.equals("")) {
-            service.sendSimpleEmail("noreply.sprboot@gmail.com", "Изпратено съобщение от "+ email,
+            serviceEmail.sendSimpleEmail("noreply.sprboot@gmail.com", "Изпратено съобщение от "+ email,
                     "Съобщението е: "+ textarea + "\nEmail: " + email);
 
             return this.redirect("/list-educations");
