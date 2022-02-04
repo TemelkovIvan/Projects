@@ -1,6 +1,8 @@
 package Calculation.Calculator.Exporters;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import Calculation.Calculator.Entities.SMR;
 import Calculation.Calculator.Entities.Users;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.*;
+import org.junit.runners.model.TestClass;
 
 public class ExcelExporter {
     private XSSFWorkbook workbook;
@@ -57,7 +56,7 @@ public class ExcelExporter {
 
     }
 
-    private void writeHeaderLineByCase(int numberOfCase, String client, String address) {
+    private void writeHeaderLineByCase(int numberOfCase, String client, String address) throws IOException {
         sheet = workbook.createSheet("СМР");
 
         CellStyle style = workbook.createCellStyle();
@@ -68,12 +67,44 @@ public class ExcelExporter {
         style.setFont(font);
         style.setAlignment(HorizontalAlignment.CENTER);
 
-        Row row_case = sheet.createRow(1);
+        InputStream inputStream = TestClass.class.getClassLoader()
+                .getResourceAsStream("static/calculator_logo.png");
+        //Get the contents of an InputStream as a byte[].
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+        //Adds a picture to the workbook
+        int pictureIdx = workbook.addPicture(bytes, workbook.PICTURE_TYPE_PNG);
+        //close the input stream
+        inputStream.close();
+        //Returns an object that handles instantiating concrete classes
+        CreationHelper helper = workbook.getCreationHelper();
+        //Creates the top-level drawing patriarch.
+        Drawing drawing = sheet.createDrawingPatriarch();
+
+        //Create an anchor that is attached to the worksheet
+        ClientAnchor anchor = helper.createClientAnchor();
+
+        //create an anchor with upper left cell _and_ bottom right cell
+        anchor.setCol1(0); //Column A
+        anchor.setRow1(1); //Row 2
+        anchor.setCol2(4); //Column C
+        anchor.setRow2(3); //Row 4
+
+        //Creates a picture
+        Picture pict = drawing.createPicture(anchor, pictureIdx);
+
+        //Reset the image to the original size
+        pict.resize(); //don't do that. Let the anchor resize the image!
+
+        //Create the Cell B3
+        Cell cell = sheet.createRow(2).createCell(1);
+
+
+        Row row_case = sheet.createRow(4);
 
         createCell(row_case, 0, "Случай:", style);
         createCell(row_case, 1, numberOfCase, style);
 
-        Row row_client_address = sheet.createRow(2);
+        Row row_client_address = sheet.createRow(6);
 
         createCell(row_client_address, 0, "Клиент:", style);
         createCell(row_client_address, 1, client, style);
@@ -81,7 +112,7 @@ public class ExcelExporter {
         createCell(row_client_address, 4, address, style);
 
 
-        Row row = sheet.createRow(4);
+        Row row = sheet.createRow(7);
 
         createCell(row, 0, "Позиция", style);
         createCell(row, 1, "Дейност", style);
@@ -124,7 +155,7 @@ public class ExcelExporter {
     }
 
     private void writeDataLinesByCase(double total) {
-        int rowCount = 5;
+        int rowCount = 8;
 
         CellStyle style = workbook.createCellStyle();
         CellStyle style_total = workbook.createCellStyle();
