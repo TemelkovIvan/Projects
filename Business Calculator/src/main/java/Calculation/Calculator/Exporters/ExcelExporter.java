@@ -1,6 +1,5 @@
 package Calculation.Calculator.Exporters;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -94,10 +93,6 @@ public class ExcelExporter {
 
         //Reset the image to the original size
         pict.resize(); //don't do that. Let the anchor resize the image!
-
-        //Create the Cell B3
-        Cell cell = sheet.createRow(2).createCell(1);
-
 
         Row row_case = sheet.createRow(4);
 

@@ -1,5 +1,4 @@
 package Calculation.Calculator.Exporters;
-import com.itextpdf.io.image.ImageData;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Calculation.Calculator.Entities.SMR;
 import Calculation.Calculator.Entities.Users;
-import com.itextpdf.io.image.ImageDataFactory;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 
