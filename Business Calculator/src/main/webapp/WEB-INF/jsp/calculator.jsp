@@ -180,7 +180,7 @@
 
     #total {
         text-align: center;
-        width: 110px;
+        width: 150px;
         height: 50px;
     }
 

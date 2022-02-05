@@ -137,6 +137,7 @@ public class PDFExporter {
         font.setColor(Color.BLACK);
 
         Image img = Image.getInstance("src/main/resources/static/calculator_logo.png");
+        img.setAlignment(img.ALIGN_CENTER);
 
         document.add(img);
 
