@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Business Calculator</title>
@@ -164,35 +164,15 @@
         border: 2px solid black;
     }
 
-    th {
-        font-size: 15px;
-        font-weight: bold;
-        width: 1%;
+    .form-group{
+        color: black;
         text-align: center;
     }
 
-    tr:nth-child(even) td {
-        background-color: whitesmoke;
-        text-align: center;
-    }
-
-    tr:nth-child(odd) td {
-        background-color: gray;
-        text-align: center;
-    }
-
-    #add {
-    color: gray;
-    font-family: Gabriola;
-    font-weight: bold;
-    padding-left: 550px;
-    padding-bottom: 50px;
-    font-size: 30px;
-    }
-
-    #add:hover {
-        color: orange;
-        text-decoration: none;
+    input:invalid+span:after {
+        color: red;
+        content: '✖ грешно!';
+        padding-left: 5px;
     }
 
 /* ------------------- START FOOTER ------------------- */
@@ -243,54 +223,48 @@
             </div>
         </nav>
 
-     <h1>СМР</h1>
-        <div class="container">
+             <h1>Промяна на съществуваща позиция</h1>
+    <div class="container">
+        <form:form method="post">
+            <hidden path="id"/>
+            <fieldset class="form-group">
+                <label name="position">Позиция по договор</label>
+                <input name="position" type="number" id="position" class="form-control" required="required" value="${smr.position}" minlength="10" maxlength="20" />
 
-        <table class="table">
+                <label path="action">Дейност</label>
+                <input name="action" type="text" id="action" class="form-control" required="required" value="${smr.action}" minlength="3" maxlength="30" />
 
-            <thead>
-                <tr>
-                    <th>Позиция</th>
-                    <th>Дейност</th>
-                    <th>Описание</th>
-                    <th>Цена Договор A</th>
-                    <th>Цена Договор B</th>
-                    <th>Цена Договор C</th>
-                    <th>Цена Договор D</th>
-                    <th>Цена Договор E</th>
-                    <th>Промяна</th>
-                    <th>Изтриване</th>
-                </tr>
-            </thead>
-            <tbody>
+                <label path="descr">Описание</label>
+                <input name="descr" type="text" id="descr" class="form-control" required="required" value="${smr.descr}" minlength="3" maxlength="30" />
 
-                <c:forEach items="${smr}" var= "smr">
-                            <tr>
-                                <td>${smr.position}</td>
-                                <td>${smr.action}</td>
-                                <td>${smr.descr}</td>
-                                <td>${smr.price_contract_1}</td>
-                                <td>${smr.price_contract_2}</td>
-                                <td>${smr.price_contract_3}</td>
-                                <td>${smr.price_contract_4}</td>
-                                <td>${smr.price_contract_5}</td>
-                                <td><a type="button" class="btn btn-secondary" href="/update-SMR-position?id=${smr.id}">Промени</a></td>
-                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete-SMR-position?id=${smr.id}">Изтрий</a></td>
-                            </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                <label path="price_contract_1">Позиция по договор A</label>
+                <input name="price_contract_1" type="number" id="price_contract_1" class="form-control" required="required" value="${smr.price_contract_1}" step="0.01" min="0" max="10000" /><span class="validity">
 
-     <br/>
+                <label path="price_contract_2">Позиция по договор B</label>
+                <input name="price_contract_2" type="number" id="price_contract_2" class="form-control" required="required" value="${smr.price_contract_2}" step="0.01" min="0" max="10000" /><span class="validity">
 
+                <label path="price_contract_3">Позиция по договор C</label>
+                <input name="price_contract_3" type="number" id="price_contract_3" class="form-control" required="required" value="${smr.price_contract_3}" step="0.01" min="0" max="10000" /><span class="validity">
+
+                <label path="price_contract_4">Позиция по договор D</label>
+                <input name="price_contract_4" type="number" id="price_contract_4" class="form-control" required="required" value="${smr.price_contract_4}" step="0.01" min="0" max="10000" /><span class="validity">
+
+                <label path="price_contract_5">Позиция по договор E</label>
+                <input name="price_contract_5" type="number" id="price_contract_5" class="form-control" required="required" value="${smr.price_contract_5}" step="0.01" min="0" max="10000" /><span class="validity">
+
+                <label path="type">Тип</label>
+                <input name="type" type="text" id="type" class="form-control" required="required" value="${smr.type}" minlength="1" maxlength="5" />
+
+            </fieldset>
+
+            <button type="submit" class="btn btn-secondary">Готово</button>
+            <a type="button" class="btn btn-dark" href="/list-smr">Отказ</a>
+
+        </form:form>
     </div>
-    <a id="add" href="/add-SMR-position">Добавяне на нова позиция</a>
-    <br><br><br><br><br><br><br>
-        <footer>
-            <h5>
-                <a href="/information">Информация за нас</a>
-            </h5>
-        </footer>
-    </body>
 
-    </html>
+ <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+ <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

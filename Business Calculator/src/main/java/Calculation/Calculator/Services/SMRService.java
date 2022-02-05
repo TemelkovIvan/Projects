@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SMRService {
@@ -15,7 +16,7 @@ public class SMRService {
     @Autowired
     SMRRepository repository;
 
-    private static List<Calculation.Calculator.Entities.SMR> SMR = new ArrayList<SMR>();
+    private static List<SMR> SMR = new ArrayList<SMR>();
 
     public List<SMR> listAll() {
         return repository.findAll();
@@ -23,5 +24,19 @@ public class SMRService {
 
     public List<SMR> findAll(Sort position) {
         return repository.findAll();
+    }
+
+    public SMR retrieveSMR(int id) {
+        SMR smr = this.repository.findById(id).orElse(null);
+        return smr;
+    }
+
+
+    public void deleteById(int id) {
+        repository.deleteById(id);
+    }
+
+    public void save(SMR smr) {
+        repository.save(smr);
     }
 }

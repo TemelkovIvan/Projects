@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,12 +37,7 @@ public class KSSController extends BaseController {
 
     Date date = new Date(System.currentTimeMillis());
 
-    @RequestMapping(value="/list-smr",method = RequestMethod.GET)
-    public ModelAndView showKSS(ModelMap model) {
 
-        model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
-        return this.view("list-smr");
-    }
 
     @RequestMapping(value="/calculator",method = RequestMethod.GET)
     public ModelAndView showCalculator(ModelMap model) {
@@ -178,7 +174,74 @@ public class KSSController extends BaseController {
         return this.redirect("/home");
     }
 
-    @GetMapping("/pdfCase")
+    @RequestMapping(value="/list-smr",method = RequestMethod.GET)
+    public ModelAndView showKSS(ModelMap model) {
+
+        model.put("smr",serviceSMR.findAll(Sort.by(Sort.Direction.ASC, "position")));
+        return this.view("list-smr");
+    }
+
+    @RequestMapping(value="/add-SMR-position",method = RequestMethod.GET)
+    public ModelAndView addSMRPosision(ModelMap model) {
+
+        model.addAttribute("smr", new SMR());
+
+        return this.view("add-SMR-position");
+    }
+
+    @RequestMapping(value="/add-SMR-position",method = RequestMethod.POST)
+    public ModelAndView addSMRPosision(ModelMap model, @Valid SMR smr, @RequestParam int position, @RequestParam String action, @RequestParam String descr,
+                                       @RequestParam String type, @RequestParam double price_contract_1, @RequestParam double price_contract_2, @RequestParam double price_contract_3, @RequestParam double price_contract_4, @RequestParam double price_contract_5) {
+
+        smr.setPosition(position);
+        smr.setAction(action);
+        smr.setDescr(descr);
+        smr.setType(type);
+        smr.setPrice_contract_1(price_contract_1);
+        smr.setPrice_contract_2(price_contract_2);
+        smr.setPrice_contract_3(price_contract_3);
+        smr.setPrice_contract_4(price_contract_4);
+        smr.setPrice_contract_5(price_contract_5);
+        serviceSMR.save(smr);
+
+        return this.redirect("/list-smr");
+    }
+
+    @RequestMapping(value="/update-SMR-position",method = RequestMethod.GET)
+    public ModelAndView showUpdateTodo(@RequestParam int id,ModelMap model) {
+        model.put("smr",serviceSMR.retrieveSMR(id));
+        return this.view("update-SMR-position");
+    }
+
+    @RequestMapping(value="/update-SMR-position",method = RequestMethod.POST)
+    public ModelAndView updateTodo(ModelMap model, @Valid SMR smr, BindingResult result, @RequestParam int position, @RequestParam String action, @RequestParam String descr,
+                                   @RequestParam String type, @RequestParam double price_contract_1, @RequestParam double price_contract_2, @RequestParam double price_contract_3, @RequestParam double price_contract_4, @RequestParam double price_contract_5) {
+
+        if(result.hasErrors()){
+            return this.view("add-SMR-position");
+        }
+
+        smr.setPosition(position);
+        smr.setAction(action);
+        smr.setDescr(descr);
+        smr.setType(type);
+        smr.setPrice_contract_1(price_contract_1);
+        smr.setPrice_contract_2(price_contract_2);
+        smr.setPrice_contract_3(price_contract_3);
+        smr.setPrice_contract_4(price_contract_4);
+        smr.setPrice_contract_5(price_contract_5);
+
+        serviceSMR.save(smr);
+        return this.redirect("/list-smr");
+    }
+
+    @RequestMapping(value="/delete-SMR-position",method = RequestMethod.GET)
+    public ModelAndView deleteSMRPosision(@RequestParam int id) {
+        serviceSMR.deleteById(id);
+        return this.redirect("/list-smr");
+    }
+
+        @GetMapping("/pdfCase")
     public void exportToPDF(HttpServletResponse response, @RequestParam int numberOfCase) throws DocumentException, IOException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
