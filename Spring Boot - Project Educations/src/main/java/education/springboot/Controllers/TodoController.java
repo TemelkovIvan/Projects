@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+//@PreAuthorize("isAuthenticated()")
 @Controller
 @SessionAttributes("name")
 public class TodoController extends BaseController {
@@ -128,6 +129,7 @@ public class TodoController extends BaseController {
 
         return this.view("jquery");
     }
+
 
     @GetMapping("/info")
     public ModelAndView info(ModelMap model) {

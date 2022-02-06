@@ -17,8 +17,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
         private String email;
         private int age;
         private Date date;
-
-
+        private String roles;
 
         public Users() {
         }
@@ -31,7 +30,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
             this.date = date;
         }
 
-
         @Id
         @GeneratedValue(strategy = SEQUENCE)
         public int getId() {
@@ -41,7 +39,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
         public void setId(int id) {
             this.id = id;
         }
-
 
         @Column(name = "username", nullable = false, unique = true, updatable = false)
         public String getUsername() {
@@ -86,6 +83,16 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
         public void setDate(Date date) {
             this.date = date;
+        }
+
+
+        @Column(name = "roles")
+        public String getRoles() {
+            return roles;
+        }
+
+        public void setRoles(String roles) {
+            this.roles = roles;
         }
 
         @Override
