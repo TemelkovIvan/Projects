@@ -8,6 +8,7 @@ import education.springboot.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -40,9 +42,9 @@ public class TodoController extends BaseController {
     }
 
     @RequestMapping(value="/list-educations",method = RequestMethod.GET)
-    public ModelAndView showTodo(ModelMap model) {
-        String name = (String) model.get("name");
-        
+    public ModelAndView showTodo(ModelMap model, Principal user) {
+        String name = user.getName();
+        model.put("name", user.getName());
         model.put("todos",service.findByUser(name));
         return this.view("list-educations");
     }
