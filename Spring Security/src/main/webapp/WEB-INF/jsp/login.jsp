@@ -153,6 +153,10 @@
                     <font color="red">${errorMessage}</font>
                 </p>
                 <p>
+                    <label>Запомни ме</label>
+                    <input type="checkbox" name="remember" class="form-control">
+                </p>
+                <p>
                 <p>
                     <input type="hidden"
                         name="${_csrf.parameterName}"

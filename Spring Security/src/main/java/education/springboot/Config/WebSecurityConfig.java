@@ -45,9 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .permitAll()
+        .and().rememberMe()
+                .rememberMeParameter("remember")
+                .rememberMeCookieName("rememberMeCookie")
+                .key("e9a4572e-9ffa-4288-8c98-28a8fef6e208")
+                .tokenValiditySeconds(10000)
+                .userDetailsService(userDetailsService)
         .and().exceptionHandling()
                 .accessDeniedPage("/access-denied")
-        .and().userDetailsService(this.userDetailsService);
+        .and().userDetailsService(userDetailsService);
+
+
     }
 
     @Override
