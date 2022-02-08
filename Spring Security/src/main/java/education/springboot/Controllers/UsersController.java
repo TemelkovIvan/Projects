@@ -38,16 +38,23 @@ public class UsersController extends BaseController {
 
     Date date = new Date(System.currentTimeMillis());
 
-    @GetMapping("/login")
-    public ModelAndView showLogin(ModelMap model) {
-        return this.view("login");
-    }
-
     @GetMapping("/")
-    public ModelAndView showLoginPage(ModelMap model) {
+    public ModelAndView showLogin(ModelMap model) {
+        return this.redirect("/list-educations");
+    }
+
+    @GetMapping("/login")
+    public ModelAndView showLoginPage(ModelMap model, @RequestParam(required = false) String error) {
+
+        if(error != null){
+            model.put("errorMessage", "Грешно Име или Парола!");
+        }
+
+
         return this.view("login");
     }
 
+    /* OLD version without Spring Security
     @RequestMapping(value = "/learn", method = RequestMethod.POST)
     public ModelAndView showWelcomePage(ModelMap model, @Valid Log newLog, @RequestParam String name, @RequestParam String password) {
 
@@ -66,6 +73,7 @@ public class UsersController extends BaseController {
         model.put("errorMessage", "Грешно Име или Парола!");
         return this.view("login");
     }
+     */
 
     @GetMapping("/new-user")
     public ModelAndView newUser(ModelAndView model) {
@@ -87,6 +95,7 @@ public class UsersController extends BaseController {
                     newUserDB.setEmail(email);
                     newUserDB.setAge(age);
                     newUserDB.setDate(date);
+                    newUserDB.setRoles("ROLE_USER");
 
                     serviceEmail.sendSimpleEmail(email, "Успешна регистрация!",
                             "Здравейте!\n\n" +
@@ -127,7 +136,7 @@ public class UsersController extends BaseController {
 
         if (user == null) {
 
-            return this.redirect("/learn");
+            return this.redirect("/login");
 
         } else {
 

@@ -148,7 +148,7 @@
 
     h1 {
         font-family: Gabriola;
-        color: black;
+        color: red;
         text-align: center;
         margin-top: 25px;
         margin-bottom: 25px;
@@ -158,33 +158,6 @@
         text-transform: uppercase;
     }
 
-    table {
-        border-spacing: 0;
-        margin-left: auto;
-        border: 2px solid black;
-    }
-
-    tr:nth-child(even) td {
-        background-color: whitesmoke;
-    }
-
-    tr:nth-child(odd) td {
-        background-color: gray;
-    }
-
-    #add {
-    color: gray;
-    font-family: Gabriola;
-    font-weight: bold;
-    padding-left: 550px;
-    padding-bottom: 50px;
-    font-size: 30px;
-    }
-
-    #add:hover {
-        color: orange;
-        text-decoration: none;
-    }
 
 /* ------------------- START FOOTER ------------------- */
 
@@ -240,36 +213,8 @@
         </div>
     </nav>
 
-     <h1>Вашите обучения</h1>
-        <div class="container">
+     <h1>Нямате необходимите права! Моля обърнете се към Администратор!</h1>
 
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th>Обучение</th>
-                    <th>Краен срок</th>
-                    <th>Промяна</th>
-                    <th>Изтриване</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${todos}" var= "todo">
-                            <tr>
-                                <td>${todo.desc}</td>
-                                <td><fmt:formatDate value="${todo.targetDate}" pattern="dd/MM/yyyy"/></td>
-                                <td><a type="button" class="btn btn-secondary" href="/update-education?id=${todo.id}">Промени</a></td>
-                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete-education?id=${todo.id}">Изтрий</a></td>
-                            </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-     <br/>
-
-    </div>
-    <a id="add" href="/add-education">Добавяне на курс</a>
-    <br><br><br><br><br><br><br>
         <footer>
             <h5>
                 <a href="/information">Информация за нас</a>

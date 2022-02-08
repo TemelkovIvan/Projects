@@ -30,16 +30,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/new-user").permitAll()
+                .antMatchers("/new-user","/info").permitAll()
                 .antMatchers("/css").hasRole("USER")
                 .anyRequest().authenticated()
         .and().formLogin()
                 .loginPage("/login").permitAll()
                     .passwordParameter("password")
                     .usernameParameter("name")
-                    .successForwardUrl("/list-educations")
+                    .defaultSuccessUrl("/list-educations")
         .and().logout()
-                .logoutUrl("/exit")
+                .logoutSuccessUrl("/login")
+        .and().exceptionHandling()
+                .accessDeniedPage("/access-denied")
         .and().userDetailsService(this.userDetailsService);
     }
 

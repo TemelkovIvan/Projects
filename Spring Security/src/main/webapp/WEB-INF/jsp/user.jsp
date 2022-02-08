@@ -216,9 +216,11 @@ table {
     <h2>"${email}"</h1>
 
 
-    <h3>${age} <sub>години</sub></h1>
+    <h3>${age} <sub>години</sub></h3>
 
-        <h3> <sub>Профилът е създаден на </sub><fmt:formatDate value="${date}" pattern="dd/MM/yyyy"/></h3>
+    <h3> <sub>Профилът е създаден на </sub><fmt:formatDate value="${date}" pattern="dd/MM/yyyy"/></h3>
+
+    <h3>Вие сте ${role}</h3>
 
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
      <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>

@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 @PreAuthorize("isAuthenticated()")
 @Controller
@@ -101,7 +102,6 @@ public class TodoController extends BaseController {
     }
 
     @GetMapping("/html")
-    @PreAuthorize("isAuthenticated()")
     public ModelAndView html(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.findByUser(name));
@@ -135,6 +135,11 @@ public class TodoController extends BaseController {
     }
 
 
+    @GetMapping("/access-denied")
+    public ModelAndView accessDenied(ModelMap model) {
+        return this.view("access-denied");
+    }
+
     @GetMapping("/info")
     public ModelAndView info(ModelMap model) {
         return this.view("info");
@@ -147,7 +152,7 @@ public class TodoController extends BaseController {
 
         if (name == null) {
 
-            return this.redirect("/learn");
+            return this.redirect("/login");
 
         } else {
 
@@ -156,6 +161,7 @@ public class TodoController extends BaseController {
     }
 
     @GetMapping("/log")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView log(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.findByUser(name));
@@ -203,6 +209,13 @@ public class TodoController extends BaseController {
         model.put("email",user.getEmail());
         model.put("age", user.getAge());
         model.put("date", user.getDate());
+
+        if (!Objects.equals(user.getRoles(), "ROLE_USER")) {
+            model.put("role", "Администратор");
+        } else {
+            model.put("role", "Потребител");
+        }
+
         return this.view("user");
         }
     }
