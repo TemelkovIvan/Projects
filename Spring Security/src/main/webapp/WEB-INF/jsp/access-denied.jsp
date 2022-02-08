@@ -197,7 +197,7 @@
 <nav role="navigation">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/login';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/logout';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
                     <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
                            <ul>
                             <c:forEach items="${todos}" var= "todo">
@@ -213,7 +213,7 @@
         </div>
     </nav>
 
-     <h1>Нямате необходимите права! Моля обърнете се към Администратор!</h1>
+     <h1>Нямате необходимите права!<br>Моля обърнете се към Администратор!</h1>
 
         <footer>
             <h5>

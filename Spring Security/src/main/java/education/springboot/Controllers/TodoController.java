@@ -140,11 +140,6 @@ public class TodoController extends BaseController {
         return this.view("access-denied");
     }
 
-    @GetMapping("/info")
-    public ModelAndView info(ModelMap model) {
-        return this.view("info");
-    }
-
     @GetMapping("/information")
     public ModelAndView infoCreator(ModelMap model) {
         String name = (String) model.get("name");
@@ -161,7 +156,6 @@ public class TodoController extends BaseController {
     }
 
     @GetMapping("/log")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView log(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos",service.findByUser(name));

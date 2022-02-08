@@ -224,7 +224,7 @@
 <nav role="navigation">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/login';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                    <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/logout';" "style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
                     <div class="col-lg-2 col-xs-12" align="center" onclick="location.href='/list-educations';" style="cursor: pointer;"><i id="icons" class="fas fa-book"></i><br>Обучения на ${name}
                            <ul>
                             <c:forEach items="${todos}" var= "todo">
@@ -268,8 +268,11 @@
      <br/>
 
     </div>
+
+
     <a id="add" href="/add-education">Добавяне на курс</a>
     <br><br><br><br><br><br><br>
+
         <footer>
             <h5>
                 <a href="/information">Информация за нас</a>

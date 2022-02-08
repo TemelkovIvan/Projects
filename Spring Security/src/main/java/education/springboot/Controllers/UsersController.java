@@ -6,13 +6,20 @@ import education.springboot.Entities.Users;
 import education.springboot.Services.LogService;
 import education.springboot.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.Objects;
@@ -50,8 +57,30 @@ public class UsersController extends BaseController {
             model.put("errorMessage", "Грешно Име или Парола!");
         }
 
-
         return this.view("login");
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public ModelAndView logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return this.redirect("/login");
+    }
+
+    @PostMapping(value = "/logout")
+    public ModelAndView logout(ModelMap model, @RequestParam(required = false) String logout, RedirectAttributes redirectAttributes){
+
+        if(logout != null) redirectAttributes.addFlashAttribute("logout", logout);
+
+        return this.redirect("/login");
+    }
+
+
+    @GetMapping("/info")
+    public ModelAndView info(ModelMap model) {
+        return this.view("info");
     }
 
     /* OLD version without Spring Security
@@ -154,7 +183,7 @@ public class UsersController extends BaseController {
         if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
             if (Objects.equals(password, confirmPassword)) {
 
-                user.setPassword(DigestUtils.sha256Hex(password));
+                user.setPassword(passwordEncoder.encode(password));
                 user.setEmail(email);
                 user.setAge(age);
                 service.save(user);
