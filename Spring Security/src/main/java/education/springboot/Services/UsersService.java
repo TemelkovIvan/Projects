@@ -9,7 +9,6 @@ import education.springboot.Entities.Users;
 import education.springboot.Repositories.UsersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

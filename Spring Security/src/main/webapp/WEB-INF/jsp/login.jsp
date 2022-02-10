@@ -151,10 +151,9 @@
                     <input type="password" name="password" class="form-control">
                     <br>
                     <font color="red">${errorMessage}</font>
-                </p>
-                <p>
+
                     <label>Запомни ме</label>
-                    <input type="checkbox" name="remember" class="form-control">
+                    <input type="checkbox" name="remember">
                 </p>
                 <p>
                 <p>

@@ -135,7 +135,7 @@
                 </p>
 
                 <p>
-                    <a type="button" class="btn btn-dark" href="/learn" >Отказ</a>
+                    <a type="button" class="btn btn-dark" href="/login" >Отказ</a>
                 </p>
 
                 </form>

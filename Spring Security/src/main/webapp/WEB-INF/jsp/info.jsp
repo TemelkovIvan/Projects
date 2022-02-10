@@ -103,7 +103,7 @@
     </style>
     <body>
         <div>
-            <a id="add" href="/learn">Начало</a>
+            <a id="add" href="/login">Начало</a>
 
             <h3>Прoектът е изработен от <br> Иван Георгиев Темелков</h3>
 
