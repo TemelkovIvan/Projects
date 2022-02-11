@@ -50,8 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and().exceptionHandling()
                 .accessDeniedPage("/access-denied")
         .and().userDetailsService(userDetailsService);
-
-
     }
 
     @Override
@@ -65,5 +63,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
