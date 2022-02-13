@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +38,9 @@ public class Project{
         jTable.setShowHorizontalLines(true);
         jTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         jTable.setSelectionBackground(Color.red);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTable.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
 
         JScrollPane scrollPane = new JScrollPane(jTable);
         frame.add(scrollPane);
