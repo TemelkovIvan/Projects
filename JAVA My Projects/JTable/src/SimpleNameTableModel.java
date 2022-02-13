@@ -51,4 +51,25 @@ public class SimpleNameTableModel extends AbstractTableModel {
             return String.class;
         }
     }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex)
+    {
+        return true;
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int row, int col)
+    {
+        Simple temp = myList.get(row);
+        if (col == 0) {
+            temp.setName((String)aValue);
+        }
+        else if (col == 1) {
+            temp.setLastName((String)aValue);
+        }
+        else if (col == 2) {
+            temp.setSalary((Double) aValue);
+        }
+    }
 }

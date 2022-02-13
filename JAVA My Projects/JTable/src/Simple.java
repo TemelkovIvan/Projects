@@ -1,6 +1,17 @@
 public class Simple {
 
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
     private String name;
     private String lastName;

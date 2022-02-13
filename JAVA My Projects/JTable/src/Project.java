@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 import java.text.MessageFormat;
 
 
-public class Project extends JFrame implements ActionListener {
+public class Project{
+
 
     private SimpleNameTableModel tableModel;
     private SimpleNameList myList;
@@ -22,9 +23,9 @@ public class Project extends JFrame implements ActionListener {
 
         myList = new SimpleNameList();
 
-        Simple rowOne = new Simple("test", "test", 22.50);
-        Simple rowTwo = new Simple("test", "test", 322.50);
-        Simple rowThree = new Simple("test", "test", 442.50);
+        Simple rowOne = new Simple("test1", "test_1", 22.50);
+        Simple rowTwo = new Simple("test2", "test_2", 322.50);
+        Simple rowThree = new Simple("test3", "test_3", 442.50);
         myList.add(rowOne);
         myList.add(rowTwo);
         myList.add(rowThree);
@@ -33,18 +34,32 @@ public class Project extends JFrame implements ActionListener {
 
         JTable jTable = new JTable(tableModel);
         jTable.setAutoCreateRowSorter(true);
+        jTable.setShowHorizontalLines(true);
+        jTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable.setSelectionBackground(Color.red);
 
         JScrollPane scrollPane = new JScrollPane(jTable);
         frame.add(scrollPane);
 
         JButton buttonExport = new JButton("Export");
+
         JButton jButton5 = new JButton("New Row");
+        jButton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Simple row = new Simple("", "", 0.00);
+                myList.add(row);
+                System.out.println("new row");
+                frame.add(scrollPane, BorderLayout.CENTER);
+                }
+            });
+
         JButton jButton6 = new JButton("Del Row");
 
         JButton buttonInsert = new JButton("Insert");
         buttonInsert.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Insert");
+                /*
                 myList = new SimpleNameList();
                 myList.readFromCSV("names.csv");
                 tableModel = new SimpleNameTableModel(myList);
@@ -56,7 +71,7 @@ public class Project extends JFrame implements ActionListener {
                 JPanel panel = new JPanel();
                 panel.add(scrollPane);
                 add(panel,BorderLayout.CENTER);
-
+                 */
             }
         });
 
@@ -93,7 +108,7 @@ public class Project extends JFrame implements ActionListener {
                                                 .addContainerGap()
                                                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                                 .addComponent(buttonExport, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,16 +148,9 @@ public class Project extends JFrame implements ActionListener {
                                                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-
-
         frame.pack();
-
         frame.setVisible(true);
-
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-    }
 }
