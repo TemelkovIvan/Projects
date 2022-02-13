@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +34,21 @@ public class Project{
 
         tableModel = new SimpleNameTableModel(myList);
 
-        JTable jTable = new JTable(tableModel);
+        JTable jTable = new JTable(tableModel){
+            public Component prepareRenderer(TableCellRenderer renderer,
+                                             int row, int column)
+            {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Color color1 = new Color(220,220,220);
+                Color color2 = Color.WHITE;
+                if(!c.getBackground().equals(getSelectionBackground())) {
+                    Color coleur = (row % 2 == 0 ? color1 : color2);
+                    c.setBackground(coleur);
+                    coleur = null;
+                }
+                return c;
+            }
+        };
         jTable.setAutoCreateRowSorter(true);
         jTable.setShowHorizontalLines(true);
         jTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
