@@ -94,9 +94,15 @@ public class Project{
                 int input = JOptionPane.showOptionDialog(null, "Are you sure importing your data from file?", "Are you sure?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION)
                 {
-                    tableModel.removeAll();
-                    myList.readFromTXT("names.txt");
-                    frame.add(scrollPane,BorderLayout.CENTER);
+                    JFileChooser fileChooser= new JFileChooser();
+                    fileChooser.setDialogTitle("Open");
+                    fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    int result = fileChooser.showOpenDialog(null);
+                    if(result==JFileChooser.APPROVE_OPTION) {
+                        tableModel.removeAll();
+                        myList.readFromTXT(String.valueOf(fileChooser.getSelectedFile()));
+                        frame.add(scrollPane,BorderLayout.CENTER);
+                    }
                 }
             }
         });
