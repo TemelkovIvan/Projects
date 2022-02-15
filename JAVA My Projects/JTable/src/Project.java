@@ -83,7 +83,7 @@ public class Project{
                 int input = JOptionPane.showOptionDialog(null, "Are you sure exporting your data?", "Are you sure?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION)
                 {
-                    myList.exportToTXT(jTable);
+                    SimpleNameList.exportToTXT(jTable);
                 }
             }
         });

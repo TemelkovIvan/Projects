@@ -56,7 +56,7 @@ public class SimpleNameList {
         }
     }
 
-    public static boolean exportToTXT(JTable tableToExport) {
+    public static void exportToTXT(JTable tableToExport) {
 
         try {
             DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
@@ -73,10 +73,8 @@ public class SimpleNameList {
             }
 
             csv.close();
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
     }
 }
