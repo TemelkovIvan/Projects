@@ -19,7 +19,7 @@ public class SimpleNameList {
         return nameList;
     }
 
-    public void readFromCSV(String filename) {
+    public void readFromTXT(String filename) {
         File file = new File(filename);
         FileReader reader = null;
             try {
@@ -56,14 +56,14 @@ public class SimpleNameList {
         }
     }
 
-    public static boolean exportToCSV(JTable tableToExport) {
+    public static boolean exportToTXT(JTable tableToExport) {
 
         try {
             DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String currentDateTime = dateFormatter.format(new Date());
 
             TableModel model = tableToExport.getModel();
-            FileWriter csv = new FileWriter(new File("myExportedData" + currentDateTime + ".csv"));
+            FileWriter csv = new FileWriter(new File("myExportedData" + currentDateTime + ".txt"));
 
             for (int i = 0; i < model.getRowCount(); i++) {
                 for (int j = 0; j < model.getColumnCount(); j++) {

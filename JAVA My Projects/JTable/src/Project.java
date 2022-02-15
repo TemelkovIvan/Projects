@@ -83,7 +83,7 @@ public class Project{
                 int input = JOptionPane.showOptionDialog(null, "Are you sure exporting your data?", "Are you sure?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION)
                 {
-                    myList.exportToCSV(jTable);
+                    myList.exportToTXT(jTable);
                 }
             }
         });
@@ -95,7 +95,7 @@ public class Project{
                 if(input == JOptionPane.OK_OPTION)
                 {
                     tableModel.removeAll();
-                    myList.readFromCSV("names.csv");
+                    myList.readFromTXT("names.txt");
                     frame.add(scrollPane,BorderLayout.CENTER);
                 }
             }
