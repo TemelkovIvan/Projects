@@ -72,4 +72,12 @@ public class SimpleNameTableModel extends AbstractTableModel {
             temp.setSalary((Double) aValue);
         }
     }
+
+    public void removeRow(int selectedRow) {
+        myList.remove(selectedRow);
+    }
+
+    public void removeAll() {
+        myList.removeAll(myList);
+    }
 }

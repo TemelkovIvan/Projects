@@ -1,5 +1,10 @@
+import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SimpleNameList {
     private ArrayList<Simple> nameList;
@@ -49,5 +54,29 @@ public class SimpleNameList {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    public static boolean exportToCSV(JTable tableToExport) {
+
+        try {
+            DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            String currentDateTime = dateFormatter.format(new Date());
+
+            TableModel model = tableToExport.getModel();
+            FileWriter csv = new FileWriter(new File("myExportedData" + currentDateTime + ".csv"));
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    csv.write(model.getValueAt(i, j).toString() + ",");
+                }
+                csv.write("\n");
+            }
+
+            csv.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
