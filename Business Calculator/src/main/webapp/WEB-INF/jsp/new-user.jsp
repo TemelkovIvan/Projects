@@ -91,7 +91,7 @@
 
     </style>
     <body>
-            <div>
+<div>
                 <form method="post">
 
                     <h1>Проект с набор от необходими знания</h1>
@@ -102,24 +102,31 @@
 
                 <p>
                     <label>Потребителско име</label>
-                    <input type="text" name="userId" class="form-control" id="exampleFormControlInput1" minlength="4" maxlength="10" value="${userId}" required>
+                    <input type="text" name="userName" class="form-control" minlength="4" maxlength="10" value=${userId}>
                 </p>
                 <p>
                     <label>Парола</label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1" required>
+                    <input type="password" name="password" class="form-control">
                 </p>
                 <p>
                     <label>Повторете Парола</label>
-                    <input type="password" name="confirmPassword" class="form-control" id="exampleFormControlInput1" required>
+                    <input type="password" name="confirmPassword" class="form-control">
                     <br>
                     <font color="red">${errorMessage}</font>
                 </p>
                 <p>
                     <label>E-mail</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value="${email}" required>
+                    <input type="email" name="email" class="form-control" value=${email}>
+                </p>
+                <p>
+                    <label>Години</label>
+                    <input type="number" name="age" class="form-control" value=${age}>
                 </p>
 
                 <p>
+                    <input type="hidden"
+                        name="${_csrf.parameterName}"
+                        value="${_csrf.token}"/>
                     <input type="submit" class="btn btn-secondary" value="Създай"/>
                 </p>
 
@@ -128,7 +135,7 @@
                 </p>
 
                 <p>
-                    <a type="button" class="btn btn-dark" href="/learn" >Отказ</a>
+                    <a type="button" class="btn btn-dark" href="/login" >Отказ</a>
                 </p>
 
                 </form>

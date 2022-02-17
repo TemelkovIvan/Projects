@@ -137,28 +137,36 @@
         <div>
             <form method="post">
 
-                    <h1>Бизнес Калкулатор</h1>
+                                <h1>Проект</h1>
 
-                    <h2>
-                        Влезте с Вашият акаунт
-                    </h2>
-                <p>
-                    <label>Потребителско име</label>
-                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-                </p>
-                <p>
-                    <label>Парола</label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1">
-                    <br>
-                    <font color="red">${errorMessage}</font>
-                </p>
-                <p>
-                <p>
-                    <input type="submit" class="btn btn-secondary" value="Вход"/>
-                </p>
+                                <h2>
+                                    Влезте с Вашият акаунт
+                                </h2>
+                            <p>
+                                <label>Потребителско име</label>
+                                <input type="text" name="name" class="form-control">
+                            </p>
+                            <p>
+                                <label>Парола</label>
+                                <input type="password" name="password" class="form-control">
+                                <br>
+                                <font color="red">${errorMessage}</font>
 
-                <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
-            </form>
+                                <label>Запомни ме</label>
+                                <input type="checkbox" name="remember">
+                            </p>
+                            <p>
+                            <p>
+                                <input type="hidden"
+                                    name="${_csrf.parameterName}"
+                                    value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-secondary" value="Вход"/>
+                            </p>
+
+                            </p>
+
+                            <a id="add" href="/new-user">Добавяне на нов Акаунт</a>
+                        </form>
 
         </div>
 

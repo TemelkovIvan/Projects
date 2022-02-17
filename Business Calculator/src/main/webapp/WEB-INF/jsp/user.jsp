@@ -182,7 +182,7 @@ table {
     <nav role="navigation">
             <div class="container-fluid">
                 <div class="row">
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/logout';" style="cursor: pointer;"><i id="icons" class="fas fa-users"></i><br>Друг потребител</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/home';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
@@ -196,6 +196,9 @@ table {
 
     <h2>"${email}"</h1>
 
+    <h3>Вие сте с права на ${role}</h3>
+
+    <h3><a href="${admin}">${admin}</a></h3>
 
 
      <script src="webjars/jquery/3.5.1/jquery.min.js"></script>

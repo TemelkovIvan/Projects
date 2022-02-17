@@ -14,6 +14,7 @@ public class Users {
     private String username;
     private String password;
     private String email;
+    private String roles;
 
     public Users() {
     }
@@ -61,6 +62,15 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Column(name = "roles")
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
 

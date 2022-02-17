@@ -6,19 +6,28 @@ import Calculation.Calculator.Exporters.PDFExporter;
 import Calculation.Calculator.Services.EmailSenderService;
 import Calculation.Calculator.Services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.lowagie.text.DocumentException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -35,26 +44,38 @@ public class UsersController extends BaseController {
 
     Users newUserDB = new Users();
 
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @GetMapping("/")
-    public ModelAndView showLoginPage(ModelMap model) {
+    public ModelAndView showLogin(ModelMap model) {
+        return this.redirect("/home");
+    }
+
+    @GetMapping("/login")
+    public ModelAndView showLoginPage(ModelMap model, @RequestParam(required = false) String error) {
+
+        if(error != null){
+            model.put("errorMessage", "Грешно Име или Парола!");
+        }
+
         return this.view("login");
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
-
-        Users user = this.service.findByUsername(name).orElse(null);
-
-        if (!(user == null) && user.getPassword().equals(DigestUtils.sha256Hex(password))) {
-
-
-            model.put("name", name);
-            model.put("password", password);
-            return this.view("home");
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public ModelAndView logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+        return this.redirect("/login");
+    }
 
-        model.put("errorMessage", "Грешно Име или Парола!");
-        return this.view("login");
+    @PostMapping(value = "/logout")
+    public ModelAndView logout(ModelMap model, @RequestParam(required = false) String logout, RedirectAttributes redirectAttributes){
+
+        if(logout != null) redirectAttributes.addFlashAttribute("logout", logout);
+
+        return this.redirect("/login");
     }
 
     @GetMapping("/new-user")
@@ -73,15 +94,14 @@ public class UsersController extends BaseController {
                 if (Objects.equals(password, confirmPassword)) {
 
                     newUserDB.setUsername(userId);
-                    newUserDB.setPassword(DigestUtils.sha256Hex(password));
+                    newUserDB.setPassword(passwordEncoder.encode(password));
                     newUserDB.setEmail(email);
+                    newUserDB.setRoles("ROLE_USER");
 
                     service.save(newUserDB);
 
-                    model.put("name", userId);
-                    model.put("password", password);
-                    model.put("email", email);
-                    return this.view("home");
+                    return this.view("login");
+
                 } else {
                     model.put("errorMessage", "Грешно въведени Пароли!");
                     model.put("userId", userId);
@@ -102,7 +122,9 @@ public class UsersController extends BaseController {
     }
 
     @GetMapping("/home")
-    public ModelAndView welcome(ModelMap model) {
+    public ModelAndView welcome(ModelMap model, Principal user) {
+        String name = user.getName();
+        model.put("name", user.getName());
         return this.view("home");
     }
 
@@ -119,6 +141,14 @@ public class UsersController extends BaseController {
         } else {
 
             model.put("email",user.getEmail());
+
+            if (!Objects.equals(user.getRoles(), "ROLE_USER")) {
+                model.put("role", "Администратор");
+                model.put("admin", "list-smr");
+            } else {
+                model.put("role", "Потребител");
+            }
+
             return this.view("user");
         }
     }
@@ -131,7 +161,7 @@ public class UsersController extends BaseController {
 
         if (user == null) {
 
-            return this.redirect("/");
+            return this.redirect("/login");
 
         } else {
 
@@ -148,11 +178,11 @@ public class UsersController extends BaseController {
         if (password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
             if (Objects.equals(password, confirmPassword)) {
 
-                user.setPassword(DigestUtils.sha256Hex(password));
+                newUserDB.setPassword(passwordEncoder.encode(password));
                 user.setEmail(email);
                 service.save(user);
 
-                return this.redirect("/");
+                return this.redirect("/home");
             } else {
                 model.put("errorMessage", "Грешно въведени Пароли!");
                 model.put("name", name);
@@ -224,6 +254,7 @@ public class UsersController extends BaseController {
         return this.view("mail");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");
@@ -241,6 +272,7 @@ public class UsersController extends BaseController {
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
@@ -258,4 +290,8 @@ public class UsersController extends BaseController {
         excelExporter.export(response);
     }
 
+    @GetMapping("/access-denied")
+    public ModelAndView accessDenied(ModelMap model) {
+        return this.view("access-denied");
+    }
 }

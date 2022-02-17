@@ -4,11 +4,11 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Business Calculator</title>
-    <link href="calc.png" rel="shortcut icon" type="ico">
-    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+<meta charset="UTF-8">
+<title>Education</title>
+ <link href="books.ico" rel="shortcut icon" type="ico">
+ <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <style type="text/css">
@@ -148,7 +148,7 @@
 
     h1 {
         font-family: Gabriola;
-        color: black;
+        color: red;
         text-align: center;
         margin-top: 25px;
         margin-bottom: 25px;
@@ -158,42 +158,6 @@
         text-transform: uppercase;
     }
 
-    table {
-        font-size: 12px;
-        border-spacing: 0;
-        border: 2px solid black;
-    }
-
-    th {
-        font-size: 15px;
-        font-weight: bold;
-        width: 1%;
-        text-align: center;
-    }
-
-    tr:nth-child(even) td {
-        background-color: whitesmoke;
-        text-align: center;
-    }
-
-    tr:nth-child(odd) td {
-        background-color: gray;
-        text-align: center;
-    }
-
-    #add {
-    color: gray;
-    font-family: Gabriola;
-    font-weight: bold;
-    padding-left: 550px;
-    padding-bottom: 50px;
-    font-size: 30px;
-    }
-
-    #add:hover {
-        color: orange;
-        text-decoration: none;
-    }
 
 /* ------------------- START FOOTER ------------------- */
 
@@ -237,55 +201,14 @@
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/home';" style="cursor: pointer;"><i id="icons" class="fas fa-home"></i><br>Начало</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/calculator';" style="cursor: pointer;"><i id="icons" class="fas fa-calculator"></i><br>Нов Калкулатор</div>
                         <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/search';" style="cursor: pointer;"><i id="icons" class="fas fa-search"></i><br>Търсене</div>
-                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/mail';" style="cursor: pointer"><i id="icons" class="fas fa-at"></i><br>Пишете ни</div>
+                        <div class="col-lg-2 col-md-4" align="center" onclick="location.href='/change';" style="cursor: pointer"><i id="icons" class="fas fa-key"></i><br>Смяна на парола</div>
                         <div class="col-lg-2 col-md-4" id="user" align="center" onclick="location.href='/user';" style="cursor: pointer;"><i id="icons" class="fas fa-user"></i><br>${name}</div>
                 </div>
             </div>
         </nav>
 
-     <h1>СМР</h1>
-        <div class="container">
+     <h1>Нямате необходимите права!<br>Моля обърнете се към Администратор!</h1>
 
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th>Позиция</th>
-                    <th>Дейност</th>
-                    <th>Описание</th>
-                    <th>Цена Договор A</th>
-                    <th>Цена Договор B</th>
-                    <th>Цена Договор C</th>
-                    <th>Цена Договор D</th>
-                    <th>Цена Договор E</th>
-                    <th>Промяна</th>
-                    <th>Изтриване</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <c:forEach items="${smr}" var= "smr">
-                            <tr>
-                                <td>${smr.position}</td>
-                                <td>${smr.action}</td>
-                                <td>${smr.descr}</td>
-                                <td>${smr.price_contract_1}</td>
-                                <td>${smr.price_contract_2}</td>
-                                <td>${smr.price_contract_3}</td>
-                                <td>${smr.price_contract_4}</td>
-                                <td>${smr.price_contract_5}</td>
-                                <td><a type="button" class="btn btn-secondary" href="/update-SMR-position?id=${smr.id}">Промени</a></td>
-                                <td><a type="button" class="btn btn-dark" onclick="return confirm('Моля потвърдете');" href="/delete-SMR-position?id=${smr.id}">Изтрий</a></td>
-                            </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-     <br/>
-
-    </div>
-    <a id="add" href="/add-SMR-position">Добавяне на нова позиция</a>
-    <br><br><br><br><br><br><br>
         <footer>
             <h5>
                 <a href="/information">Информация за нас</a>

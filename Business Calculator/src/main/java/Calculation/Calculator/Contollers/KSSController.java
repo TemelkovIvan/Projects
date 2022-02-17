@@ -9,6 +9,7 @@ import Calculation.Calculator.Services.SMRService;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@PreAuthorize("isAuthenticated()")
 @Controller
 @SessionAttributes("name")
 public class KSSController extends BaseController {
