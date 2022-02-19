@@ -1,8 +1,6 @@
 package Calculation.Calculator.Entities;
 import javax.persistence.*;
 
-import java.util.Date;
-
 import static javax.persistence.GenerationType.SEQUENCE;
 
 

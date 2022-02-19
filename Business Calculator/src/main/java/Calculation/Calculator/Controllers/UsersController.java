@@ -1,10 +1,12 @@
-package Calculation.Calculator.Contollers;
+package Calculation.Calculator.Controllers;
 
 import Calculation.Calculator.Entities.Users;
 import Calculation.Calculator.Exporters.ExcelExporter;
 import Calculation.Calculator.Exporters.PDFExporter;
 import Calculation.Calculator.Services.EmailSenderService;
 import Calculation.Calculator.Services.UsersService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -13,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,16 +47,19 @@ public class UsersController extends BaseController {
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    Logger log = LoggerFactory.getLogger("Log-UsersController");
+
     @GetMapping("/")
     public ModelAndView showLogin(ModelMap model) {
         return this.redirect("/home");
     }
 
     @GetMapping("/login")
-    public ModelAndView showLoginPage(ModelMap model, @RequestParam(required = false) String error) {
-
+    public ModelAndView showLoginPage(ModelMap model,@RequestParam(required = false) String error) {
+        log.info("Извикан е /login");
         if(error != null){
             model.put("errorMessage", "Грешно Име или Парола!");
+            log.error("Грешно Име или Парола при опит за влизане!");
         }
 
         return this.view("login");
@@ -84,39 +88,39 @@ public class UsersController extends BaseController {
     }
 
     @RequestMapping(value = "/new-user", method = RequestMethod.POST)
-    public ModelAndView showLoginPageWithNewUser(ModelMap model, @Valid Users newUserDB, @RequestParam String userId, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email) {
+    public ModelAndView showLoginPageWithNewUser(ModelMap model, @Valid Users newUserDB, @RequestParam String userName, @RequestParam String password, @RequestParam String confirmPassword, @RequestParam String email) {
 
-        Users user = this.service.findByUsername(userId).orElse(null);
+        Users user = this.service.findByUsername(userName).orElse(null);
 
         if (user == null) {
 
-            if (userId.indexOf(" ") == -1 && password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
+            if (userName.indexOf(" ") == -1 && password.indexOf(" ") == -1 && email.indexOf(" ") == -1) {
                 if (Objects.equals(password, confirmPassword)) {
 
-                    newUserDB.setUsername(userId);
+                    newUserDB.setUsername(userName);
                     newUserDB.setPassword(passwordEncoder.encode(password));
                     newUserDB.setEmail(email);
                     newUserDB.setRoles("ROLE_USER");
 
                     service.save(newUserDB);
-
+                    log.info("Успешно създаден потребител: " + userName + "!");
                     return this.view("login");
 
                 } else {
                     model.put("errorMessage", "Грешно въведени Пароли!");
-                    model.put("userId", userId);
+                    model.put("userName", userName);
                     model.put("email", email);
                     return this.view("new-user");
                 }
             } else {
                 model.put("errorMessage", "Моля въведете коректни данни и не въвеждайте интервали!");
-                model.put("userId", userId);
+                model.put("userName", userName);
                 model.put("email", email);
                 return this.view("new-user");
             }
         }
         model.put("errorMessage", "Вече има създаден потребител с такова Име!");
-        model.put("userId", userId);
+        model.put("userName", userName);
         model.put("email", email);
         return this.view("new-user");
     }

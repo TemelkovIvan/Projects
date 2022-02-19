@@ -1,4 +1,4 @@
-package Calculation.Calculator.Contollers;
+package Calculation.Calculator.Controllers;
 
 import Calculation.Calculator.Entities.Cases;
 import Calculation.Calculator.Entities.SMR;

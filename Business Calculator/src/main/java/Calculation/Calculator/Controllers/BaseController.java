@@ -1,4 +1,4 @@
-package Calculation.Calculator.Contollers;
+package Calculation.Calculator.Controllers;
 
 import org.springframework.web.servlet.ModelAndView;
 
