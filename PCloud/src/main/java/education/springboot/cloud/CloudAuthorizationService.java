@@ -11,10 +11,10 @@ public class CloudAuthorizationService {
     private static final String LOGIN_USERNAME = "ivan_temelkow@abv.bg";
 
     private static final String LOGIN_PASSWORD = "123123";
-    
+
 
     private static final String LOGIN_URL =
-            "https://api.pcloud.com/userinfo?getauth=1&logout=1&username="
+            "https://eapi.pcloud.com/userinfo?getauth=1&logout=1&username="
                     + LOGIN_USERNAME
                     + "&password="
                     + LOGIN_PASSWORD;

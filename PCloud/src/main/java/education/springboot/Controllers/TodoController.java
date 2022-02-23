@@ -57,19 +57,6 @@ public class TodoController extends BaseController {
         return this.view("list-educations");
     }
 
-    @GetMapping("/images")
-    @ResponseBody
-    public String images() {
-        String result = "ffff";
-
-        try {
-            result = this.cloudImageExtractor.getAllImages() + "-test";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
     @RequestMapping(value="/add-education",method = RequestMethod.GET)
     public ModelAndView showAddTodoPage(ModelMap model) {
         model.addAttribute("todo",new ToDo((String) model.get("name"),"Default",new Date(),""));
@@ -220,6 +207,14 @@ public class TodoController extends BaseController {
 
         } else {
 
+        String URL = "Try again";
+            try {
+                URL = this.cloudImageExtractor.getImage(name);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        model.put("URL",URL);
         model.put("email",user.getEmail());
         model.put("age", user.getAge());
         model.put("date", user.getDate());

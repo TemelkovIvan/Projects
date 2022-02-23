@@ -158,6 +158,15 @@ table {
             text-transform: uppercase;
         }
 
+        .image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            width: 100px;
+            border-radius: 50%;
+        }
+
 /* ------------------- START FOOTER ------------------- */
 
     footer {
@@ -212,6 +221,8 @@ table {
             </nav>
 
     <h1>"${name}"</h1>
+
+    <img src="${URL}" alt="This is an image" class="image"/>
 
     <h2>"${email}"</h1>
 
