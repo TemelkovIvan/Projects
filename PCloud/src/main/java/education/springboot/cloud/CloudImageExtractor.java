@@ -2,11 +2,8 @@ package education.springboot.cloud;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -43,7 +40,7 @@ public class CloudImageExtractor {
 
         Gson gson = new Gson();
 
-        String url = "https://evc264.pcloud.com/dHZiWRwXFZfMmPyLZMfq5ZZ7TVNi7Z3VZZfb0ZkZIOtpZhKfTjFBjymfUYOU9UdN6UmahdiG7/user.png";
+        String url = "user.png";
 
         String accessToken = this.cloudAuthorizationService.getAccessToken();
 
@@ -93,7 +90,7 @@ public class CloudImageExtractor {
             String fileName = singleFileData.get("name").toString();
             String fileUrl = "https://" + host + filePath;
 
-            if (Objects.equals(fileName, name + ".jpg")) {
+            if (Objects.equals(fileName, name + ".jpg") || Objects.equals(fileName, name + ".png")  || Objects.equals(fileName, name + ".jpeg")) {
                 url = fileUrl;
             }
         }
