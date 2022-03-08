@@ -38,8 +38,6 @@ public class KSSController extends BaseController {
 
     Date date = new Date(System.currentTimeMillis());
 
-
-
     @RequestMapping(value="/calculator",method = RequestMethod.GET)
     public ModelAndView showCalculator(ModelMap model) {
 
